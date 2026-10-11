@@ -84,7 +84,8 @@ ${canonical ? `<link rel="canonical" href="${attr(canonical)}">\n<meta property=
 <meta property="og:title" content="${attr(full)}">
 <meta property="og:description" content="${attr(description)}">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#233d32">
+<meta name="theme-color" content="#eef1ee">
+<script>try{if(localStorage.getItem("wp-theme")==="dark"){document.documentElement.setAttribute("data-theme","dark");document.querySelector('meta[name="theme-color"]').content="#111816"}}catch(e){}</script>
 <link rel="icon" href="${p}assets/emblem.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -105,6 +106,7 @@ ${canonical ? `<link rel="canonical" href="${attr(canonical)}">\n<meta property=
         <button class="btn small" type="submit">Search</button>
       </form>
     </nav>
+    <button class="theme-toggle" type="button" aria-pressed="false" title="Switch to dark theme"><span class="visually-hidden">Dark theme</span><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg></button>
   </div>
 </header>
 <main id="main" tabindex="-1">

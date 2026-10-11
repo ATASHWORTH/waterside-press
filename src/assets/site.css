@@ -43,14 +43,7 @@
   --s1: .25rem; --s2: .5rem; --s3: .75rem; --s4: 1rem; --s5: 1.5rem; --s6: 2rem; --s7: 3rem; --s8: 4.5rem;
   color-scheme: light;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --forest: #7fb8c0; --forest-2: #9dcbd2; --parchment: #111816; --vellum: #18211f; --linen: #1b2523;
-    --ink: #e3e8e4; --ink-soft: #9aa8a3; --olive: #6f8a86; --olive-ink: #bfd0cc; --brass: #5d7a7d; --brass-ink: #a9c4c6;
-    --stone: #2c3936; --rubric: #e07a6c; --link: #8cc3ca; --focus: #f0b04a; --on-forest: #111816;
-    color-scheme: dark;
-  }
-}
+/* Light is the default for every visitor. Dark applies only when chosen with the header switch. */
 :root[data-theme="dark"] {
   --forest: #7fb8c0; --forest-2: #9dcbd2; --parchment: #111816; --vellum: #18211f; --linen: #1b2523;
   --ink: #e3e8e4; --ink-soft: #9aa8a3; --olive: #6f8a86; --olive-ink: #bfd0cc; --brass: #5d7a7d; --brass-ink: #a9c4c6;
@@ -403,11 +396,19 @@ aside .format-legend dd { margin-bottom: var(--s3); }
   #size-label { display: none; }
 }
 /* Form controls need a 3:1 boundary (WCAG 1.4.11) */
-:root { --control-border: #857c6b; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --control-border: #7d7868; } }
-:root[data-theme="dark"] { --control-border: #7d7868; }
+:root { --control-border: #6f817c; }
+:root[data-theme="dark"] { --control-border: #5e7470; }
 input[type="search"], select { border-color: var(--control-border); }
 
 /* IM Fell English has a single weight: titling-face elements stay regular, never synthesized bold. */
 [class*="title"], .catalog-date strong, .brand-name { font-synthesis: none; }
 h3 { font-weight: 400; }
+
+/* ---------- Light / dark switch ---------- */
+.theme-toggle { flex: none; display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 0; background: none; border: 1px solid var(--stone); border-radius: 3px; color: var(--ink); cursor: pointer; }
+.theme-toggle:hover { color: var(--forest); border-color: var(--forest); }
+.theme-toggle svg { width: 20px; height: 20px; }
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+@media (min-width: 1080px) { .theme-toggle { margin-left: var(--s3); } }

@@ -280,6 +280,7 @@ export const pages = [
   <p>Waterside Press has no accounts, no mailing list, no analytics, no advertising, and no tracking pixels. It sets no cookies.</p>
   <h2>What your browser stores</h2>
   <p>On the Daily Office page, two preferences — the shorter form and text size — are kept in your own browser’s local storage so they are remembered next time. They never leave your device. Clearing your browser’s site data removes them.</p>
+  <p>If you choose the dark theme with the switch at the top of every page, that choice is kept in your browser’s local storage in the same way.</p>
   <h2>Third-party requests</h2>
   <ul>
     <li><strong>Fonts:</strong> pages load the IM Fell English, Spectral, and Alegreya Sans typefaces from Google Fonts. Your browser therefore contacts Google’s servers, which receive your IP address and browser details as part of that request. See Google’s privacy policy for how that data is handled.</li>
