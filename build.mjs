@@ -19,29 +19,44 @@ const SITE = 'Waterside Press';
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const attr = esc;
 
-// ── Emblem: a tree planted by streams of water (Psalm 1:3) ──
-export const emblem = (title = '') => `<svg viewBox="0 0 64 64" role="${title ? 'img' : 'presentation'}" ${title ? `aria-label="${attr(title)}"` : 'aria-hidden="true"'} fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<circle cx="32" cy="32" r="29.5" stroke-width="1.6"/>
-<path d="M32 46V27M32 36l-6-6M32 32l6-6M32 40l5-4"/>
-<path d="M32 9c-9 0-15 6.5-15 13.5 0 6 4.6 10 10 10.5M32 9c9 0 15 6.5 15 13.5 0 6-4.6 10-10 10.5" />
-<path d="M24 46c2.5-1.2 5-1.8 8-1.8s5.5.6 8 1.8"/>
-<path d="M12 51c3.3-2 6.7-2 10 0s6.7 2 10 0 6.7-2 10 0 6.7 2 10 0" stroke-width="1.6"/>
-<path d="M17 56.5c2.5-1.5 5-1.5 7.5 0s5 1.5 7.5 0 5-1.5 7.5 0 5 1.5 7.5 0" stroke-width="1.4"/>
+// ── Emblem: a tree planted by streams of water (Psalm 1:3). Monochrome, legible at 16px. ──
+export const emblem = (title = '') => `<svg viewBox="0 0 64 64" role="${title ? 'img' : 'presentation'}" ${title ? `aria-label="${attr(title)}"` : 'aria-hidden="true"'} fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="32" cy="32" r="30" stroke-width="1.5"/><circle cx="32" cy="32" r="27" stroke-width=".8"/>
+<path d="M32 9.5c-8.6 0-14 5.8-14 12.4 0 5.6 4.3 9.4 9.4 9.9h9.2c5.1-.5 9.4-4.3 9.4-9.9 0-6.6-5.4-12.4-14-12.4z" stroke-width="1.8"/>
+<path d="M32 44V25M32 34l-5.5-5.5M32 30l5-5" stroke-width="2"/>
+<path d="M32 44c-3 0-6 1-8.5 2.6M32 44c3 0 6 1 8.5 2.6M32 44v3" stroke-width="1.6"/>
+<path d="M13 50.5c3.2-1.8 6.3-1.8 9.5 0s6.3 1.8 9.5 0 6.3-1.8 9.5 0 6.3 1.8 9.5 0" stroke-width="1.6"/>
+<path d="M18 55.5c2.3-1.3 4.7-1.3 7 0s4.7 1.3 7 0 4.7-1.3 7 0 4.7 1.3 7 0" stroke-width="1.3"/>
 </svg>`;
 
-const heroArt = `<svg viewBox="0 0 320 300" role="img" aria-label="Line drawing of a tree beside a stream" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-<g stroke-width="1.6">
-<path d="M160 232V130M160 172l-34-30M160 158l30-34M160 196l26-20M140 154l-20 2M178 132l16-6"/>
-<path d="M160 52c-50 0-80 34-80 70 0 30 22 52 52 54M160 52c50 0 80 34 80 70 0 30-22 52-52 54"/>
-<path d="M104 96c10-14 26-22 40-24M216 96c-10-14-26-22-40-24M96 132c4 10 12 18 22 22M224 132c-4 10-12 18-22 22" stroke-width="1.1"/>
-<circle cx="122" cy="118" r="4"/><circle cx="198" cy="112" r="4"/><circle cx="176" cy="150" r="4"/><circle cx="140" cy="88" r="4"/>
-<path d="M132 232c8-6 18-9 28-9s20 3 28 9M146 232l-10 10M174 232l10 10M160 232v12"/>
+// Bookplate engraving for the home page: tree, roots reaching to the stream, river banks.
+const heroArt = `<svg viewBox="0 0 300 380" role="img" aria-label="Engraving-style drawing of a tree planted beside a stream of water, after Psalm 1:3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+<rect x="6" y="6" width="288" height="368" rx="2" stroke-width="1.4"/>
+<rect x="13" y="13" width="274" height="354" rx="1" stroke-width=".7"/>
+<g stroke-width="1.5">
+  <path d="M150 62c-24 0-41 13-46 30-17 2-28 15-28 31 0 13 8 24 21 28-3 15 9 29 26 29 6 0 11-2 15-5 4 3 8 4 12 4s8-1 12-4c4 3 9 5 15 5 17 0 29-14 26-29 13-4 21-15 21-28 0-16-11-29-28-31-5-17-22-30-46-30z"/>
+  <path d="M150 260V150M150 203l-27-24M150 186l24-25M150 226l21-15M139 172l-14 4M163 148l10-9"/>
+  <path d="M146 260c-12 1-24 6-33 13M154 260c12 1 24 6 33 13M150 260v18M141 262c-5 7-8 14-9 21M159 262c5 7 8 14 9 21"/>
 </g>
-<g stroke-width="1.3">
-<path d="M30 258c18-10 36-10 54 0s36 10 54 0 36-10 54 0 36 10 54 0 36-10 54 0"/>
-<path d="M50 274c15-8 30-8 45 0s30 8 45 0 30-8 45 0 30 8 45 0 30-8 45 0"/>
-<path d="M80 289c12-6 24-6 36 0s24 6 36 0 24-6 36 0 24 6 36 0"/>
-</g></svg>`;
+<g stroke-width=".7" opacity=".85">
+  <path d="M108 98c8-9 18-15 30-18M122 110c6-6 14-10 22-12M192 98c-8-9-18-15-30-18M178 110c-6-6-14-10-22-12"/>
+  <path d="M88 130c3 8 9 14 17 17M212 130c-3 8-9 14-17 17M110 160c4 5 10 8 16 9M190 160c-4 5-10 8-16 9"/>
+  <path d="M146 214v40M154 214v40M147 170v30M153 168v30"/>
+</g>
+<g stroke-width="1.2"><circle cx="118" cy="120" r="3.4"/><circle cx="186" cy="114" r="3.4"/><circle cx="168" cy="152" r="3.4"/><circle cx="134" cy="92" r="3.4"/><circle cx="104" cy="146" r="3.4"/><circle cx="198" cy="146" r="3.4"/></g>
+<g stroke-width="1.2">
+  <path d="M24 290c18-6 40-8 62-4M214 286c22-4 44-2 62 4"/>
+  <path d="M24 302c22-8 44-8 66 0s44 8 66 0 44-8 66 0 32 6 54 2"/>
+  <path d="M30 318c20-7 40-7 60 0s40 7 60 0 40-7 60 0 40 7 60 0"/>
+  <path d="M48 333c17-6 34-6 51 0s34 6 51 0 34-6 51 0 34 6 51 0"/>
+  <path d="M78 347c12-4 24-4 36 0s24 4 36 0 24-4 36 0 24 4 36 0"/>
+</g>
+<path d="M44 286l-6-22M52 285l2-24M60 286l8-20M240 286l6-22M248 286l-2-24" stroke-width=".9"/>
+<text x="150" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="11" letter-spacing="3" fill="currentColor" stroke="none">PSALM I · 3</text>
+</svg>`;
+
+// A plain five-line staff, used as the Music page's rule. Decorative; it notates no tune.
+const staffRule = `<svg class="staff" viewBox="0 0 600 30" preserveAspectRatio="none" aria-hidden="true" stroke="currentColor" stroke-width="1"><path d="M0 3h600M0 9h600M0 15h600M0 21h600M0 27h600"/></svg>`;
 
 const ornament = `<div class="rule-orn" aria-hidden="true">${emblem()}</div>`;
 
@@ -69,11 +84,11 @@ ${canonical ? `<link rel="canonical" href="${attr(canonical)}">\n<meta property=
 <meta property="og:title" content="${attr(full)}">
 <meta property="og:description" content="${attr(description)}">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#24402f">
+<meta name="theme-color" content="#233d32">
 <link rel="icon" href="${p}assets/emblem.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
 <link rel="stylesheet" href="${p}assets/site.css">
 </head>
 <body>
@@ -96,28 +111,35 @@ ${canonical ? `<link rel="canonical" href="${attr(canonical)}">\n<meta property=
 ${body(href, p)}
 </main>
 <footer class="site-footer">
-  <div class="wrap footer-grid">
-    <div>
-      <p><a class="brand" href="${href('')}" style="display:inline-flex">${emblem()}<span class="brand-name">Waterside Press</span></a></p>
-      <p class="motto">Recover the inheritance. Preserve its integrity. Make it usable at home.</p>
-      <p class="meta">“He is like a tree planted by streams of water that yields its fruit in its season.” — Psalm 1:3 (ESV)</p>
-    </div>
-    <nav aria-label="Publication">
-      <ul>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <span class="footer-motif">${emblem()}</span>
+        <p class="verse">“He is like a tree planted by streams of water that yields its fruit in its season.”</p>
+        <p class="meta">Psalm 1:3 (ESV)</p>
+      </div>
+      <nav aria-labelledby="f-pray"><h2 id="f-pray">Pray and learn</h2><ul>
+        <li><a href="${href('daily-office/')}">Daily Office</a></li>
+        <li><a href="${href('family-catechesis/')}">Family Catechesis</a></li>
+        <li><a href="${href('lords-day/')}">The Lord’s Day</a></li>
+      </ul></nav>
+      <nav aria-labelledby="f-coll"><h2 id="f-coll">Collections</h2><ul>
+        <li><a href="${href('library/')}">Library</a></li>
+        <li><a href="${href('music/')}">Music</a></li>
+        <li><a href="${href('learning/')}">Learning</a></li>
+      </ul></nav>
+      <nav aria-labelledby="f-pub"><h2 id="f-pub">The press</h2><ul>
         <li><a href="${href('about/')}">About</a></li>
         <li><a href="${href('editorial-principles/')}">Editorial Principles</a></li>
         <li><a href="${href('copyright/')}">Copyright and Permissions</a></li>
-        <li><a href="${href('letter-to-the-head-of-the-household/')}">Letter to the Head of the Household (draft)</a></li>
-      </ul>
-    </nav>
-    <nav aria-label="Site information">
-      <ul>
         <li><a href="${href('privacy/')}">Privacy</a></li>
         <li><a href="${href('accessibility/')}">Accessibility</a></li>
-        <li><a href="${href('copyright/')}#corrections">Sources and corrections</a></li>
-      </ul>
-      <p class="meta" style="margin-top:1rem">Scripture quotations: ESV®, © 2001 Crossway. Used by permission.</p>
-    </nav>
+      </ul></nav>
+    </div>
+    <div class="footer-base">
+      <span>Recover the inheritance. Preserve its integrity. Make it usable at home.</span>
+      <span>Scripture quotations: ESV®, © 2001 Crossway. Used by permission.</span>
+    </div>
   </div>
 </footer>
 <script src="${p}assets/site.js" defer></script>
@@ -139,18 +161,18 @@ const kind = (k) => `<span class="kind">${kindLabel[k]}</span>`;
 const note = (summary, html) => html ? `<details class="note"><summary>${summary}</summary><p>${html}</p></details>` : '';
 const src = (k, text) => `<p class="source">${kind(k)}${esc(text)}</p>`;
 const verse = (r) => `<p class="scripture">${r.text}</p>`;
-const lines = (arr) => arr.map(([who, line]) => `<p class="versicle${who === 'All' ? ' all' : ''}"><b>${who}</b> ${esc(line)}</p>`).join('');
+const lines = (arr) => arr.map(([who, line]) => `<p class="versicle${who === 'All' ? ' all' : ''}"><b>${who}</b><span>${esc(line)}</span></p>`).join('');
 const esvLink = (ref) => `https://www.esv.org/${ref.replace(/[–]/g, '-').replace(/(\d)[a-z]\b/g, '$1').replace(/,\s*/g, ',').replace(/\s+/g, '+')}/`;
-let partN = 0;
-const part = (id, title, inner, extra = '') => `<section class="part ${extra}" aria-labelledby="h-${id}"><div class="part-head"><h3 id="h-${id}">${title}</h3></div>${inner}</section>`;
+const part = (id, title, inner, extra = '') => `<section class="part ${extra}" id="${id}" aria-labelledby="h-${id}"><div class="part-head"><h3 id="h-${id}">${title}</h3></div>${inner}</section>`;
 
 function canticle(c) {
-  return `${src('historic', c.source)}<p class="meta" style="margin-top:-.4rem">${esc(c.subtitle)}</p>
-  <div class="canticle">${c.lines.map((l) => `<p>${esc(l).replace(' : ', ' <span class="colon" aria-hidden="true">:</span> ')}</p>`).join('')}<p class="gloria">${esc(off.canticles.gloria).replace(/ : /g, ' <span class="colon" aria-hidden="true">:</span> ')}</p></div>
+  const pointed = (s) => esc(s).replace(/ : /g, ' <span class="colon" aria-hidden="true">:</span> ');
+  return `${src('historic', c.source)}<p class="meta">${esc(c.subtitle)}</p>
+  <div class="canticle">${c.lines.map((l) => `<p>${pointed(l)}</p>`).join('')}<p class="gloria">${pointed(off.canticles.gloria)}</p></div>
   ${c.note ? note('About this canticle', esc(c.note)) : ''}`;
 }
 function hymnBlock(h) {
-  return `${src('historic', h.source)}<p class="meta" style="margin-top:-.4rem">Suggested tune: ${esc(h.tune)}</p>${h.stanzas.map((s) => `<p class="stanza">${esc(s)}</p>`).join('')}${note('About this hymn', esc(h.note))}`;
+  return `${src('historic', h.source)}<p class="meta">Suggested tune: ${esc(h.tune)}</p>${h.stanzas.map((s) => `<p class="stanza">${esc(s)}</p>`).join('')}${note('About this hymn', esc(h.note))}`;
 }
 const collectBlock = (c) => `<h4>${esc(c.title)}</h4>${src('historic', c.source)}<p>${esc(c.text)}</p>${c.note ? note('A word in this prayer', esc(c.note)) : ''}`;
 
@@ -158,13 +180,22 @@ const collectBlock = (c) => `<h4>${esc(c.title)}</h4>${src('historic', c.source)
 function renderOffice(key) {
   const o = off.offices[key];
   const t = off.texts;
-  const id = (s) => `${key}-${s}`;
+  const id = (s) => `${key}-part-${s}`; // distinct from the ${key}-psalms / ${key}-lesson slots filled by office.js
   const both = (render, field) => `<div class="weekday-only"><p class="when nojs-only">On weekdays</p>${render(field.weekday)}</div><div class="sunday-only"><p class="when nojs-only">On Sundays</p>${render(field.sunday)}</div>`;
   const sentence = (s) => `${src('scripture', s.ref)}${verse(s)}`;
   const cant = (k) => canticle(off.canticles[k]);
   const sameCanticle = o.canticle.weekday === o.canticle.sunday;
+  const sections = [
+    ['sentence', 'Opening'], ['confession', 'Confession', 'full-only'], ['versicles', 'Praise'], ['psalms', 'Psalms'],
+    ['lesson', 'Scripture'], ['canticle', 'Canticle'], ...(o.canticle2 ? [['canticle2', 'Nunc Dimittis', 'full-only']] : []),
+    ['creed', 'Creed', 'full-only'], ['prayers', 'Prayers'], ['hymn', 'Hymn'], ['blessing', 'Grace'],
+  ];
   return `<div class="office-panel" id="panel-${key}" role="tabpanel" aria-labelledby="tab-${key}">
-  <h2 class="office-name">${o.name}</h2>
+  <header class="office-title">
+    <h2>${o.name}</h2>
+    <p class="meta"><span class="weekday-only">The weekday form</span><span class="sunday-only">The Lord’s Day form</span></p>
+  </header>
+  <nav class="office-index" aria-label="${o.name}: sections"><ol>${sections.map(([s, label, cls]) => `<li${cls ? ` class="${cls}"` : ''}><a href="#${id(s)}">${label}</a></li>`).join('')}</ol></nav>
   ${part(id('sentence'), 'Opening sentence', both(sentence, o.sentence))}
   ${part(id('confession'), 'Confession of sin', `
     <p class="rubric">All kneel or bow, and say together:</p>
@@ -174,19 +205,19 @@ function renderOffice(key) {
     ${note('About the confession', esc(t.confession.note))}`, 'full-only')}
   ${part(id('versicles'), 'Invitation to praise', `${src('historic', t.versicles.source)}${lines(t.versicles.lines)}`)}
   ${part(id('psalms'), 'The Psalms appointed', `
-    <p class="source">${kind('historic')}Book of Common Prayer (1662) psalter, read through each month · <span id="${key}-psalter-day">See the table below</span></p>
-    <p class="appointed js-only" hidden><strong>Read:</strong> <span id="${key}-psalms"></span></p>
-    <p class="nojs-only">Turn to the psalms for today’s date in the psalter table at the foot of this page.</p>
-    <p class="rubric">Read the psalms aloud, alternating verses between leader and household, and end with the Gloria Patri. <span class="short-only">In the shorter form, read the first psalm appointed, or sing a metrical psalm from the <a href="${'../music/index.html'}">Music</a> page.</span></p>
-    <p class="meta">Links open the ESV at esv.org. Waterside does not reprint whole psalms, to stay within the ESV’s quotation limits.</p>`)}
+    <p class="source">${kind('historic')}Book of Common Prayer (1662) psalter, read through each month · <span id="${key}-psalter-day">See the table at the foot of this page</span></p>
+    <div class="appointed js-only" hidden><strong>Read today</strong><span id="${key}-psalms"></span></div>
+    <p class="nojs-only">Find the psalms for today’s date in the psalter table at the foot of this page.</p>
+    <p class="rubric">The psalms are read aloud, leader and household taking alternate verses, each ending with the Gloria Patri. <span class="short-only">In the shorter form, read the first psalm appointed, or sing a metrical psalm from the <a href="../music/index.html">Music</a> page.</span></p>
+    <p class="meta">Each link opens the psalm in the ESV at esv.org. Waterside does not reprint whole psalms, to stay within the ESV’s quotation limits.</p>`)}
   ${part(id('lesson'), o.lessonLabel, `
     <p class="source">${kind('arrangement')}Waterside continuous-reading plan · <a href="#about-plan">how the plan works</a></p>
-    <p class="appointed js-only" hidden><strong>Read:</strong> <span id="${key}-lesson"></span></p>
+    <div class="appointed js-only" hidden><strong>Read today</strong><span id="${key}-lesson"></span></div>
     <p class="nojs-only">The lesson is calculated from the date and needs JavaScript. You may instead continue reading where you left off.</p>
     <p class="rubric short-only">In the shorter form, a few verses are enough.</p>`)}
   ${part(id('canticle'), 'Canticle', sameCanticle ? cant(o.canticle.weekday) : both(cant, o.canticle))}
   ${o.canticle2 ? part(id('canticle2'), 'Second canticle', cant(o.canticle2), 'full-only') : ''}
-  ${part(id('creed'), "The Apostles' Creed", `${src('historic', t.creed.source)}${t.creed.text.map((x) => `<p>${esc(x)}</p>`).join('')}${note('Notes on the words', esc(t.creed.note))}`, 'full-only')}
+  ${part(id('creed'), "The Apostles' Creed", `<p class="rubric">All say together:</p>${src('historic', t.creed.source)}${t.creed.text.map((x) => `<p>${esc(x)}</p>`).join('')}${note('Notes on the words', esc(t.creed.note))}`, 'full-only')}
   ${part(id('prayers'), 'The Prayers', `
     <h4>The Lord’s Prayer</h4>${src('historic', t.lordsPrayer.source)}<p>${esc(t.lordsPrayer.text)}</p>
     <div class="full-only"><h4>Suffrages</h4>${src('historic', t.suffrages.source)}${lines(t.suffrages.lines)}</div>
@@ -217,20 +248,21 @@ function buildOffice() {
 <div class="wrap page-head">
   <p class="kicker">Pray the Office</p>
   <h1>Daily Office</h1>
-  <div class="prose">
-    <p class="lede">Morning and Evening Prayer for the household: the Church’s inherited pattern of daily prayer, adapted from the Book of Common Prayer.</p>
-    <p>The Office is first of all prayer. A parent may pray it alone, on behalf of the household, or with the whole family; it does not need everyone present. The order stays the same each day, so it can be learned. The psalms and lessons change according to a set plan. The full form takes about twenty minutes; the <em>shorter form</em> takes about eight and suits young children.</p>
-  </div>
+  <p class="lede">Morning and Evening Prayer, adapted for the household from the Book of Common Prayer. Pray it alone, on behalf of your household, or with everyone gathered.</p>
+  <details class="note prose"><summary>How to use the Office</summary>
+    <p>The order stays the same each day so that it can be learned; the psalms and lessons change according to a set plan. The full form takes about twenty minutes. The shorter form takes about eight and suits young children. Words in <span style="color:var(--rubric);font-style:italic">red italic</span> are instructions and are not read aloud. Lines marked <b>Leader</b> and <b>All</b> are said in turn.</p>
+  </details>
 </div>
 <div class="office-bar no-print js-only" hidden>
   <div class="wrap">
     <div class="date-nav" role="group" aria-label="Date">
       <button class="btn small secondary" id="prev-day" type="button" aria-label="Previous day">‹</button>
-      <span id="office-date" class="meta" aria-live="polite"></span>
+      <span id="office-date" aria-live="polite"></span>
       <button class="btn small secondary" id="next-day" type="button" aria-label="Next day">›</button>
       <button class="btn small secondary" id="back-today" type="button" hidden>Today</button>
     </div>
     <div class="office-controls">
+      <a class="btn small secondary" href="#office-top">Contents</a>
       <button class="btn small secondary" id="short-toggle" type="button" aria-pressed="false">Shorter form</button>
       <span role="group" aria-label="Text size" class="size-group">
         <button class="btn small secondary" id="size-down" type="button" aria-label="Smaller text">A−</button>
@@ -245,7 +277,7 @@ function buildOffice() {
 </div>
 <div class="wrap" id="office-root">
   <div class="prose-center office">
-    <div class="office-tabs" role="tablist" aria-label="Office">
+    <div class="office-tabs" id="office-top" role="tablist" aria-label="Office">
       <button type="button" role="tab" id="tab-morning" aria-controls="panel-morning" aria-selected="true">Morning Prayer</button>
       <button type="button" role="tab" id="tab-evening" aria-controls="panel-evening" aria-selected="false" tabindex="-1">Evening Prayer</button>
     </div>
@@ -253,7 +285,7 @@ function buildOffice() {
     ${renderOffice('morning')}
     ${renderOffice('evening')}
     <section class="part" id="about-plan" aria-labelledby="h-plan">
-      <h2 id="h-plan">How the readings are appointed</h2>
+      <div class="part-head"><h2 id="h-plan">How the readings are appointed</h2></div>
       <p><strong>Psalms.</strong> The Book of Common Prayer (1662) divides the 150 psalms over thirty days, morning and evening, so that the whole psalter is read every month. Waterside follows that table exactly.</p>
       <p><strong>Lessons.</strong> One chapter of the Old Testament at Morning Prayer and one of the New Testament at Evening Prayer, read in order from Genesis and Matthew, beginning 1 January 2026. The Old Testament (without the Psalms) takes about two years and two months; the New Testament about eight and a half months. This is a Waterside plan, modelled on the Reformed practice of reading Scripture continuously, book by book. It is <em>not</em> the 1662 calendar of lessons, which appoints readings by date and includes the Apocrypha. If you miss a day, read on from the day’s chapter; nothing is lost by skipping ahead or catching up.</p>
       <p><strong>The Church year.</strong> Seasonal collects and readings for Advent, Christmas, Lent, and Easter are not yet included.</p>
@@ -271,16 +303,22 @@ function buildOffice() {
 }
 
 // ── Family Catechesis ──
-function renderSession(s, href) {
-  const prev = s.recite;
-  const qs = s.questions.map((n) => `<div class="qa-block"><p class="q"><span class="label">Q. ${n}.</span>${esc(cat.wsc[n][0])}</p><p><span class="label">A.</span>${esc(cat.wsc[n][1])}</p></div>`).join('');
+const unitDir = (u) => (u.id === 'lords-day' ? 'the-lords-day' : u.id);
+const sessionPath = (u, s) => `family-catechesis/${unitDir(u)}/${s.slug}/`;
+
+function renderSession(s) {
+  const qs = s.questions.map((n) => `<div class="catechism-q">
+    <p class="qnum">Question ${n}</p>
+    <p class="question">${esc(cat.wsc[n][0])}</p>
+    <p class="answer"><span class="a">A.</span>${esc(cat.wsc[n][1])}</p>
+  </div>`).join('');
   const steps = [
     ['gather', 'Gather', `${src('historic', cat.gatherPrayer.source)}<p>${esc(cat.gatherPrayer.text)}</p>`],
-    ['recite', 'Recite', `<p class="rubric">${esc(prev)}</p>`],
-    ['learn', 'Today’s question', `${src('historic', `${cat.WSC_SOURCE}. Older spelling retained`)}${qs}<p class="rubric">The leader asks; everyone answers together. Repeat until the youngest can say part of it.</p>`],
-    ['read', 'Read', s.reading.map((r) => `${src('scripture', r.ref)}${verse(r)}`).join('') + `<p class="meta"><a href="${esvLink(s.reading[0].ref)}" rel="noopener">Read ${esc(s.reading[0].ref)} in context at esv.org</a></p>`],
-    ['explain', 'Explain', `${src('editorial', 'For the leader. Read it beforehand, or aloud to older children')}<p>${esc(s.explain)}</p>`],
-    ['discuss', 'Discuss', `${src('editorial', 'Everyone answers, adults included')}<dl class="ages">
+    ['recite', 'Recite', `<p class="rubric">${esc(s.recite)}</p>`],
+    ['learn', 'Today’s question', `${qs}<p class="rubric">The leader asks; everyone answers together. Repeat until the youngest can say part of it.</p>${src('historic', `${cat.WSC_SOURCE}. Older spelling retained`)}`],
+    ['read', 'Read', s.reading.map((r) => `${src('scripture', r.ref)}${verse(r)}`).join('') + `<p class="meta"><a class="ext" href="${esvLink(s.reading[0].ref)}" rel="noopener">Read ${esc(s.reading[0].ref)} in context at esv.org</a></p>`],
+    ['explain', 'Explain', `<div class="leader-note"><p class="step-label">For the leader · Waterside Press note</p><p>${esc(s.explain)}</p></div>`],
+    ['discuss', 'Discuss', `<p class="rubric">Everyone answers, adults included. Start with the youngest.</p><dl class="ages">
       <dt>Young children</dt><dd>${esc(s.discuss.young)}</dd>
       <dt>Older children</dt><dd>${esc(s.discuss.older)}</dd>
       <dt>Teenagers</dt><dd>${esc(s.discuss.teens)}</dd>
@@ -289,7 +327,7 @@ function renderSession(s, href) {
     ['practice', 'Practice', `${src('editorial', 'For the week ahead')}<p>${esc(s.practice)}</p>`],
     ['pray', 'Pray', `${s.prayerSource ? src('historic', s.prayerSource) : src('original', 'Written for this session')}<p>${esc(s.prayer)}</p>`],
   ];
-  return steps.map(([k, t, inner], i) => `<section class="part step" aria-labelledby="s-${k}"><div class="part-head"><span class="part-num" aria-hidden="true">${i + 1}</span><h2 id="s-${k}">${t}</h2></div>${inner}</section>`).join('');
+  return steps.map(([k, t, inner], i) => `<section class="step" id="step-${k}" aria-labelledby="s-${k}"><div class="part-head"><span class="part-num" aria-hidden="true">${i + 1}</span><h2 id="s-${k}">${t}</h2></div>${inner}</section>`).join('');
 }
 
 function buildCatechesis() {
@@ -300,61 +338,60 @@ function buildCatechesis() {
 <div class="wrap page-head">
   <p class="kicker">Learn the Faith Together</p>
   <h1>Family Catechesis</h1>
-  <div class="prose">
-    <p class="lede">Sessions in which the whole household learns the faith together: reciting, reading, asking questions, and putting what is learned into practice.</p>
-    <p>Catechesis is different from the <a href="${href('daily-office/')}">Daily Office</a>. The Office is prayer; catechesis is instruction, and it is meant to be a conversation. Parents lead, children respond, and adults answer the questions too.</p>
-  </div>
+  <p class="lede">Sessions in which the whole household learns the faith together: reciting, reading, asking questions, and putting what is learned into practice.</p>
 </div>
-<div class="wrap grid two">
+<div class="wrap grid main-aside">
   <div>
-    ${cat.units.map((u) => `<section class="card unit" aria-labelledby="u-${u.id}">
+    ${cat.units.map((u) => `<section class="unit" aria-labelledby="u-${u.id}">
       <p class="kicker">${u.sunday ? 'For the Lord’s Day' : `Unit · ${u.sessions.length} sessions`}</p>
-      <h2 id="u-${u.id}" style="margin-top:0">${esc(u.title)}</h2>
-      <p>${esc(u.summary)}</p>
-      <ol class="session-list">${u.sessions.map((s) => `<li><a href="${href(`family-catechesis/${u.id === 'lords-day' ? 'the-lords-day' : u.id}/${s.slug}/`)}">${esc(s.title)}</a> <span class="meta">WSC ${s.questions.map((n) => 'Q. ' + n).join(', ')}</span></li>`).join('')}</ol>
+      <h2 id="u-${u.id}">${esc(u.title)}</h2>
+      <p class="prose">${esc(u.summary)}</p>
+      <ol class="session-list">${u.sessions.map((s) => `<li><div><a href="${href(sessionPath(u, s))}">${esc(s.title)}</a><span class="meta">Westminster Shorter Catechism ${s.questions.map((n) => 'Q. ' + n).join(', ')} · ${esc(s.reading.map((r) => r.ref).join('; '))}</span></div></li>`).join('')}</ol>
     </section>`).join('')}
   </div>
-  <aside class="prose">
-    <h2 style="margin-top:0">How a session works</h2>
-    <ol>
+  <aside>
+    <h2 style="margin-top:0;font-size:1.6rem">How a session works</h2>
+    <p>Catechesis is different from the <a href="${href('daily-office/')}">Daily Office</a>. The Office is prayer; catechesis is instruction, and it is meant to be a conversation. Parents lead, children respond, and adults answer the questions too.</p>
+    <ol class="meta" style="font-size:.95rem;padding-left:1.2rem">
       <li><strong>Gather</strong> with a short prayer.</li>
       <li><strong>Recite</strong> what you learned last time.</li>
-      <li><strong>Learn</strong> the new question and answer together.</li>
+      <li><strong>Learn</strong> the new question and answer.</li>
       <li><strong>Read</strong> the Scripture behind it.</li>
-      <li><strong>Explain</strong> it briefly. A note for the leader is provided.</li>
-      <li><strong>Discuss</strong> with questions for every age, adults included.</li>
+      <li><strong>Explain</strong> it briefly, from the leader’s note.</li>
+      <li><strong>Discuss</strong>, with questions for every age.</li>
       <li><strong>Remember</strong> one phrase.</li>
-      <li><strong>Practice</strong> something concrete in the week ahead.</li>
+      <li><strong>Practice</strong> something in the week ahead.</li>
       <li><strong>Pray</strong> to close.</li>
     </ol>
-    <p>A session takes fifteen to twenty-five minutes. Once or twice a week is plenty. Skip any step that doesn’t serve your household that day, and keep everyone on the same question rather than splitting into separate lessons.</p>
+    <p class="meta">Fifteen to twenty-five minutes, once or twice a week. Skip a step when it doesn’t serve your household that day, but keep everyone on the same question.</p>
     <h3>Sources</h3>
-    <p>These first units use the Westminster Shorter Catechism, the most widely used catechism of the English-speaking Reformed churches. Where other traditions teach differently, the leader’s notes say so.</p>
+    <p class="meta">These units use the Westminster Shorter Catechism, the most widely used catechism of the English-speaking Reformed churches. Where other traditions teach differently, the leader’s notes say so.</p>
     <h3>In preparation</h3>
-    <ul class="soon-list">${['The Apostles’ Creed', 'The Ten Commandments', 'The Lord’s Prayer', 'The Heidelberg Catechism alongside Westminster', 'Readings from the Church Fathers'].map((x) => `<li><span>${esc(x)}</span><span class="tag soon">Coming soon</span></li>`).join('')}</ul>
+    <ul class="soon-list">${['The Apostles’ Creed', 'The Ten Commandments', 'The Lord’s Prayer', 'Heidelberg alongside Westminster', 'Readings from the Church Fathers'].map((x) => `<li><span>${esc(x)}</span><span class="tag soon">Coming soon</span></li>`).join('')}</ul>
   </aside>
 </div>`,
   });
 
   for (const u of cat.units) {
-    const dir = u.id === 'lords-day' ? 'the-lords-day' : u.id;
     u.sessions.forEach((s, i) => {
       const next = u.sessions[i + 1];
       const prev = u.sessions[i - 1];
       layout({
-        path: `family-catechesis/${dir}/${s.slug}/`, current: 'family-catechesis/', title: `${s.title} — Family Catechesis`,
+        path: sessionPath(u, s), current: 'family-catechesis/', title: `${s.title} — Family Catechesis`,
         description: `A family catechesis session on Westminster Shorter Catechism ${s.questions.map((n) => 'Q. ' + n).join(' and ')}: ${s.title.toLowerCase()}.`,
         body: (href) => `
 <div class="wrap page-head">
-  <p class="kicker"><a href="${href('family-catechesis/')}">Family Catechesis</a> · ${esc(u.title)}${u.sunday ? '' : ` · Session ${i + 1} of ${u.sessions.length}`}</p>
+  <p class="kicker"><a href="${href('family-catechesis/')}">Family Catechesis</a> · ${esc(u.title)}</p>
   <h1>${esc(s.title)}</h1>
+  ${u.sessions.length > 1 ? `<p class="session-progress">Session ${i + 1} of ${u.sessions.length}</p>` : ''}
 </div>
 <div class="wrap"><div class="prose-center office session">
-  ${renderSession(s, href)}
-  <nav class="session-nav no-print" aria-label="Sessions">
-    ${prev ? `<a class="btn secondary" href="${href(`family-catechesis/${dir}/${prev.slug}/`)}">‹ ${esc(prev.title)}</a>` : '<span></span>'}
-    ${next ? `<a class="btn" href="${href(`family-catechesis/${dir}/${next.slug}/`)}">${esc(next.title)} ›</a>` : `<a class="btn secondary" href="${href('family-catechesis/')}">All sessions</a>`}
+  ${renderSession(s)}
+  <nav class="session-nav no-print" aria-label="Previous and next session">
+    ${prev ? `<a class="btn secondary" href="${href(sessionPath(u, prev))}">‹ ${esc(prev.title)}</a>` : '<span></span>'}
+    ${next ? `<a class="btn" href="${href(sessionPath(u, next))}">${esc(next.title)} ›</a>` : `<a class="btn secondary" href="${href('family-catechesis/')}">All sessions</a>`}
   </nav>
+  ${u.sessions.length > 1 ? `<nav class="unit-contents no-print" aria-label="${esc(u.title)}: sessions"><p class="step-label">${esc(u.title)}</p><ol>${u.sessions.map((x) => `<li>${x === s ? `<span aria-current="page">${esc(x.title)}</span>` : `<a href="${href(sessionPath(u, x))}">${esc(x.title)}</a>`}</li>`).join('')}</ol></nav>` : ''}
   <p class="copyright-line">${esc(off.ESV_NOTICE)}</p>
 </div></div>`,
       });
@@ -369,15 +406,15 @@ function buildLordsDay() {
     description: 'Why Christians worship and rest on Sunday, the first day of the week: resurrection, new creation, and rest in Christ, with the main historic views of Sabbath and Sunday.',
     body: (href) => `
 <div class="wrap page-head"><p class="kicker">Sunday</p><h1>The Lord’s Day</h1>
-<p class="lede prose">Sunday is the weekly feast of Christ’s resurrection, the first day of the new creation, and a day of worship and rest for the people of God.</p></div>
-<div class="wrap prose">
+<p class="lede">Sunday is the weekly feast of Christ’s resurrection, the first day of the new creation, and a day of worship and rest for the people of God.</p></div>
+<div class="wrap prose-center">
   <h2 style="margin-top:0">The first day of the week</h2>
   <p>All four Gospels place the resurrection on “the first day of the week.” The risen Christ came to his disciples on the evening of that day (John 20:19). Afterwards the church gathered on it to break bread (Acts 20:7) and set aside gifts (1 Corinthians 16:2), and John names it “the Lord’s day” (Revelation 1:10). Early Christian writers confirm the practice. The <em>Didache</em> tells believers to gather on the Lord’s day, break bread, and give thanks; Justin Martyr, writing around 155, describes Christians meeting on Sunday for the reading of the prophets and apostles, preaching, prayer, and the Lord’s Supper (<em>First Apology</em> 67). Ignatius of Antioch speaks of believers who no longer keep the Sabbath but live according to the Lord’s day (<em>To the Magnesians</em> 9).</p>
   <h2>Resurrection, new creation, and rest</h2>
   <p>The seventh-day Sabbath looked back to creation finished (Genesis 2:2–3) and to Israel’s deliverance from Egypt (Deuteronomy 5:15). The first day looks to new creation begun: Christ raised as the firstfruits of those who will rise (1 Corinthians 15:20). Hebrews speaks of “a Sabbath rest for the people of God” that remains, entered by faith (Hebrews 4:9–10). Christians keep Sunday as a weekly sign of that rest: we stop our work because Christ has finished his.</p>
   <h2>How Christians have understood Sabbath and Sunday</h2>
   <p>Orthodox Christians agree that Sunday is the chief day of Christian worship. They differ on how it relates to the fourth commandment.</p>
-  <dl class="record">
+  <dl class="record wide-record">
     <dt>Westminster Standards (1640s)</dt><dd>The moral duty of the Sabbath continues, and since the resurrection it falls on the first day: “the Christian sabbath.” The whole day is to be spent in worship and works of necessity and mercy (Westminster Confession 21.7–8; Shorter Catechism Q. 57–62). This has been the teaching of Scottish, English, and American Presbyterians and Puritans.</dd>
     <dt>Heidelberg Catechism (1563)</dt><dd>Question 103 applies the fourth commandment to faithful attendance at public worship on the day of rest, and to resting from evil works every day so as to begin the eternal Sabbath now. Continental Reformed churches have generally kept Sunday as a day of worship and rest with less detailed rules than the Westminster tradition.</dd>
     <dt>Lutheran</dt><dd>The Augsburg Confession (Article 28) teaches that the church appointed Sunday for public worship and that Christians are not bound to the Old Testament Sabbath as a ceremony. Luther’s Small Catechism explains the commandment as holding preaching and God’s word sacred and gladly hearing and learning it.</dd>
@@ -399,26 +436,35 @@ function buildLordsDay() {
 }
 
 // ── Library ──
-
 const catName = Object.fromEntries(lib.categories);
 const hasPdf = (w) => !!(w.pdf && w.pdf.status === 'link-checked');
-function bookActions(w, href, detail = false) {
-  const a = [];
-  if (!detail) a.push(`<a class="btn small secondary" href="${href('library/' + w.id + '/')}">Read introduction<span class="visually-hidden">: ${esc(w.title)}</span></a>`);
-  if (w.transcription) a.push(`<a class="btn small${detail ? '' : ' secondary'}" href="${href('library/' + w.id + '/')}#text">Read online<span class="visually-hidden">: ${esc(w.title)}</span></a>`);
-  if (hasPdf(w)) a.push(`<a class="btn small" href="${attr(w.pdf.url)}" rel="noopener">Open PDF<span class="visually-hidden">: ${esc(w.title)}</span> <span aria-hidden="true">↗</span></a>`);
-  if (w.sourcePage) a.push(`<a class="btn small secondary" href="${attr(w.sourcePage)}" rel="noopener">View source page<span class="visually-hidden"> at ${esc(w.repository)}</span> <span aria-hidden="true">↗</span></a>`);
-  return `<div class="actions">${a.join('')}</div>`;
+const isExcerpt = (w) => /Excerpt/.test(w.type);
+function formatsLine(w) {
+  const f = [];
+  if (hasPdf(w)) f.push(`<b>Full-text PDF</b> (external, ${esc(w.pdf.host)})`);
+  if (w.transcription) f.push(isExcerpt(w) ? '<b>Read online</b> (excerpt)' : '<b>Read online</b> (transcription)');
+  f.push('Modern introduction');
+  return `<p class="formats">${f.join(' · ')}</p>`;
 }
-function bookCard(w, href) {
+function textActions(w, href, detail = false) {
+  const a = [];
+  if (!detail) a.push(`<li><a class="arrow" href="${href('library/' + w.id + '/')}">Read introduction<span class="visually-hidden">: ${esc(w.title)}</span></a></li>`);
+  if (w.transcription) a.push(`<li><a href="${href('library/' + w.id + '/')}#text">Read online<span class="visually-hidden">: ${esc(w.title)}</span></a></li>`);
+  if (hasPdf(w)) a.push(`<li><a class="ext" href="${attr(w.pdf.url)}" rel="noopener">Download PDF<span class="visually-hidden">: ${esc(w.title)}, hosted at ${esc(w.pdf.host)}</span></a></li>`);
+  if (w.sourcePage) a.push(`<li><a class="ext" href="${attr(w.sourcePage)}" rel="noopener">View source<span class="visually-hidden">: ${esc(w.repository)}</span></a></li>`);
+  return `<ul class="text-actions">${a.join('')}</ul>`;
+}
+function catalogRow(w, href) {
   const search = [w.title, w.subtitle, w.author, w.summary, w.tradition, w.period, ...w.tags, ...w.categories.map((c) => catName[c])].join(' ');
-  return `<li class="book-item card book" data-search="${attr(search)}" data-cats="${w.categories.join(' ')}" data-author="${attr(w.authorKey)}" data-period="${attr(w.periodKey)}" data-pdf="${hasPdf(w) ? 'yes' : 'no'}" data-trans="${w.transcription ? 'yes' : 'no'}">
-  <p class="kicker">${esc(w.period)}</p>
-  <h3><a href="${href('library/' + w.id + '/')}">${esc(w.title)}</a></h3>
-  <p class="author">${esc(w.author)}</p>
-  <p>${esc(w.summary)}</p>
-  <p>${hasPdf(w) ? '<span class="tag ok">Full-text PDF · external</span>' : ''}${w.transcription ? '<span class="tag ok">Read online</span>' : ''}${/Excerpt/.test(w.type) ? '<span class="tag">Excerpt</span>' : ''}<span class="tag">${esc(w.tradition)}</span></p>
-  ${bookActions(w, href)}
+  return `<li class="book-item catalog-row" data-search="${attr(search)}" data-cats="${w.categories.join(' ')}" data-author="${attr(w.authorKey)}" data-period="${attr(w.periodKey)}" data-pdf="${hasPdf(w) ? 'yes' : 'no'}" data-trans="${w.transcription ? 'yes' : 'no'}">
+  <p class="catalog-date"><strong>${esc(w.original.split(';')[0].replace(/^Developed from.*/, 'Ancient'))}</strong>${esc(w.periodKey)}</p>
+  <div>
+    <h3><a href="${href('library/' + w.id + '/')}">${esc(w.title)}</a></h3>
+    <p class="author">${esc(w.author)} · <span class="meta">${esc(w.tradition)}</span></p>
+    <p class="summary">${esc(w.summary)}</p>
+    ${formatsLine(w)}
+    ${textActions(w, href)}
+  </div>
 </li>`;
 }
 
@@ -431,9 +477,17 @@ function transcription(w) {
   return '';
 }
 
+const FORMAT_LEGEND = `<dl class="format-legend">
+  <dt>Full-text PDF</dt><dd>A file of the whole stated edition, hosted by the repository named on the record. We link to it and do not re-host it. We check the link and title page; each record says whether every page has been checked.</dd>
+  <dt>Read online</dt><dd>Text transcribed by Waterside Press from a stated edition and shown on this site. Marked <em>excerpt</em> when it is only part of a work.</dd>
+  <dt>Modern introduction</dt><dd>Every record has one, written by Waterside Press. It is commentary, not the historical text.</dd>
+  <dt>Facsimile</dt><dd>Page images of a historical printing. None are published yet.</dd>
+</dl>`;
+
 function buildLibrary() {
   const uniq = (k) => [...new Set(lib.works.map((w) => w[k]))].sort();
   const usedCats = lib.categories.filter(([k]) => lib.works.some((w) => w.categories.includes(k)));
+  const featured = lib.works.find((w) => w.id === 'pilgrims-progress');
   layout({
     path: 'library/', current: 'library/', title: 'Library',
     description: 'Historic Christian texts with introductions, verified links to full-text PDFs, and short transcriptions — catechisms, creeds, and devotional classics.',
@@ -442,51 +496,60 @@ function buildLibrary() {
 <div class="wrap page-head">
   <p class="kicker">The Library</p>
   <h1>Library</h1>
-  <div class="prose">
-    <p class="lede">A small, carefully checked collection. Each work has an introduction, its exact edition, and a plain statement of its rights status.</p>
-    <p>PDFs marked <em>external</em> are hosted by the repository named on the record; Waterside Press links to them and does not re-host them. The library will grow only as fast as editions can be checked. <a href="${href('editorial-principles/')}">How we check sources.</a></p>
-  </div>
+  <p class="lede">A small, carefully checked collection. Each work has an introduction, its exact edition, and a plain statement of its rights status. It grows only as fast as editions can be checked. <a href="${href('editorial-principles/')}">How we check sources</a>.</p>
 </div>
-<div class="wrap">
-  <form id="lib-form" class="filters" role="search" aria-label="Search and filter the library">
-    <div class="field"><label for="lib-q">Search titles, authors, descriptions, and tags</label><input id="lib-q" type="search" name="q" autocomplete="off"></div>
-    <div class="field"><label for="lib-cat">Category</label><select id="lib-cat"><option value="">All categories</option>${usedCats.map(([k, v]) => `<option value="${k}">${esc(v)}</option>`).join('')}</select></div>
-    <div class="field"><label for="lib-author">Author</label><select id="lib-author"><option value="">All authors</option>${uniq('authorKey').map((a) => `<option>${esc(a)}</option>`).join('')}</select></div>
-    <div class="field"><label for="lib-period">Period</label><select id="lib-period"><option value="">All periods</option>${uniq('periodKey').map((a) => `<option>${esc(a)}</option>`).join('')}</select></div>
-    <div class="checks">
-      <label><input type="checkbox" id="lib-pdf"> Has a full-text PDF</label>
-      <label><input type="checkbox" id="lib-trans"> Can be read online here</label>
-      <button type="button" class="btn small secondary" id="lib-reset">Clear</button>
+<div class="wrap grid main-aside">
+  <div>
+    <form id="lib-form" class="filters" role="search" aria-label="Search and filter the library">
+      <div class="field"><label for="lib-q">Search titles, authors, descriptions, and tags</label><input id="lib-q" type="search" name="q" autocomplete="off"></div>
+      <div class="field"><label for="lib-cat">Category</label><select id="lib-cat"><option value="">All categories</option>${usedCats.map(([k, v]) => `<option value="${k}">${esc(v)}</option>`).join('')}</select></div>
+      <div class="field"><label for="lib-author">Author</label><select id="lib-author"><option value="">All authors</option>${uniq('authorKey').map((a) => `<option>${esc(a)}</option>`).join('')}</select></div>
+      <div class="field"><label for="lib-period">Period</label><select id="lib-period"><option value="">All periods</option>${uniq('periodKey').map((a) => `<option>${esc(a)}</option>`).join('')}</select></div>
+      <div class="checks">
+        <label><input type="checkbox" id="lib-pdf"> Full-text PDF available</label>
+        <label><input type="checkbox" id="lib-trans"> Can be read online here</label>
+        <button type="button" class="btn small secondary" id="lib-reset">Clear</button>
+      </div>
+    </form>
+    <p class="results-count" id="results-count" role="status" aria-live="polite">${lib.works.length} works.</p>
+    <h2 class="visually-hidden">Catalogue</h2>
+    <ol class="catalog" id="book-list">${lib.works.map((w) => catalogRow(w, href)).join('')}</ol>
+    <p id="no-results" class="notice" hidden>No published work matches that search. Try fewer words, or clear the filters. Many classics are still being checked and are not yet listed.</p>
+  </div>
+  <aside>
+    <div class="feature-work">
+      <p class="kicker">From the collection</p>
+      <h3><a href="${href('library/' + featured.id + '/')}">${esc(featured.title)}</a></h3>
+      <p class="meta">${esc(featured.author)} · ${esc(featured.original)}</p>
+      <p style="font-size:1rem">${esc(featured.family)}</p>
     </div>
-  </form>
-  <p class="results-count" id="results-count" role="status" aria-live="polite">${lib.works.length} works.</p>
-  <ul class="grid two" id="book-list" style="list-style:none;padding:0;margin:0">${lib.works.map((w) => bookCard(w, href)).join('')}</ul>
-  <p id="no-results" class="notice" hidden>No published work matches that search. Try fewer words, or clear the filters. Many classics are still being checked and are not yet listed — see the <a href="${href('editorial-principles/')}">editorial principles</a>.</p>
-  <h2>Being prepared</h2>
-  <p class="prose">These works are under review. They are not listed as available until an edition, a complete file, and its rights status have been checked.</p>
-  <ul class="soon-list prose">${['Augustine, Confessions', 'Athanasius, On the Incarnation', 'Thomas à Kempis, The Imitation of Christ', 'The Heidelberg Catechism', "Luther's Small Catechism", 'The Book of Common Prayer (1662)', 'The Scottish Metrical Psalter (1650)', 'Lewis Bayly, The Practice of Piety'].map((t) => `<li><span>${esc(t)}</span><span class="tag soon">Coming soon</span></li>`).join('')}</ul>
+    <h2 style="font-size:1.5rem">Formats</h2>
+    ${FORMAT_LEGEND}
+    <h2 style="font-size:1.5rem">Being prepared</h2>
+    <p class="meta">Listed when an edition, a complete file, and its rights status have been checked.</p>
+    <ul class="soon-list">${['Augustine, Confessions', 'Athanasius, On the Incarnation', 'Thomas à Kempis, The Imitation of Christ', 'The Heidelberg Catechism', "Luther's Small Catechism", 'The Book of Common Prayer (1662)', 'The Scottish Metrical Psalter (1650)', 'Lewis Bayly, The Practice of Piety'].map((t) => `<li><span>${esc(t)}</span><span class="tag soon">Coming soon</span></li>`).join('')}</ul>
+  </aside>
 </div>`,
   });
 
   for (const w of lib.works) {
     const rightsText = { 'pd-us': 'Public domain in the United States (published before 1931)', 'pd-historic': 'Public domain historic text; Waterside Press transcription' }[w.rights];
+    const related = lib.works.filter((x) => x !== w && x.categories.some((c) => w.categories.includes(c)));
     const rowsFor = (href) => [
-      ['Title', `${esc(w.title)}${w.subtitle ? `: ${esc(w.subtitle)}` : ''}`],
       ['Author', esc(w.author)],
-      ['Original date', esc(w.original)],
-      ['Tradition', esc(w.tradition)],
+      ['First published', esc(w.original)],
       ['Edition represented', esc(w.edition)],
       w.publisher && ['Publisher / printer', esc(w.publisher)],
       w.translator && ['Translator', esc(w.translator)],
       w.editor && ['Editor', esc(w.editor)],
+      ['Tradition', esc(w.tradition)],
       ['Language', esc(w.language)],
       ['Resource type', esc(w.type)],
-      w.repository && ['Source repository', `<a href="${attr(w.sourcePage)}" rel="noopener">${esc(w.repository)}</a>`],
-      hasPdf(w) && ['PDF', `<a href="${attr(w.pdf.url)}" rel="noopener">${esc(w.pdf.url)}</a><br><span class="meta">Hosted by ${esc(w.pdf.host)}. Link and title page checked ${esc(w.pdf.checked)}. File size: not recorded.</span>`],
+      w.repository && ['Source', `<a class="ext" href="${attr(w.sourcePage)}" rel="noopener">${esc(w.repository)}</a>`],
+      hasPdf(w) && ['PDF', `<a class="ext" href="${attr(w.pdf.url)}" rel="noopener">${esc(w.pdf.url.replace(/^https:\/\//, ''))}</a><br><span class="meta">Link and title page checked ${esc(w.pdf.checked)}. Completeness of every page not yet checked. File size not recorded.</span>`],
       ['Rights', `${esc(rightsText)}<br><span class="meta">${esc(w.rightsNote)}</span>`],
       ['Audience', esc(w.audience)],
       ['Categories', w.categories.map((c) => `<a href="${href('library/')}?category=${c}">${esc(catName[c])}</a>`).join(', ')],
-      ['Tags', w.tags.map(esc).join(', ')],
     ].filter(Boolean);
     layout({
       path: `library/${w.id}/`, current: 'library/', title: w.title,
@@ -494,22 +557,29 @@ function buildLibrary() {
       body: (href) => `
 <div class="wrap page-head">
   <p class="kicker"><a href="${href('library/')}">Library</a> · ${esc(w.period)}</p>
-  <h1>${esc(w.title)}</h1>
-  <p class="lede prose">${esc(w.author)}</p>
-  ${bookActions(w, href, true)}
+  <h1 class="work-title">${esc(w.title)}</h1>
+  ${w.subtitle ? `<p class="lede" style="margin-bottom:.4rem">${esc(w.subtitle)}</p>` : ''}
+  <p class="meta" style="font-size:1rem">${esc(w.author)}</p>
+  ${formatsLine(w)}
+  ${textActions(w, href, true)}
 </div>
-<div class="wrap">
+<div class="wrap grid main-aside">
   <div class="prose">
     <h2 style="margin-top:0">Introduction</h2>
-    <p class="meta"><span class="kind">Modern introduction</span>Written by Waterside Press. This is commentary, not the historical text.</p>
+    <p class="source">${kind('editorial')}Modern introduction by Waterside Press. Commentary, not the historical text</p>
     <p>${esc(w.summary)}</p>
     ${w.context.map((t) => `<p>${esc(t)}</p>`).join('')}
     <h3>Reading it at home</h3>
     <p>${esc(w.family)}</p>
-    ${w.transcription ? `<h2 id="text">Text</h2><p class="meta"><span class="kind">Historic text</span>${esc(w.edition)}</p>${transcription(w)}` : ''}
+    ${w.transcription ? `<h2 id="text">Text</h2><p class="source">${kind('historic')}${esc(w.edition)}</p>${transcription(w)}` : ''}
+    ${related.length ? `<h2>Related works</h2><ul>${related.map((x) => `<li><a class="work-title" href="${href('library/' + x.id + '/')}">${esc(x.title)}</a> <span class="meta">${esc(x.author)}</span></li>`).join('')}</ul>` : ''}
   </div>
-  <h2>Record</h2>
-  <dl class="record">${rowsFor(href).map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>
+  <aside>
+    <section class="record-card" aria-labelledby="rec-h">
+      <h2 id="rec-h">Catalogue record</h2>
+      <dl class="record">${rowsFor(href).map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>
+    </section>
+  </aside>
 </div>`,
     });
   }
@@ -520,7 +590,7 @@ function buildPages() {
   for (const pg of pages) {
     layout({
       path: pg.path, current: pg.nav ? pg.path : undefined, title: pg.title, description: pg.description,
-      body: (href) => pg.body({ href, esc, ornament, heroArt, emblem, off, cat, hymns, lib, hasPdf, bookCard: (w) => bookCard(w, href) }),
+      body: (href) => pg.body({ href, esc, ornament, heroArt, staffRule, emblem, off, cat, hymns, lib, hasPdf, catalogRow: (w) => catalogRow(w, href) }),
     });
   }
 }
@@ -529,7 +599,7 @@ function buildPages() {
 rmSync(OUT, { recursive: true, force: true });
 mkdirSync(join(OUT, 'assets'), { recursive: true });
 for (const f of readdirSync(join(ROOT, 'src/assets'))) copyFileSync(join(ROOT, 'src/assets', f), join(OUT, 'assets', f));
-writeFileSync(join(OUT, 'assets/emblem.svg'), emblem().replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" style="color:#24402f" ').replace(/currentColor/g, '#24402f'));
+writeFileSync(join(OUT, 'assets/emblem.svg'), emblem().replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" ').replace(/currentColor/g, '#233d32'));
 buildPages();
 buildOffice();
 buildCatechesis();
@@ -538,7 +608,7 @@ buildLibrary();
 // 404
 layout({
   path: '404.html', absolute: true, title: 'Page not found', description: 'This page could not be found.',
-  body: (href) => `<div class="wrap page-head prose"><h1>Page not found</h1><p>That address does not match a page on Waterside Press. It may have moved, or the link may be mistyped.</p><div class="actions"><a class="btn" href="${href('')}">Return home</a><a class="btn secondary" href="${href('library/')}">Search the library</a></div></div>`,
+  body: (href) => `<div class="wrap page-head"><h1>Page not found</h1><p class="lede">That address does not match a page on Waterside Press. It may have moved, or the link may be mistyped.</p><div class="actions"><a class="btn" href="${href('')}">Return home</a><a class="btn secondary" href="${href('library/')}">Search the library</a></div></div>`,
 });
 // robots + sitemap
 const pagesForMap = built.filter((b) => !b.path.endsWith('.html'));

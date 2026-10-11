@@ -11,3 +11,5 @@
 9. **Church year for the Office:** seasonal sentences, collects, and proper lessons for Advent, Christmas, Lent, Easter, and Pentecost; an option to follow M'Cheyne's calendar (1842) once a verified copy is in hand.
 10. **Independent accessibility review** with a screen reader (NVDA/VoiceOver) and an automated scanner (axe).
 11. **More catechesis units:** the Apostles' Creed, Ten Commandments, and Lord's Prayer, then Heidelberg alongside Westminster.
+12. **Imagery for the library:** add real title-page images or engraved author portraits from verified public-domain scans; until then records stay typographic.
+13. **Check the new typefaces live:** review the site on a phone and a desktop with Cormorant Garamond and Source Serif 4 loaded, since the build environment could only render fallbacks.

@@ -46,6 +46,12 @@ docs/                  Content manifest, sources & rights, withheld items, test 
 
 ## Design notes
 
-Typography: EB Garamond (reading and headings) with Source Sans 3 (interface), loaded from Google Fonts (disclosed on the Privacy page; self-hosting is on the next-steps list). Palette: parchment, forest green, olive, brown, brass accent, with a dark mode. The emblem — a tree beside streams of water (Psalm 1:3) — is inline SVG and works in one colour at any size.
+Direction: a private-press reading room. Parchment page, forest-green imprint, brass for ornament only, and prayer-book red for rubrics, with fine rules in place of boxes. All tokens (colour, type, spacing) are defined once at the top of `src/assets/site.css`, with a dark-mode set.
+
+- **Type:** Cormorant Garamond (display), Source Serif 4 (reading), Source Sans 3 (controls and metadata), from Google Fonts (disclosed on the Privacy page). Fallback stacks are set; self-hosting is on the next-steps list.
+- **Liturgical text** has five treatments: words to pray (serif), rubrics (red italic), Leader/All responses (red small-caps labels, bold responses), notes (collapsed, quiet), and reading directions (brass-ruled "Read today" block).
+- **Contrast:** every text colour pair is at least 4.5:1 in both themes; form-control borders at least 3:1.
+- **Breakpoints:** full navigation from 1080px; menu button below. Layouts tested at 375, 768, and 1280px.
+- **Emblem:** a tree beside streams of water (Psalm 1:3), inline SVG, one colour, legible at favicon size. The home page uses a larger bookplate-style engraving of the same motif.
 
 Date policy: the Daily Office uses the visitor's device-local date. Psalms follow the 1662 day-of-month psalter (the 30th day repeats on the 31st). Lessons follow a continuous-reading plan counted from 1 January 2026. Without JavaScript the page shows both weekday and Sunday forms and the full psalter table.

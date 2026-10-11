@@ -33,7 +33,7 @@ def fail(msg):
 
 with sync_playwright() as p:
     b = p.chromium.launch()
-    for width, label in [(375, 'phone'), (1280, 'desktop')]:
+    for width, label in [(375, 'phone'), (768, 'tablet'), (1280, 'desktop')]:
         ctx = b.new_context(viewport={'width': width, 'height': 900})
         # Block third-party font requests: the test must not depend on the network.
         ctx.route('**/*', lambda r: r.abort() if 'fonts.g' in r.request.url else r.continue_())
