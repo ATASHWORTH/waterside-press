@@ -9,6 +9,8 @@
   var period = document.getElementById('lib-period');
   var pdf = document.getElementById('lib-pdf');
   var trans = document.getElementById('lib-trans');
+  var online = document.getElementById('lib-online');
+  var modern = document.getElementById('lib-modern');
   var count = document.getElementById('results-count');
   var empty = document.getElementById('no-results');
 
@@ -29,19 +31,21 @@
       if (ok && period.value) ok = c.getAttribute('data-period') === period.value;
       if (ok && pdf.checked) ok = c.getAttribute('data-pdf') === 'yes';
       if (ok && trans.checked) ok = c.getAttribute('data-trans') === 'yes';
+      if (ok && online.checked) ok = c.getAttribute('data-online') === 'yes';
+      if (ok && modern.checked) ok = c.getAttribute('data-modern') === 'yes';
       c.hidden = !ok;
       if (ok) shown++;
     });
     count.textContent = shown + (shown === 1 ? ' work shown' : ' works shown') + ' of ' + cards.length + '.';
     empty.hidden = shown !== 0;
   }
-  [q, cat, author, period, pdf, trans].forEach(function (el) {
+  [q, cat, author, period, pdf, trans, online, modern].forEach(function (el) {
     el.addEventListener('input', apply);
     el.addEventListener('change', apply);
   });
   document.getElementById('lib-form').addEventListener('submit', function (e) { e.preventDefault(); apply(); });
   document.getElementById('lib-reset').addEventListener('click', function () {
-    q.value = ''; cat.value = ''; author.value = ''; period.value = ''; pdf.checked = false; trans.checked = false; apply(); q.focus();
+    q.value = ''; cat.value = ''; author.value = ''; period.value = ''; pdf.checked = false; trans.checked = false; online.checked = false; modern.checked = false; apply(); q.focus();
   });
   apply();
 })();

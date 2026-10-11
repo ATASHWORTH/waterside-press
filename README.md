@@ -46,9 +46,9 @@ docs/                  Content manifest, sources & rights, withheld items, test 
 
 ## Design notes
 
-Direction: a private-press reading room. Parchment page, forest-green imprint, brass for ornament only, and prayer-book red for rubrics, with fine rules in place of boxes. All tokens (colour, type, spacing) are defined once at the top of `src/assets/site.css`, with a dark-mode set.
+Direction (October 2026): the Family Rule look. Cool paper, river-blue imprint, quiet grey-blue rules for ornament, and prayer-book red for rubrics, with fine rules in place of boxes. Token names (`--forest`, `--brass`, `--parchment`) are kept from the first design so every component follows the new values. All tokens (colour, type, spacing) are defined once at the top of `src/assets/site.css`, with a dark-mode set.
 
-- **Type:** Cormorant Garamond (display), Source Serif 4 (reading), Source Sans 3 (controls and metadata), from Google Fonts (disclosed on the Privacy page). Fallback stacks are set; self-hosting is on the next-steps list.
+- **Type:** IM Fell English (display, single weight; never synthesized bold), Spectral (reading), Alegreya Sans (controls and metadata), from Google Fonts (disclosed on the Privacy page). Fallback stacks are set; self-hosting is on the next-steps list.
 - **Liturgical text** has five treatments: words to pray (serif), rubrics (red italic), Leader/All responses (red small-caps labels, bold responses), notes (collapsed, quiet), and reading directions (brass-ruled "Read today" block).
 - **Contrast:** every text colour pair is at least 4.5:1 in both themes; form-control borders at least 3:1.
 - **Breakpoints:** full navigation from 1080px; menu button below. Layouts tested at 375, 768, and 1280px.

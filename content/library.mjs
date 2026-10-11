@@ -8,6 +8,16 @@
 // rights values:
 //   "pd-us"         – Public domain in the United States by publication date (pre-1931).
 //   "pd-historic"   – Historic text, public domain; Waterside transcription of a short portion.
+//   "pd-text"       – The work is public domain; the online edition we link to is the host's own,
+//                     and its separate status (e.g. a modern transcription) has not been checked.
+//   "in-copyright"  – In copyright; the rights holder makes it free to read online. Link only.
+//
+// online: [{ url, host, kind: 'text' | 'scan', label? }] – where the work can be read free online.
+//   Checked 2026-10-11: each URL loaded and showed the stated work and author. Edition-level
+//   collation and page-by-page completeness were NOT checked unless the record says so.
+// modern: [{ url, label? }] – modern-English editions at Updated Works (updatedworks.com), a
+//   recommended outside resource. Free to read with a free account; their editions are their own
+//   copyright. Each URL loaded and showed the stated work on 2026-10-11.
 
 export const categories = [
   ['catechisms', 'Catechisms and doctrinal instruction'],
@@ -59,6 +69,11 @@ export const works = [
       size: null,
     },
     transcription: null,
+    online: [
+      { url: 'https://ccel.org/ccel/bunyan/pilgrim/pilgrim', host: 'ccel.org', kind: 'text', label: 'Parts I and II' },
+      { url: 'https://www.gutenberg.org/ebooks/131', host: 'gutenberg.org', kind: 'text', label: 'Part I only' },
+    ],
+    modern: [{ url: 'https://updatedworks.com/books/the-pilgrims-progress-modern-translation/' }],
   },
   {
     id: 'serious-call',
@@ -97,6 +112,8 @@ export const works = [
       size: null,
     },
     transcription: null,
+    online: [{ url: 'https://www.ccel.org/ccel/law/serious_call', host: 'ccel.org', kind: 'text' }],
+    modern: [{ url: 'https://updatedworks.com/books/a-serious-call-to-a-devout-and-holy-life-modern-translation/' }],
   },
   {
     id: 'westminster-shorter-catechism',
@@ -129,6 +146,7 @@ export const works = [
     rightsNote: 'The 1647 text is public domain. The selection is a Waterside Press transcription.',
     pdf: null,
     transcription: 'wsc',
+    online: [{ url: 'https://www.opc.org/sc.html', host: 'opc.org', kind: 'text', label: 'All 107 questions' }],
   },
   {
     id: 'apostles-creed',
@@ -162,4 +180,196 @@ export const works = [
     pdf: null,
     transcription: 'creed',
   },
+
+  // ── Records added 2026-10-11: read-free-online links (see header for what was checked) ──
+  ...[
+    // Scripture
+    { id: 'esv-bible', title: 'The Holy Bible, English Standard Version', author: 'Crossway', authorKey: 'Crossway', period: 'Modern', periodKey: 'Modern', original: '2001', tradition: 'Protestant (translation)', categories: ['scripture'], tags: ['Bible', 'ESV'], audience: 'All ages',
+      summary: 'An essentially literal modern translation in the Tyndale and King James tradition. The Scripture text used in the Daily Office.',
+      family: 'Read the Office lessons here. The Daily Office links each psalm and lesson to esv.org.',
+      edition: 'ESV text as published by Crossway at esv.org.', publisher: 'Crossway', rights: 'in-copyright',
+      rightsNote: 'The ESV is © Crossway. Crossway makes it free to read at esv.org. Waterside quotes it within Crossway’s published permissions and links to it for reading.',
+      online: [{ url: 'https://www.esv.org/Genesis+1/', host: 'esv.org', kind: 'text' }] },
+    { id: 'kjv-bible', title: 'The Holy Bible, King James Version', subtitle: 'The Authorized Version', author: 'Translators under James I', authorKey: 'King James translators', period: 'Post-Reformation (17th century)', periodKey: '17th century', original: '1611', tradition: 'Church of England', categories: ['scripture'], tags: ['Bible', 'KJV'], audience: 'All ages',
+      summary: 'The English Bible of the Prayer Book, the Puritans, and every work in this library written before 1880.',
+      edition: 'Project Gutenberg e-text #10 (modern standard KJV text, not the 1611 printing).', repository: 'Project Gutenberg', sourcePage: 'https://www.gutenberg.org/ebooks/10', rights: 'pd-text',
+      rightsNote: 'Public domain in the United States. In the United Kingdom the Authorized Version is subject to Crown rights under letters patent.',
+      online: [{ url: 'https://www.gutenberg.org/ebooks/10', host: 'gutenberg.org', kind: 'text' }] },
+
+    // Catechisms and confessions
+    { id: 'luther-small-catechism', title: 'The Small Catechism', author: 'Martin Luther (1483–1546)', authorKey: 'Martin Luther', period: 'Reformation (16th century)', periodKey: '16th century', original: '1529', tradition: 'Lutheran', categories: ['catechisms', 'household'], tags: ['catechism', 'Lutheran', 'children'], audience: 'Children and adults',
+      summary: 'Written for heads of households: the Commandments, Creed, Lord’s Prayer, and sacraments, each followed by “What does this mean?”',
+      family: 'Luther meant the father to teach it at home. One part a week, recited at the table.',
+      edition: 'Project Gutenberg e-text #1670, “Luther’s Little Instruction Book,” translated by Robert E. Smith.', translator: 'Robert E. Smith', repository: 'Project Gutenberg', sourcePage: 'https://www.gutenberg.org/ebooks/1670', rights: 'pd-text',
+      rightsNote: 'Luther’s text is public domain. This is a modern translation distributed free by Project Gutenberg; its own copyright status has not been checked. Read it there; do not reprint.',
+      online: [{ url: 'https://www.gutenberg.org/ebooks/1670', host: 'gutenberg.org', kind: 'text' }] },
+    { id: 'heidelberg-catechism', title: 'The Heidelberg Catechism', author: 'Zacharias Ursinus and Caspar Olevianus', authorKey: 'Ursinus and Olevianus', period: 'Reformation (16th century)', periodKey: '16th century', original: '1563', tradition: 'Reformed', categories: ['catechisms', 'household'], tags: ['catechism', 'Reformed', 'Lord’s Day'], audience: 'Teenagers and adults; children with help',
+      summary: '129 questions arranged in 52 Lord’s Days, opening with “What is thy only comfort in life and death?”',
+      family: 'One Lord’s Day each Sunday takes a family through it in a year.',
+      edition: 'CCEL web text in an older English translation (translator not stated by the host). A modern translation is available from the Christian Reformed Church.', repository: 'Christian Classics Ethereal Library', sourcePage: 'https://www.ccel.org/creeds/heidelberg-cat.html', rights: 'pd-text',
+      rightsNote: 'The 1563 catechism is public domain. Modern translations, including the CRC’s, are copyrighted by their publishers.',
+      online: [{ url: 'https://www.ccel.org/creeds/heidelberg-cat.html', host: 'ccel.org', kind: 'text', label: 'Older translation' }, { url: 'https://www.crcna.org/welcome/beliefs/confessions/heidelberg-catechism', host: 'crcna.org', kind: 'text', label: 'Modern translation' }] },
+    { id: 'owen-two-catechisms', title: 'Two Short Catechisms', author: 'John Owen (1616–1683)', authorKey: 'John Owen', period: 'Post-Reformation (17th century)', periodKey: '17th century', original: '1645', tradition: 'English Puritan / Congregational', categories: ['catechisms', 'household'], tags: ['catechism', 'Puritan', 'children'], audience: 'Children and adults',
+      summary: 'A lesser catechism for children and a greater one for older learners, written for his parishioners at Fordham.',
+      edition: 'CCEL electronic edition.', repository: 'Christian Classics Ethereal Library', sourcePage: 'https://ccel.org/ccel/owen/catechisms/catechisms', rights: 'pd-text', rightsNote: 'Owen’s text is public domain.',
+      online: [{ url: 'https://ccel.org/ccel/owen/catechisms/catechisms', host: 'ccel.org', kind: 'text' }] },
+    { id: 'westminster-confession', title: 'The Westminster Confession of Faith', author: 'Westminster Assembly of Divines', authorKey: 'Westminster Assembly', period: 'Post-Reformation (17th century)', periodKey: '17th century', original: '1646', tradition: 'Reformed / Presbyterian', categories: ['catechisms', 'theology'], tags: ['confession', 'Reformed'], audience: 'Adults, older teenagers',
+      summary: 'Thirty-three chapters, from Holy Scripture to the Last Judgment. The doctrinal standard behind the Shorter Catechism.',
+      edition: 'Web text of the Orthodox Presbyterian Church (American revision of 1788 and later).', repository: 'Orthodox Presbyterian Church', sourcePage: 'https://www.opc.org/wcf.html', rights: 'pd-text',
+      rightsNote: 'The 1646 text is public domain. The OPC’s text includes its later American revisions.',
+      online: [{ url: 'https://www.opc.org/wcf.html', host: 'opc.org', kind: 'text' }] },
+    { id: 'westminster-larger-catechism', title: 'The Westminster Larger Catechism', author: 'Westminster Assembly of Divines', authorKey: 'Westminster Assembly', period: 'Post-Reformation (17th century)', periodKey: '17th century', original: '1647', tradition: 'Reformed / Presbyterian', categories: ['catechisms'], tags: ['catechism', 'Reformed'], audience: 'Adults, older teenagers',
+      summary: '196 questions, with fuller treatment of the Commandments and of the duties of each station of life.',
+      edition: 'Web text of the Orthodox Presbyterian Church.', repository: 'Orthodox Presbyterian Church', sourcePage: 'https://www.opc.org/lc.html', rights: 'pd-text', rightsNote: 'The 1647 text is public domain.',
+      online: [{ url: 'https://www.opc.org/lc.html', host: 'opc.org', kind: 'text' }] },
+
+    // Prayer and worship
+    { id: 'bcp-1662', title: 'The Book of Common Prayer', subtitle: '1662', author: 'Church of England', authorKey: 'Church of England', period: 'Post-Reformation (17th century)', periodKey: '17th century', original: '1662', tradition: 'Church of England', categories: ['prayer', 'scripture'], tags: ['liturgy', 'collects', 'psalter', 'lectionary'], audience: 'All ages',
+      summary: 'Morning and Evening Prayer, the collects, the Psalter, and the daily lectionary. The source of most fixed prayers in English, and of the Daily Office on this site.',
+      edition: 'John Baskerville’s 1762 Cambridge printing, presented section by section as PDFs by the Society of Archbishop Justus.', publisher: 'John Baskerville, Cambridge, 1762', repository: 'Society of Archbishop Justus', sourcePage: 'http://justus.anglican.org/resources/bcp/1662/baskerville.htm', rights: 'pd-us',
+      rightsNote: 'Public domain in the United States. In the United Kingdom the Book of Common Prayer is subject to Crown rights under letters patent.',
+      online: [{ url: 'http://justus.anglican.org/resources/bcp/1662/baskerville.htm', host: 'justus.anglican.org', kind: 'scan' }] },
+    { id: 'directory-family-worship', title: 'The Directory for Family Worship', author: 'Church of Scotland', authorKey: 'Church of Scotland', period: 'Post-Reformation (17th century)', periodKey: '17th century', original: '1647', tradition: 'Reformed / Presbyterian', categories: ['prayer', 'household'], tags: ['family worship', 'Puritan'], audience: 'Heads of households',
+      summary: 'Fourteen short directions for daily worship in the home: prayer, Scripture, singing, and catechizing.',
+      family: 'The pattern behind household worship as the Puritans kept it. Read it once a year.',
+      edition: 'Modernized text presented by Semper Reformanda; wording differs from the 1647 original.', repository: 'Semper Reformanda', sourcePage: 'https://www.semperreformanda.com/creeds/the-directory-for-family-worship/', rights: 'pd-text',
+      rightsNote: 'The 1647 text is public domain. The modernized wording is the host’s.',
+      online: [{ url: 'https://www.semperreformanda.com/creeds/the-directory-for-family-worship/', host: 'semperreformanda.com', kind: 'text', label: 'Modernized' }] },
+    { id: 'owen-worship', title: 'A Brief Instruction in the Worship of God', author: 'John Owen (1616–1683)', authorKey: 'John Owen', period: 'Post-Reformation (17th century)', periodKey: '17th century', original: '1667', tradition: 'English Puritan / Congregational', categories: ['prayer', 'theology'], tags: ['worship', 'Puritan', 'catechism'], audience: 'Adults',
+      summary: 'A catechism on how God is to be worshiped.', edition: 'CCEL electronic edition.', repository: 'Christian Classics Ethereal Library', sourcePage: 'https://ccel.org/ccel/owen/worship/worship', rights: 'pd-text', rightsNote: 'Owen’s text is public domain.',
+      online: [{ url: 'https://ccel.org/ccel/owen/worship/worship', host: 'ccel.org', kind: 'text' }] },
+    { id: 'henry-method-for-prayer', title: 'A Method for Prayer', author: 'Matthew Henry (1662–1714)', authorKey: 'Matthew Henry', period: 'Eighteenth century', periodKey: '18th century', original: '1710', tradition: 'English Presbyterian / Nonconformist', categories: ['prayer', 'household'], tags: ['prayer', 'Scripture'], audience: 'Heads of households, adults',
+      summary: 'Scripture phrases arranged under each part of prayer: adoration, confession, petition, thanksgiving, and intercession.',
+      family: 'A handbook for the one who leads family prayer. Borrow its Scripture language a section at a time.',
+      edition: 'Available here in a modern-English edition only.', rights: 'pd-text', rightsNote: 'Henry’s 1710 text is public domain. The Updated Works edition is their own.',
+      modern: [{ url: 'https://updatedworks.com/books/a-method-for-prayer-modern-translation/' }] },
+
+    // Psalters
+    { id: 'bay-psalm-book', title: 'The Bay Psalm Book', subtitle: 'The Whole Booke of Psalmes Faithfully Translated into English Metre', author: 'Massachusetts Bay Colony ministers', authorKey: 'Bay Psalm Book', period: 'Post-Reformation (17th century)', periodKey: '17th century', original: '1640', tradition: 'English Puritan / Congregational', categories: ['psalters', 'history'], tags: ['psalter', 'metrical psalms', 'America'], audience: 'Adults; history',
+      summary: 'The first book printed in British North America. Metrical psalms only.',
+      edition: 'Library of Congress page images of the 1640 Cambridge, Massachusetts first edition. This copy is imperfect: the title page and 18 other leaves are missing.', repository: 'Library of Congress', sourcePage: 'https://www.loc.gov/resource/rbc0001.2008amimp02405/', rights: 'pd-us', rightsNote: 'Public domain.',
+      online: [{ url: 'https://www.loc.gov/resource/rbc0001.2008amimp02405/', host: 'loc.gov', kind: 'scan' }] },
+    { id: 'scottish-psalter-1650', title: 'The Scottish Metrical Psalter', author: 'Church of Scotland', authorKey: 'Church of Scotland', period: 'Post-Reformation (17th century)', periodKey: '17th century', original: '1650', tradition: 'Reformed / Presbyterian', categories: ['psalters', 'household'], tags: ['psalter', 'metrical psalms', 'common meter', 'singing'], audience: 'All ages',
+      summary: 'All 150 psalms in meter, almost all in common meter, so nearly any psalm fits a tune the family already knows. Still sung today.',
+      family: 'Learn five common-meter tunes and use them for everything.',
+      edition: 'Web text presented one psalm per page by The Westminster Standard.', repository: 'The Westminster Standard', sourcePage: 'https://thewestminsterstandard.org/1650-scottish-metrical-psalter/', rights: 'pd-text', rightsNote: 'The 1650 text is public domain.',
+      online: [{ url: 'https://thewestminsterstandard.org/1650-scottish-metrical-psalter/', host: 'thewestminsterstandard.org', kind: 'text', label: 'Psalm by psalm' }] },
+    { id: 'tate-brady', title: 'A New Version of the Psalms of David', subtitle: 'Fitted to the Tunes Used in Churches', author: 'Nahum Tate (1652–1715) and Nicholas Brady (1659–1726)', authorKey: 'Tate and Brady', period: 'Post-Reformation (17th century)', periodKey: '17th century', original: '1696', tradition: 'Church of England', categories: ['psalters'], tags: ['psalter', 'metrical psalms'], audience: 'Adults',
+      summary: 'The “New Version” that replaced Sternhold and Hopkins in many English parishes. Source of “Through all the changing scenes of life” and “As pants the hart.”',
+      edition: 'Internet Archive scan of the 1698 London edition (T. Hodgkin), Princeton Theological Seminary Library copy. Pages 25–26 and 239–240 are damaged and missing.', publisher: 'T. Hodgkin, London, 1698', repository: 'Internet Archive', sourcePage: 'https://archive.org/details/newversionofpsal1698brad', rights: 'pd-us', rightsNote: 'Public domain.',
+      online: [{ url: 'https://archive.org/details/newversionofpsal1698brad', host: 'archive.org', kind: 'scan' }] },
+    { id: 'watts-psalms-imitated', title: 'The Psalms of David Imitated in the Language of the New Testament', author: 'Isaac Watts (1674–1748)', authorKey: 'Isaac Watts', period: 'Eighteenth century', periodKey: '18th century', original: '1719', tradition: 'English Congregational / Nonconformist', categories: ['psalters'], tags: ['psalter', 'hymns'], audience: 'All ages',
+      summary: 'Watts’ Christianized psalms, the source of “O God, Our Help in Ages Past” and “Joy to the World.”',
+      edition: 'Internet Archive scan of the 1799 Northampton edition (William Butler), Princeton Theological Seminary Library copy. CCEL also has a web text combined with his Hymns.', publisher: 'William Butler, Northampton, 1799', repository: 'Internet Archive', sourcePage: 'https://archive.org/details/psalmsofdavidimi1799watt', rights: 'pd-us', rightsNote: 'Public domain.',
+      online: [{ url: 'https://archive.org/details/psalmsofdavidimi1799watt', host: 'archive.org', kind: 'scan', label: '1799 edition' }, { url: 'https://www.ccel.org/ccel/watts/psalmshymns', host: 'ccel.org', kind: 'text', label: 'With his Hymns' }] },
+
+    // Devotional
+    { id: 'imitation-of-christ', title: 'The Imitation of Christ', author: 'Thomas à Kempis (c. 1380–1471)', authorKey: 'Thomas à Kempis', period: 'Late medieval', periodKey: '15th century', original: 'c. 1427', tradition: 'Late medieval (Devotio Moderna)', categories: ['devotional'], tags: ['devotion', 'humility'], audience: 'Adults, older teenagers',
+      summary: 'Short chapters on humility, self-denial, and love for Christ. Read a paragraph and let it sit.',
+      context: ['A product of the late-medieval Devotio Moderna. Protestant readers have loved it for centuries while reading with discernment, especially in its fourth book on the Mass.'],
+      edition: 'Project Gutenberg e-text #1653, translated by William Benham (1831–1910). This replaces the 1940 Croft & Bolton translation withheld earlier.', translator: 'William Benham', repository: 'Project Gutenberg', sourcePage: 'https://www.gutenberg.org/ebooks/1653', rights: 'pd-us',
+      rightsNote: 'Benham’s translation predates 1931 and is public domain in the United States.',
+      online: [{ url: 'https://www.gutenberg.org/ebooks/1653', host: 'gutenberg.org', kind: 'text' }], modern: [{ url: 'https://updatedworks.com/books/imitation-of-christ-modern-translation/' }] },
+    { id: 'practice-of-piety', title: 'The Practice of Piety', subtitle: 'Directing a Christian How to Walk, That He May Please God', author: 'Lewis Bayly (c. 1575–1631)', authorKey: 'Lewis Bayly', period: 'Post-Reformation (17th century)', periodKey: '17th century', original: '1611', tradition: 'English Puritan / Church of England', categories: ['devotional', 'household'], tags: ['devotion', 'Puritan', 'Lord’s Day'], audience: 'Adults',
+      summary: 'The best-selling devotional of the seventeenth century: practical directions for prayer, the Lord’s Day, and household order.',
+      edition: 'Soli Deo Gloria edition, offered as free PDF and ePub (original and modernized) by Monergism.', repository: 'Monergism', sourcePage: 'https://monergism.com/practice-piety', rights: 'pd-text',
+      rightsNote: 'Bayly’s text is public domain. The digital editions are Monergism’s.',
+      online: [{ url: 'https://monergism.com/practice-piety', host: 'monergism.com', kind: 'text' }] },
+    { id: 'rutherford-letters', title: 'Letters', author: 'Samuel Rutherford (c. 1600–1661)', authorKey: 'Samuel Rutherford', period: 'Post-Reformation (17th century)', periodKey: '17th century', original: '1664', tradition: 'Scottish Presbyterian', categories: ['devotional'], tags: ['letters', 'comfort', 'Covenanter'], audience: 'Adults',
+      summary: 'Letters of comfort, many written from exile in Aberdeen. This is a selection.', edition: 'CCEL electronic edition of a selection.', repository: 'Christian Classics Ethereal Library', sourcePage: 'https://www.ccel.org/ccel/rutherford/letters', rights: 'pd-text', rightsNote: 'Public domain.',
+      online: [{ url: 'https://www.ccel.org/ccel/rutherford/letters', host: 'ccel.org', kind: 'text', label: 'Selection' }] },
+    { id: 'spurgeon-morning-evening', title: 'Morning and Evening', subtitle: 'Daily Readings', author: 'C. H. Spurgeon (1834–1892)', authorKey: 'C. H. Spurgeon', period: 'Nineteenth century', periodKey: '19th century', original: '1865–1868', tradition: 'English Particular Baptist', categories: ['devotional', 'household'], tags: ['daily readings', 'devotion'], audience: 'Adults, teenagers',
+      summary: 'A short reading for every morning and evening of the year.', family: 'A parent can read the day’s page aloud after the Office in a minute or two.',
+      edition: 'CCEL electronic edition.', repository: 'Christian Classics Ethereal Library', sourcePage: 'https://www.ccel.org/ccel/spurgeon/morneve', rights: 'pd-us', rightsNote: 'Public domain.',
+      online: [{ url: 'https://www.ccel.org/ccel/spurgeon/morneve', host: 'ccel.org', kind: 'text' }] },
+
+    // Bunyan
+    { id: 'holy-war', title: 'The Holy War', author: 'John Bunyan (1628–1688)', authorKey: 'John Bunyan', period: 'Post-Reformation (17th century)', periodKey: '17th century', original: '1682', tradition: 'English Puritan / Nonconformist', categories: ['devotional', 'household'], tags: ['allegory', 'reading aloud'], audience: 'Older children, teenagers',
+      summary: 'The siege and recapture of the town of Mansoul. An allegory for older children.', edition: 'CCEL electronic edition.', repository: 'Christian Classics Ethereal Library', sourcePage: 'https://ccel.org/ccel/bunyan/holy_war/holy_war', rights: 'pd-text', rightsNote: 'Public domain.',
+      online: [{ url: 'https://ccel.org/ccel/bunyan/holy_war/holy_war', host: 'ccel.org', kind: 'text' }] },
+    { id: 'grace-abounding', title: 'Grace Abounding to the Chief of Sinners', author: 'John Bunyan (1628–1688)', authorKey: 'John Bunyan', period: 'Post-Reformation (17th century)', periodKey: '17th century', original: '1666', tradition: 'English Puritan / Nonconformist', categories: ['devotional'], tags: ['autobiography', 'conversion'], audience: 'Teenagers, adults',
+      summary: 'Bunyan’s own account of his conversion and long struggle for assurance.', edition: 'CCEL electronic edition.', repository: 'Christian Classics Ethereal Library', sourcePage: 'https://ccel.org/ccel/bunyan/grace/grace', rights: 'pd-text', rightsNote: 'Public domain.',
+      online: [{ url: 'https://ccel.org/ccel/bunyan/grace/grace', host: 'ccel.org', kind: 'text' }], modern: [{ url: 'https://updatedworks.com/books/grace-abounding-to-the-chief-of-sinners-modern-translation/' }] },
+
+    // Household
+    { id: 'gouge-domestical-duties', title: 'Of Domestical Duties', author: 'William Gouge (1575–1653)', authorKey: 'William Gouge', period: 'Post-Reformation (17th century)', periodKey: '17th century', original: '1622', tradition: 'English Puritan', categories: ['household', 'theology'], tags: ['marriage', 'parenting', 'Puritan', 'Ephesians 5–6'], audience: 'Husbands, wives, parents',
+      summary: 'The great Puritan treatise on the household: husbands and wives, parents and children, masters and servants, worked out from Ephesians 5:21–6:9.',
+      family: 'Husbands and wives can each read their own volume of the modern edition, then the volume on parents together.',
+      edition: 'Internet Archive scan of the 1622 first edition (Early English Books). Pages 417–448 are missing and a few pages are blurred. Updated Works publishes a modern edition in three volumes.', repository: 'Internet Archive', sourcePage: 'https://archive.org/details/bim_early-english-books-1475-1640_of-domesticall-duties_gouge-william_1622', rights: 'pd-us', rightsNote: 'Public domain. The modern edition is Updated Works’ own.',
+      online: [{ url: 'https://archive.org/details/bim_early-english-books-1475-1640_of-domesticall-duties_gouge-william_1622', host: 'archive.org', kind: 'scan', label: '1622 first edition' }],
+      modern: [{ url: 'https://updatedworks.com/books/domestic-duties-for-husbands-modern-translation/', label: 'For Husbands' }, { url: 'https://updatedworks.com/books/domestic-duties-for-wives-modern-translation/', label: 'For Wives' }, { url: 'https://updatedworks.com/books/domestic-duties-for-parents-modern-translation/', label: 'For Parents' }] },
+  ].map((w) => ({ subtitle: null, language: 'English', tags: [], type: w.online ? 'Read free online (external)' : 'Modern-English edition (external)', context: [], family: null, publisher: null, translator: null, editor: null, repository: null, sourcePage: null, pdf: null, transcription: null, modern: [], ...w })),
+
+  // Puritan and Reformed divines, and reference works (added 2026-10-11)
+  ...(() => {
+    const A = {
+      perkins: ['William Perkins (1558–1602)', 'William Perkins', 'Elizabethan Puritan'],
+      sibbes: ['Richard Sibbes (1577–1635)', 'Richard Sibbes', 'English Puritan'],
+      shepard: ['Thomas Shepard (1605–1649)', 'Thomas Shepard', 'New England Puritan'],
+      burroughs: ['Jeremiah Burroughs (c. 1600–1646)', 'Jeremiah Burroughs', 'English Puritan / Congregational'],
+      watson: ['Thomas Watson (c. 1620–1686)', 'Thomas Watson', 'English Puritan / Nonconformist'],
+      baxter: ['Richard Baxter (1615–1691)', 'Richard Baxter', 'English Puritan / Nonconformist'],
+      owen: ['John Owen (1616–1683)', 'John Owen', 'English Puritan / Congregational'],
+      alleine: ['Joseph Alleine (1634–1668)', 'Joseph Alleine', 'English Puritan / Nonconformist'],
+      flavel: ['John Flavel (c. 1627–1691)', 'John Flavel', 'English Puritan / Nonconformist'],
+      brooks: ['Thomas Brooks (1608–1680)', 'Thomas Brooks', 'English Puritan / Nonconformist'],
+      edwards: ['Jonathan Edwards (1703–1758)', 'Jonathan Edwards', 'New England Congregational'],
+      luther: ['Martin Luther (1483–1546)', 'Martin Luther', 'Lutheran'],
+      calvin: ['John Calvin (1509–1564)', 'John Calvin', 'Reformed'],
+      henry: ['Matthew Henry (1662–1714)', 'Matthew Henry', 'English Presbyterian / Nonconformist'],
+    };
+    const per = (y) => { const n = parseInt(y, 10); return n < 1500 ? ['Late medieval', '15th century'] : n < 1600 ? ['Reformation (16th century)', '16th century'] : n < 1700 ? ['Post-Reformation (17th century)', '17th century'] : ['Eighteenth century', '18th century']; };
+    const CCEL = (path) => ({ url: 'https://ccel.org/ccel/' + path, host: 'ccel.org', kind: 'text' });
+    const UW = (slug, label) => ({ url: 'https://updatedworks.com/books/' + slug + '-modern-translation/', ...(label ? { label } : {}) });
+    const OTW = (file) => ({ url: 'https://onthewing.org/user/' + file, host: 'onthewing.org', kind: 'text', label: 'Modern English (PDF)' });
+    const d = (id, a, title, y, cats, tags, summary, { online = [], modern = [], family = null, audience = 'Adults', edition, translator = null } = {}) => {
+      const [author, authorKey, tradition] = A[a];
+      const [period, periodKey] = per(y);
+      const src = online.find((o) => o.host === 'ccel.org');
+      return { id, title, subtitle: null, author, authorKey, period, periodKey, original: y, tradition, language: 'English', categories: cats, tags, audience,
+        type: online.length ? 'Read free online (external)' : 'Modern-English edition (external)', summary, context: [], family,
+        edition: edition || (src ? 'CCEL electronic edition.' : online.length ? `Edition as presented by ${online[0].host}.` : 'Available here in a modern-English edition only.'),
+        publisher: null, translator, editor: null, repository: src ? 'Christian Classics Ethereal Library' : null, sourcePage: src ? src.url : null,
+        rights: 'pd-text', rightsNote: online.some((o) => o.host !== 'ccel.org') || modern.length ? 'The original text is public domain. Modern-English editions are the work of their editors; read them at the source.' : 'Public domain.',
+        pdf: null, transcription: null, online, modern };
+    };
+    return [
+      d('perkins-golden-chain', 'perkins', 'A Golden Chain', '1591', ['theology'], ['Puritan', 'salvation'], 'The father of English Puritanism maps the order of salvation from election to glory.', { modern: [UW('a-golden-chain')] }),
+      d('sibbes-bruised-reed', 'sibbes', 'The Bruised Reed', '1630', ['devotional'], ['Puritan', 'comfort'], 'Christ’s tenderness toward weak and struggling believers, from Isaiah 42:3.', { modern: [UW('the-bruised-reed')] }),
+      d('shepard-sincere-convert', 'shepard', 'The Sincere Convert', '1641', ['theology', 'devotional'], ['Puritan', 'conversion'], 'A New England pastor on the marks of true conversion.', { modern: [UW('the-sincere-convert')] }),
+      d('burroughs-rare-jewel', 'burroughs', 'The Rare Jewel of Christian Contentment', '1648', ['devotional'], ['Puritan', 'contentment'], 'How to be content in every circumstance, and why discontent is a sin.', { modern: [UW('the-rare-jewel-of-christian-contentment')] }),
+      d('watson-body-of-divinity', 'watson', 'A Body of Practical Divinity', '1692', ['theology', 'catechisms', 'household'], ['Puritan', 'Shorter Catechism', 'sermons'], 'Sermons on the Westminster Shorter Catechism, published after Watson’s death. The best companion to the catechism ever written.', { online: [CCEL('watson/divinity/divinity')], modern: [UW('a-body-of-divinity')], family: 'Read the chapter on the week’s catechism question before teaching it.' }),
+      d('watson-ten-commandments', 'watson', 'The Ten Commandments', '1692', ['theology', 'catechisms'], ['Puritan', 'law', 'sermons'], 'The second part of Watson’s catechism sermons.', { online: [CCEL('watson/commandments/commandments')], modern: [UW('the-ten-commandments')] }),
+      d('watson-lords-prayer', 'watson', 'The Lord’s Prayer', '1692', ['theology', 'prayer'], ['Puritan', 'prayer', 'sermons'], 'The third part of Watson’s catechism sermons.', { online: [CCEL('watson/prayer/prayer')], modern: [UW('the-lords-prayer')] }),
+      d('watson-divine-contentment', 'watson', 'The Art of Divine Contentment', '1653', ['devotional'], ['Puritan', 'contentment'], 'An exposition of Philippians 4:11.', { online: [CCEL('watson/contentment/contentment')], modern: [UW('the-art-of-divine-contentment')] }),
+      d('watson-beatitudes', 'watson', 'The Beatitudes', '1660', ['devotional', 'theology'], ['Puritan', 'Sermon on the Mount'], 'An exposition of Matthew 5:1–12.', { online: [CCEL('watson/beatitudes/beatitudes')], modern: [UW('the-beatitudes')] }),
+      d('watson-divine-cordial', 'watson', 'A Divine Cordial', '1663', ['devotional'], ['Puritan', 'providence', 'Romans 8:28'], 'On Romans 8:28: all things working together for good. Updated Works publishes it as All Things for Good.', { online: [CCEL('watson/cordial/cordial')], modern: [UW('all-things-for-good', 'All Things for Good')] }),
+      d('watson-lords-supper', 'watson', 'The Lord’s Supper', '1665', ['theology'], ['Puritan', 'sacraments'], 'Preparation for, and right use of, the sacrament.', { modern: [UW('the-lords-supper')] }),
+      d('watson-godly-mans-picture', 'watson', 'The Godly Man’s Picture', '1666', ['devotional'], ['Puritan', 'assurance'], 'Twenty-four marks of a true believer.', { modern: [UW('the-godly-mans-picture')] }),
+      d('watson-repentance', 'watson', 'The Doctrine of Repentance', '1668', ['devotional', 'theology'], ['Puritan', 'repentance'], 'What repentance is, and how to know it is real.', { modern: [UW('the-doctrine-of-repentance')] }),
+      d('watson-heaven-taken-by-storm', 'watson', 'Heaven Taken by Storm', '1669', ['devotional'], ['Puritan', 'discipline'], 'On holy violence: the earnest effort the Christian life requires.', { modern: [UW('heaven-taken-by-storm')] }),
+      d('baxter-saints-rest', 'baxter', 'The Saints’ Everlasting Rest', '1650', ['devotional'], ['Puritan', 'heaven'], 'Meditation on heaven, written during severe illness.', { online: [CCEL('baxter/saints_rest/saints_rest')], modern: [UW('the-saints-everlasting-rest')] }),
+      d('baxter-reformed-pastor', 'baxter', 'The Reformed Pastor', '1656', ['theology', 'household'], ['Puritan', 'pastoral care', 'catechizing'], 'On a minister’s care for his flock, including catechizing family by family.', { online: [CCEL('baxter/pastor/pastor')], modern: [UW('the-reformed-pastor')] }),
+      d('baxter-call-unconverted', 'baxter', 'A Call to the Unconverted', '1658', ['devotional'], ['Puritan', 'evangelism'], 'A plain evangelistic appeal, widely read for two centuries.', { online: [CCEL('baxter/unconverted/unconverted')], modern: [UW('a-call-to-the-unconverted')] }),
+      d('owen-mortification', 'owen', 'Of the Mortification of Sin in Believers', '1656', ['devotional', 'theology'], ['Puritan', 'sanctification'], 'How a Christian puts sin to death by the Spirit.', { online: [CCEL('owen/mort/mort')], modern: [UW('the-mortification-of-sin')] }),
+      d('owen-communion', 'owen', 'Of Communion with God', '1657', ['devotional', 'theology'], ['Puritan', 'Trinity'], 'Fellowship with the Father, the Son, and the Holy Spirit.', { online: [CCEL('owen/communion/communion')], modern: [UW('communion-with-god')] }),
+      d('owen-indwelling-sin', 'owen', 'Indwelling Sin in Believers', '1667', ['theology'], ['Puritan', 'sin'], 'The nature, power, and deceit of remaining sin.', { online: [CCEL('owen/indwellingsin/indwellingsin')] }),
+      d('owen-glory-of-christ', 'owen', 'Meditations on the Glory of Christ', '1684', ['devotional'], ['Puritan', 'Christ'], 'His last work, finished as he was dying.', { online: [CCEL('owen/glory/glory')], modern: [UW('the-glory-of-christ')] }),
+      d('alleine-alarm', 'alleine', 'An Alarm to the Unconverted', '1671', ['devotional'], ['Puritan', 'evangelism'], 'An urgent call to conversion, published after the author’s early death.', { modern: [UW('an-alarm-to-the-unconverted')] }),
+      d('flavel-keeping-the-heart', 'flavel', 'A Saint Indeed, or Keeping the Heart', '1668', ['devotional'], ['Puritan', 'the heart'], 'On guarding the heart in every condition of life.', { online: [CCEL('flavel/saintindeed/saintindeed')], modern: [UW('keeping-the-heart', 'Keeping the Heart')] }),
+      d('flavel-mystery-of-providence', 'flavel', 'The Mystery of Providence', '1678', ['devotional'], ['Puritan', 'providence'], 'Tracing God’s hand through the events of one’s own life.', { modern: [UW('the-mystery-of-providence')], family: 'Good reading for a parent in a hard season.' }),
+      d('flavel-method-of-grace', 'flavel', 'The Method of Grace', '1681', ['theology'], ['Puritan', 'salvation'], 'How the Spirit applies the work of Christ to the soul.', { online: [CCEL('flavel/grace/grace'), OTW('Flavel%20-%20Method%20of%20Grace%20in%20Gospel%20Redemption%202-%20Modern.pdf')] }),
+      d('brooks-precious-remedies', 'brooks', 'Precious Remedies Against Satan’s Devices', '1652', ['devotional'], ['Puritan', 'temptation'], 'The devices Satan uses against the soul, with remedies for each.', { online: [{ url: 'https://www.monergism.com/thethreshold/sdg/brooks/Precious%20Remedies%20Against%20Satan%20-%20Thomas%20Brooks.pdf', host: 'monergism.com', kind: 'text', label: 'PDF' }], modern: [UW('precious-remedies-against-satans-devices')] }),
+      d('edwards-resolutions', 'edwards', 'Resolutions', '1722', ['devotional', 'household'], ['discipline', 'youth'], 'Seventy resolutions written as a young man.', { online: [OTW('Edwards%20-%20Resolutions.pdf')], family: 'A good first reading for teenagers.', audience: 'Teenagers, adults' }),
+      d('edwards-sinners', 'edwards', 'Sinners in the Hands of an Angry God', '1741', ['devotional'], ['sermon', 'Great Awakening'], 'The Enfield sermon, preached in the Great Awakening.', { modern: [UW('sinners-in-the-hands-of-an-angry-god')] }),
+      d('edwards-religious-affections', 'edwards', 'A Treatise Concerning Religious Affections', '1746', ['theology', 'devotional'], ['revival', 'assurance'], 'How to tell true godliness from its counterfeits.', { online: [CCEL('edwards/affections/affections')], modern: [UW('religious-affections')] }),
+      d('edwards-freedom-of-the-will', 'edwards', 'Freedom of the Will', '1754', ['theology'], ['philosophy', 'the will'], 'His major philosophical defense of Reformed teaching on the will.', { online: [CCEL('edwards/will/will')], modern: [UW('freedom-of-the-will')] }),
+      d('edwards-end-of-creation', 'edwards', 'The End for Which God Created the World', '1765', ['theology'], ['glory of God', 'creation'], 'Why God made all things: for his own glory, which is also his people’s joy.', { online: [OTW('Edwards%20-%20End%20For%20Which%20God%20Created%20The%20World.pdf')] }),
+      d('luther-freedom-of-a-christian', 'luther', 'The Freedom of a Christian', '1520', ['theology'], ['justification', 'Reformation'], 'A Christian is lord of all and servant of all. Luther’s short classic on faith and works.', { modern: [UW('the-freedom-of-a-christian')] }),
+      d('luther-bondage-of-the-will', 'luther', 'The Bondage of the Will', '1525', ['theology'], ['the will', 'Reformation'], 'Luther’s answer to Erasmus, which he counted among his most important works.', { modern: [UW('the-bondage-of-the-will')] }),
+      d('calvin-institutes', 'calvin', 'Institutes of the Christian Religion', '1559', ['theology'], ['Reformed', 'systematic theology'], 'The systematic summary of Reformed doctrine, in its final 1559 edition.', { online: [CCEL('calvin/institutes')], modern: [UW('institutes-book-one', 'Book 1 only')], translator: 'Henry Beveridge (1845)', edition: 'CCEL electronic edition of Henry Beveridge’s 1845 translation.' }),
+      d('henry-commentary', 'henry', 'Commentary on the Whole Bible', '1706', ['scripture', 'household'], ['commentary'], 'Devotional commentary, verse by verse. A natural aid for family reading.', { online: [CCEL('henry/mhc/mhc')] }),
+      d('henry-concise-commentary', 'henry', 'Concise Commentary on the Bible', '1706', ['scripture', 'household'], ['commentary'], 'The abridged edition, short enough to read one passage at the table.', { online: [CCEL('henry/mhcc/mhcc')], family: 'Read the note on the evening lesson after the reading.' }),
+    ];
+  })(),
 ];

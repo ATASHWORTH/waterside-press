@@ -88,7 +88,7 @@ ${canonical ? `<link rel="canonical" href="${attr(canonical)}">\n<meta property=
 <link rel="icon" href="${p}assets/emblem.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Spectral:ital,wght@0,400;0,600;1,400&family=Alegreya+Sans:wght@400;500;700&family=Alegreya+Sans+SC:wght@500;700&display=swap">
 <link rel="stylesheet" href="${p}assets/site.css">
 </head>
 <body>
@@ -439,10 +439,18 @@ function buildLordsDay() {
 const catName = Object.fromEntries(lib.categories);
 const hasPdf = (w) => !!(w.pdf && w.pdf.status === 'link-checked');
 const isExcerpt = (w) => /Excerpt/.test(w.type);
+const onlineOf = (w) => w.online || [];
+const modernOf = (w) => w.modern || [];
+const hasScan = (w) => onlineOf(w).some((o) => o.kind === 'scan');
+const hasText = (w) => onlineOf(w).some((o) => o.kind !== 'scan');
+const linkLabel = (o, fallback) => o.label ? `${fallback} · ${o.label}` : fallback;
 function formatsLine(w) {
   const f = [];
   if (hasPdf(w)) f.push(`<b>Full-text PDF</b> (external, ${esc(w.pdf.host)})`);
   if (w.transcription) f.push(isExcerpt(w) ? '<b>Read online</b> (excerpt)' : '<b>Read online</b> (transcription)');
+  if (hasText(w)) f.push('<b>Read free online</b> (external)');
+  if (hasScan(w)) f.push('<b>Page scans</b> (external)');
+  if (modernOf(w).length) f.push('<b>Modern English</b> (Updated Works)');
   f.push('Modern introduction');
   return `<p class="formats">${f.join(' · ')}</p>`;
 }
@@ -451,12 +459,14 @@ function textActions(w, href, detail = false) {
   if (!detail) a.push(`<li><a class="arrow" href="${href('library/' + w.id + '/')}">Read introduction<span class="visually-hidden">: ${esc(w.title)}</span></a></li>`);
   if (w.transcription) a.push(`<li><a href="${href('library/' + w.id + '/')}#text">Read online<span class="visually-hidden">: ${esc(w.title)}</span></a></li>`);
   if (hasPdf(w)) a.push(`<li><a class="ext" href="${attr(w.pdf.url)}" rel="noopener">Download PDF<span class="visually-hidden">: ${esc(w.title)}, hosted at ${esc(w.pdf.host)}</span></a></li>`);
-  if (w.sourcePage) a.push(`<li><a class="ext" href="${attr(w.sourcePage)}" rel="noopener">View source<span class="visually-hidden">: ${esc(w.repository)}</span></a></li>`);
+  for (const o of onlineOf(w)) a.push(`<li><a class="ext" href="${attr(o.url)}" rel="noopener">${esc(linkLabel(o, o.kind === 'scan' ? 'Page scans' : 'Read free online'))}<span class="meta">&nbsp;· ${esc(o.host)}</span><span class="visually-hidden">: ${esc(w.title)}</span></a></li>`);
+  for (const m of modernOf(w)) a.push(`<li><a class="ext modern" href="${attr(m.url)}" rel="noopener">${esc(linkLabel(m, 'Modern English'))}<span class="meta">&nbsp;· updatedworks.com</span><span class="visually-hidden">: ${esc(w.title)}</span></a></li>`);
+  if (w.sourcePage && !onlineOf(w).some((o) => o.url === w.sourcePage)) a.push(`<li><a class="ext" href="${attr(w.sourcePage)}" rel="noopener">View source<span class="visually-hidden">: ${esc(w.repository)}</span></a></li>`);
   return `<ul class="text-actions">${a.join('')}</ul>`;
 }
 function catalogRow(w, href) {
   const search = [w.title, w.subtitle, w.author, w.summary, w.tradition, w.period, ...w.tags, ...w.categories.map((c) => catName[c])].join(' ');
-  return `<li class="book-item catalog-row" data-search="${attr(search)}" data-cats="${w.categories.join(' ')}" data-author="${attr(w.authorKey)}" data-period="${attr(w.periodKey)}" data-pdf="${hasPdf(w) ? 'yes' : 'no'}" data-trans="${w.transcription ? 'yes' : 'no'}">
+  return `<li class="book-item catalog-row" data-search="${attr(search)}" data-cats="${w.categories.join(' ')}" data-author="${attr(w.authorKey)}" data-period="${attr(w.periodKey)}" data-pdf="${hasPdf(w) ? 'yes' : 'no'}" data-online="${onlineOf(w).length || w.transcription ? 'yes' : 'no'}" data-modern="${modernOf(w).length ? 'yes' : 'no'}" data-trans="${w.transcription ? 'yes' : 'no'}">
   <p class="catalog-date"><strong>${esc(w.original.split(';')[0].replace(/^Developed from.*/, 'Ancient'))}</strong>${esc(w.periodKey)}</p>
   <div>
     <h3><a href="${href('library/' + w.id + '/')}">${esc(w.title)}</a></h3>
@@ -480,8 +490,10 @@ function transcription(w) {
 const FORMAT_LEGEND = `<dl class="format-legend">
   <dt>Full-text PDF</dt><dd>A file of the whole stated edition, hosted by the repository named on the record. We link to it and do not re-host it. We check the link and title page; each record says whether every page has been checked.</dd>
   <dt>Read online</dt><dd>Text transcribed by Waterside Press from a stated edition and shown on this site. Marked <em>excerpt</em> when it is only part of a work.</dd>
+  <dt>Read free online</dt><dd>The text on another free library's site, such as CCEL, Project Gutenberg, or the OPC. We checked that each link opens the stated work; the record names the edition the host presents.</dd>
+  <dt>Page scans</dt><dd>Page images of a historical printing, hosted by the Internet Archive, the Library of Congress, or another library. The record notes any missing pages we know of.</dd>
+  <dt>Modern English</dt><dd>An updated-language edition from <a class="ext" href="https://updatedworks.com/" rel="noopener">Updated Works</a>, a recommended outside resource. Free to read with a free account. Their editions are their own work.</dd>
   <dt>Modern introduction</dt><dd>Every record has one, written by Waterside Press. It is commentary, not the historical text.</dd>
-  <dt>Facsimile</dt><dd>Page images of a historical printing. None are published yet.</dd>
 </dl>`;
 
 function buildLibrary() {
@@ -496,7 +508,7 @@ function buildLibrary() {
 <div class="wrap page-head">
   <p class="kicker">The Library</p>
   <h1>Library</h1>
-  <p class="lede">A small, carefully checked collection. Each work has an introduction, its exact edition, and a plain statement of its rights status. It grows only as fast as editions can be checked. <a href="${href('editorial-principles/')}">How we check sources</a>.</p>
+  <p class="lede">Scripture, the catechisms, the Prayer Book, the psalters, and the Puritan divines, each linked to a place you can read it free online. Every record states the edition linked, what we have checked, and its rights status. <a href="${href('editorial-principles/')}">How we check sources</a>.</p>
 </div>
 <div class="wrap grid main-aside">
   <div>
@@ -506,6 +518,8 @@ function buildLibrary() {
       <div class="field"><label for="lib-author">Author</label><select id="lib-author"><option value="">All authors</option>${uniq('authorKey').map((a) => `<option>${esc(a)}</option>`).join('')}</select></div>
       <div class="field"><label for="lib-period">Period</label><select id="lib-period"><option value="">All periods</option>${uniq('periodKey').map((a) => `<option>${esc(a)}</option>`).join('')}</select></div>
       <div class="checks">
+        <label><input type="checkbox" id="lib-online"> Read free online</label>
+        <label><input type="checkbox" id="lib-modern"> Modern English edition</label>
         <label><input type="checkbox" id="lib-pdf"> Full-text PDF available</label>
         <label><input type="checkbox" id="lib-trans"> Can be read online here</label>
         <button type="button" class="btn small secondary" id="lib-reset">Clear</button>
@@ -526,14 +540,14 @@ function buildLibrary() {
     <h2 style="font-size:1.5rem">Formats</h2>
     ${FORMAT_LEGEND}
     <h2 style="font-size:1.5rem">Being prepared</h2>
-    <p class="meta">Listed when an edition, a complete file, and its rights status have been checked.</p>
-    <ul class="soon-list">${['Augustine, Confessions', 'Athanasius, On the Incarnation', 'Thomas à Kempis, The Imitation of Christ', 'The Heidelberg Catechism', "Luther's Small Catechism", 'The Book of Common Prayer (1662)', 'The Scottish Metrical Psalter (1650)', 'Lewis Bayly, The Practice of Piety'].map((t) => `<li><span>${esc(t)}</span><span class="tag soon">Coming soon</span></li>`).join('')}</ul>
+    <p class="meta">Listed once an edition and its rights status have been checked.</p>
+    <ul class="soon-list">${['Augustine, Confessions', 'Athanasius, On the Incarnation', 'Thomas Boston, Human Nature in Its Fourfold State', 'The complete Westminster Shorter Catechism, transcribed here'].map((t) => `<li><span>${esc(t)}</span><span class="tag soon">Coming soon</span></li>`).join('')}</ul>
   </aside>
 </div>`,
   });
 
   for (const w of lib.works) {
-    const rightsText = { 'pd-us': 'Public domain in the United States (published before 1931)', 'pd-historic': 'Public domain historic text; Waterside Press transcription' }[w.rights];
+    const rightsText = { 'pd-us': 'Public domain in the United States (published before 1931)', 'pd-historic': 'Public domain historic text; Waterside Press transcription', 'pd-text': 'Public domain work; online edition presented by its host', 'in-copyright': 'In copyright; free to read online from the rights holder' }[w.rights];
     const related = lib.works.filter((x) => x !== w && x.categories.some((c) => w.categories.includes(c)));
     const rowsFor = (href) => [
       ['Author', esc(w.author)],
@@ -546,6 +560,8 @@ function buildLibrary() {
       ['Language', esc(w.language)],
       ['Resource type', esc(w.type)],
       w.repository && ['Source', `<a class="ext" href="${attr(w.sourcePage)}" rel="noopener">${esc(w.repository)}</a>`],
+      onlineOf(w).length && ['Read online', onlineOf(w).map((o) => `<a class="ext" href="${attr(o.url)}" rel="noopener">${esc(linkLabel(o, o.host))}</a>`).join('<br>') + '<br><span class="meta">Link opened and work confirmed 2026-10-11. Edition collation and page-by-page completeness not checked unless stated above.</span>'],
+      modernOf(w).length && ['Modern English', modernOf(w).map((m) => `<a class="ext" href="${attr(m.url)}" rel="noopener">${esc(linkLabel(m, 'Updated Works'))}</a>`).join('<br>') + '<br><span class="meta">Free to read with a free Updated Works account.</span>'],
       hasPdf(w) && ['PDF', `<a class="ext" href="${attr(w.pdf.url)}" rel="noopener">${esc(w.pdf.url.replace(/^https:\/\//, ''))}</a><br><span class="meta">Link and title page checked ${esc(w.pdf.checked)}. Completeness of every page not yet checked. File size not recorded.</span>`],
       ['Rights', `${esc(rightsText)}<br><span class="meta">${esc(w.rightsNote)}</span>`],
       ['Audience', esc(w.audience)],
@@ -569,8 +585,8 @@ function buildLibrary() {
     <p class="source">${kind('editorial')}Modern introduction by Waterside Press. Commentary, not the historical text</p>
     <p>${esc(w.summary)}</p>
     ${w.context.map((t) => `<p>${esc(t)}</p>`).join('')}
-    <h3>Reading it at home</h3>
-    <p>${esc(w.family)}</p>
+    ${w.family ? `<h3>Reading it at home</h3>
+    <p>${esc(w.family)}</p>` : ''}
     ${w.transcription ? `<h2 id="text">Text</h2><p class="source">${kind('historic')}${esc(w.edition)}</p>${transcription(w)}` : ''}
     ${related.length ? `<h2>Related works</h2><ul>${related.map((x) => `<li><a class="work-title" href="${href('library/' + x.id + '/')}">${esc(x.title)}</a> <span class="meta">${esc(x.author)}</span></li>`).join('')}</ul>` : ''}
   </div>

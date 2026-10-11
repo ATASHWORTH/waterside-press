@@ -1,31 +1,33 @@
 /* ==========================================================================
    Waterside Press — design system
-   A private-press reading room: parchment page, forest-green imprint, brass
-   for ornament only, and prayer-book red for rubrics. Fine rules, not boxes.
+   A prayer-book reading room: cool paper, river-blue imprint, quiet grey-blue
+   rules for ornament, and prayer-book red for rubrics. Fine rules, not boxes.
    ========================================================================== */
+/* Direction (October 2026): the Family Rule look. Cool paper, river-blue imprint,
+   prayer-book red for rubrics, IM Fell English titling, Spectral for reading. */
 :root {
-  /* Palette (brief values; text variants darkened where needed for AA) */
-  --forest: #233d32;
-  --forest-2: #2f5141;
-  --parchment: #f4efe3;
-  --vellum: #faf7ef;          /* raised surfaces: inputs, the few true cards */
-  --linen: #ece5d5;           /* quiet panels: leader notes, footer */
-  --ink: #292923;
-  --ink-soft: #55534a;        /* metadata */
-  --olive: #777a55;           /* decoration only */
-  --olive-ink: #575a3a;       /* olive for text */
-  --brass: #a58a53;           /* ornament, rules, markers — never small text */
-  --brass-ink: #7a6331;       /* brass for text */
-  --stone: #d8d0c1;           /* rules and borders */
-  --rubric: #8c2f22;          /* prayer-book red: instructions only */
-  --link: #233d32;
-  --focus: #9c5b00;
-  --on-forest: #f4efe3;
+  /* Palette. Token names kept from the first design so every component follows. */
+  --forest: #1f5560;          /* river blue: imprint, links, emphasis */
+  --forest-2: #2a6a76;
+  --parchment: #eef1ee;       /* page */
+  --vellum: #f8faf7;          /* raised surfaces: inputs, the few true cards */
+  --linen: #e3e9e6;           /* quiet panels: leader notes, footer */
+  --ink: #1b2422;
+  --ink-soft: #5b6964;        /* metadata */
+  --olive: #7d918c;           /* decoration only */
+  --olive-ink: #4d625e;       /* decoration colour for text */
+  --brass: #9aaeae;           /* ornament, rules, markers — never small text */
+  --brass-ink: #3f5f66;       /* ornament colour for text */
+  --stone: #cdd6d1;           /* rules and borders */
+  --rubric: #a3271c;          /* prayer-book red: instructions only */
+  --link: #1f5560;
+  --focus: #b5620a;
+  --on-forest: #f8faf7;
 
   /* Type */
-  --display: "Cormorant Garamond", "Cormorant", "EB Garamond", Garamond, "Iowan Old Style", Georgia, serif;
-  --serif: "Source Serif 4", "Source Serif Pro", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  --sans: "Source Sans 3", "Source Sans Pro", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --display: "IM Fell English", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --serif: "Spectral", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: "Alegreya Sans", "Gill Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
   --fs-meta: .875rem;
   --fs-ui: 1rem;
   --fs-body: 1.125rem;
@@ -43,16 +45,16 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --forest: #a9c7b3; --forest-2: #c3dccb; --parchment: #181a16; --vellum: #20231e; --linen: #23271f;
-    --ink: #ebe5d6; --ink-soft: #bdb6a5; --olive: #9fa274; --olive-ink: #c8ca9a; --brass: #b89a5e; --brass-ink: #d6b875;
-    --stone: #3a3f36; --rubric: #e08a78; --link: #b8d4c1; --focus: #f0b04a; --on-forest: #181a16;
+    --forest: #7fb8c0; --forest-2: #9dcbd2; --parchment: #111816; --vellum: #18211f; --linen: #1b2523;
+    --ink: #e3e8e4; --ink-soft: #9aa8a3; --olive: #6f8a86; --olive-ink: #bfd0cc; --brass: #5d7a7d; --brass-ink: #a9c4c6;
+    --stone: #2c3936; --rubric: #e07a6c; --link: #8cc3ca; --focus: #f0b04a; --on-forest: #111816;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --forest: #a9c7b3; --forest-2: #c3dccb; --parchment: #181a16; --vellum: #20231e; --linen: #23271f;
-  --ink: #ebe5d6; --ink-soft: #bdb6a5; --olive: #9fa274; --olive-ink: #c8ca9a; --brass: #b89a5e; --brass-ink: #d6b875;
-  --stone: #3a3f36; --rubric: #e08a78; --link: #b8d4c1; --focus: #f0b04a; --on-forest: #181a16;
+  --forest: #7fb8c0; --forest-2: #9dcbd2; --parchment: #111816; --vellum: #18211f; --linen: #1b2523;
+  --ink: #e3e8e4; --ink-soft: #9aa8a3; --olive: #6f8a86; --olive-ink: #bfd0cc; --brass: #5d7a7d; --brass-ink: #a9c4c6;
+  --stone: #2c3936; --rubric: #e07a6c; --link: #8cc3ca; --focus: #f0b04a; --on-forest: #111816;
   color-scheme: dark;
 }
 
@@ -69,7 +71,7 @@ img, svg { max-width: 100%; }
 a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: .18em; text-decoration-color: var(--brass); }
 a:hover { text-decoration-color: currentColor; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 2px; }
-h1, h2, h3 { font-family: var(--display); font-weight: 500; line-height: 1.12; color: var(--ink); text-wrap: balance; letter-spacing: -.005em; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; font-synthesis: none; line-height: 1.12; color: var(--ink); text-wrap: balance; letter-spacing: -.005em; }
 h1 { font-size: var(--fs-h1); margin: 0 0 var(--s4); }
 h2 { font-size: var(--fs-h2); margin: var(--s7) 0 var(--s3); }
 h3 { font-size: var(--fs-h3); font-weight: 600; margin: var(--s6) 0 var(--s2); }
@@ -96,7 +98,7 @@ main { display: block; padding-bottom: var(--s8); }
 .header-inner { display: flex; align-items: center; gap: var(--s4); min-height: 4.5rem; }
 .brand { display: inline-flex; align-items: center; gap: .65rem; color: var(--ink); text-decoration: none; margin-right: auto; }
 .brand svg { width: 2.4rem; height: 2.4rem; color: var(--forest); flex: none; }
-.brand-name { font-family: var(--display); font-size: 1.45rem; font-weight: 600; font-variant: small-caps; letter-spacing: .06em; line-height: 1; }
+.brand-name { font-family: var(--display); font-size: 1.45rem; font-weight: 400; font-synthesis: none; font-variant: small-caps; letter-spacing: .06em; line-height: 1; }
 .nav-toggle { font-family: var(--sans); font-size: var(--fs-ui); background: none; border: 1px solid var(--stone); color: var(--ink); min-height: 44px; padding: 0 var(--s4); border-radius: 3px; cursor: pointer; }
 .site-nav { font-family: var(--sans); }
 .site-nav ul { list-style: none; margin: 0; padding: 0; }
@@ -147,7 +149,7 @@ label { font-family: var(--sans); font-size: .9rem; color: var(--ink-soft); }
 .arrow::after { content: " →"; }
 
 /* ---------- Editorial furniture ---------- */
-.kicker { font-family: var(--sans); font-size: .8rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--brass-ink); margin: 0 0 var(--s2); }
+.kicker { font-family: "Alegreya Sans SC", var(--sans); font-size: .9rem; font-weight: 700; letter-spacing: .06em; color: var(--forest); margin: 0 0 var(--s2); }
 .kicker a { color: inherit; }
 .lede { font-size: var(--fs-lead); line-height: 1.5; color: var(--ink-soft); }
 .meta { font-family: var(--sans); font-size: var(--fs-meta); color: var(--ink-soft); line-height: 1.5; }
@@ -244,7 +246,7 @@ dl.record dd:last-of-type { border-bottom: 0; }
 .office .part:first-of-type { border-top: 0; }
 .part-head { display: flex; align-items: baseline; gap: var(--s3); margin-bottom: var(--s3); }
 .part-head h2, .part-head h3 { margin: 0; font-size: 1.6rem; font-weight: 600; }
-.part-num { font-family: var(--display); font-size: 1.35rem; font-weight: 600; color: var(--brass-ink); min-width: 1.4rem; }
+.part-num { font-family: var(--display); font-size: 1.35rem; font-weight: 400; color: var(--brass-ink); min-width: 1.4rem; }
 .rubric { font-family: var(--serif); font-style: italic; font-size: .95em; color: var(--rubric); margin: 0 0 var(--s3); }
 .rubric a { color: inherit; }
 .versicle { display: grid; grid-template-columns: 4.2rem minmax(0, 1fr); gap: var(--s3); margin: 0 0 var(--s2); }
@@ -315,9 +317,9 @@ table.psalter thead th { border-bottom: 1px solid var(--ink); }
 .step h2 { font-size: 1.5rem; margin: 0 0 var(--s3); }
 .catechism-q { text-align: center; padding: var(--s5) 0; }
 .catechism-q .qnum { font-family: var(--sans); font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--brass-ink); }
-.catechism-q .question { font-family: var(--display); font-size: clamp(1.7rem, 4.6vw, 2.3rem); font-weight: 600; line-height: 1.2; margin: var(--s2) 0 var(--s4); text-wrap: balance; }
+.catechism-q .question { font-family: var(--display); font-size: clamp(1.7rem, 4.6vw, 2.3rem); font-weight: 400; line-height: 1.2; margin: var(--s2) 0 var(--s4); text-wrap: balance; }
 .catechism-q .answer { font-size: 1.22em; line-height: 1.55; margin: 0 auto; max-width: 32rem; text-wrap: pretty; }
-.catechism-q .answer .a { font-family: var(--display); font-weight: 600; color: var(--brass-ink); margin-right: .3rem; }
+.catechism-q .answer .a { font-family: var(--display); font-weight: 400; color: var(--brass-ink); margin-right: .3rem; }
 .catechism-q + .catechism-q { border-top: 1px solid var(--stone); }
 .leader-note { background: var(--linen); padding: var(--s4) var(--s5); font-family: var(--sans); font-size: 1rem; line-height: 1.6; }
 .leader-note .step-label { color: var(--olive-ink); }
@@ -338,7 +340,7 @@ dl.ages dd { margin: 0; padding: var(--s1) 0 var(--s3); border-bottom: 1px solid
 .unit h2 { margin-top: 0; }
 .session-list { list-style: none; padding: 0; margin: var(--s4) 0 0; border-top: 1px solid var(--stone); counter-reset: s; }
 .session-list li { counter-increment: s; display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: var(--s2); padding: var(--s3) 0; border-bottom: 1px solid var(--stone); }
-.session-list li::before { content: counter(s); font-family: var(--display); font-size: 1.3rem; font-weight: 600; color: var(--brass-ink); line-height: 1.3; }
+.session-list li::before { content: counter(s); font-family: var(--display); font-size: 1.3rem; font-weight: 400; color: var(--brass-ink); line-height: 1.3; }
 .session-list a { font-size: 1.15rem; }
 .session-list .meta { display: block; }
 
@@ -354,7 +356,7 @@ dl.ages dd { margin: 0; padding: var(--s1) 0 var(--s3); border-bottom: 1px solid
 /* ---------- Learning ---------- */
 .article-index { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--ink); }
 .article-index li { padding: var(--s4) 0; border-bottom: 1px solid var(--stone); }
-.article-index a { font-family: var(--display); font-size: 1.45rem; font-weight: 600; text-decoration: none; color: var(--ink); }
+.article-index a { font-family: var(--display); font-size: 1.45rem; font-weight: 400; text-decoration: none; color: var(--ink); }
 .article-index a:hover { color: var(--forest); text-decoration: underline; text-decoration-color: var(--brass); }
 .article-index p { margin: var(--s1) 0 0; color: var(--ink-soft); font-size: 1rem; }
 .article { scroll-margin-top: var(--s4); }
@@ -405,3 +407,7 @@ aside .format-legend dd { margin-bottom: var(--s3); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --control-border: #7d7868; } }
 :root[data-theme="dark"] { --control-border: #7d7868; }
 input[type="search"], select { border-color: var(--control-border); }
+
+/* IM Fell English has a single weight: titling-face elements stay regular, never synthesized bold. */
+[class*="title"], .catalog-date strong, .brand-name { font-synthesis: none; }
+h3 { font-weight: 400; }

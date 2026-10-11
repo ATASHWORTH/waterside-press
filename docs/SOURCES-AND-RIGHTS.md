@@ -28,3 +28,22 @@ Checked 2026-10-11. "Link checked" means the URL was fetched, returned a PDF, an
 ## How a new item passes
 
 1. Exact work and edition identified. 2. Repository/rights holder identified. 3. Edition's rights status determined (not just the original's). 4. File opened; title and edition match; completeness confirmed. 5. Direct link tested; date recorded here. 6. Record + introduction written in `content/library.mjs`.
+
+## Read-free-online links (added 2026-10-11)
+
+60 records were added with external reading links (`online`) and modern-English links (`modern`). For each URL: the page was fetched on 2026-10-11 and showed the stated work and author. **Edition collation and page-by-page completeness were not checked** unless the record's edition note says so. Each record names the edition the host presents.
+
+| Host | What it provides | Rights handling |
+|---|---|---|
+| ccel.org | Web texts (Watson, Owen, Baxter, Flavel, Edwards, Bunyan, Henry, Calvin/Beveridge 1845, Spurgeon, Rutherford, Heidelberg older translation, Watts) | Public-domain works; linked, not re-hosted |
+| gutenberg.org | KJV (#10), Luther's Small Catechism tr. Robert E. Smith (#1670, modern translation; status not checked), Imitation of Christ tr. Benham (#1653), Pilgrim's Progress Part I (#131) | Linked only |
+| opc.org | Westminster Confession (with American revisions), Larger and Shorter Catechisms in full | Linked only |
+| archive.org | Scans: Tate & Brady 1698 (pp. 25–26, 239–240 missing); Watts, Psalms of David Imitated, 1799 Northampton; Gouge, Of Domesticall Duties, 1622 (pp. 417–448 missing) | Public domain |
+| loc.gov | Bay Psalm Book, 1640 (title page and 18 leaves missing) | Public domain |
+| justus.anglican.org | BCP 1662, Baskerville 1762 printing, section PDFs | PD in US; Crown letters patent in UK |
+| esv.org | ESV text | © Crossway; free to read; link only |
+| crcna.org | Heidelberg Catechism, modern translation | © CRC; link only |
+| thewestminsterstandard.org, semperreformanda.com, monergism.com, onthewing.org | Scottish Psalter psalm by psalm; Directory for Family Worship (modernized); Practice of Piety and Precious Remedies (PDF/ePub); modern-English PDFs of Flavel and Edwards | Editions are the hosts'; link only |
+| updatedworks.com | Modern-English editions (36 links) | Updated Works' own editions; free to read with a free account; recommended outside resource, link only |
+
+**Imitation of Christ** is now listed via Benham's pre-1931 translation, which resolves the WITHHELD.md concern about the 1940 Croft & Bolton CCEL file.

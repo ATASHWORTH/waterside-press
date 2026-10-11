@@ -51,8 +51,8 @@ export const pages = [
 
   <section class="home-section" aria-labelledby="h-library">
     <div class="section-head"><div><p class="kicker">The Library</p><h2 id="h-library" style="margin-top:0">From the collection</h2></div><a class="arrow" href="${href('library/')}">The full catalogue</a></div>
-    <p class="prose">Every work lists its exact edition, where the file is kept, and its rights status. The collection is small because each record is checked before it is listed.</p>
-    <ol class="catalog">${lib.works.map(catalogRow).join('')}</ol>
+    <p class="prose">${lib.works.length} works, from the catechisms and the 1662 Prayer Book to Watson, Gouge, Owen, and Edwards. Each links to a place you can read it free online, with modern-English editions where the old English is hard going.</p>
+    <ol class="catalog">${['pilgrims-progress', 'heidelberg-catechism', 'gouge-domestical-duties', 'watson-body-of-divinity'].map((id) => lib.works.find((w) => w.id === id)).map(catalogRow).join('')}</ol>
   </section>
 
   <div class="grid two home-section">
@@ -282,7 +282,7 @@ export const pages = [
   <p>On the Daily Office page, two preferences — the shorter form and text size — are kept in your own browser’s local storage so they are remembered next time. They never leave your device. Clearing your browser’s site data removes them.</p>
   <h2>Third-party requests</h2>
   <ul>
-    <li><strong>Fonts:</strong> pages load the EB Garamond and Source Sans 3 typefaces from Google Fonts. Your browser therefore contacts Google’s servers, which receive your IP address and browser details as part of that request. See Google’s privacy policy for how that data is handled.</li>
+    <li><strong>Fonts:</strong> pages load the IM Fell English, Spectral, and Alegreya Sans typefaces from Google Fonts. Your browser therefore contacts Google’s servers, which receive your IP address and browser details as part of that request. See Google’s privacy policy for how that data is handled.</li>
     <li><strong>Linked sites:</strong> library links open files at other sites (such as ccel.org and esv.org). Those sites have their own privacy policies.</li>
   </ul>
   <h2>Hosting</h2>
