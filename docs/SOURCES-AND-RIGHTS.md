@@ -11,16 +11,17 @@ Checked 2026-10-11. "Link checked" means the URL was fetched, returned a PDF, an
 
 ## Texts reproduced on the site
 
-| Text | Source | Verification | Rights |
-|---|---|---|---|
-| ESV: Isaiah 53:4–6 | esv.org | **Checked against esv.org, 2026-10-11** | Crossway quotation permission (≤500 verses; notice given) |
-| ESV: Luke 24:1–6a; Genesis 1:1–5; Deuteronomy 6:4–7; John 1:1–5, 14; Luke 11:1–4; Matthew 11:28–30 | ESV text | **Not yet collated against esv.org** (entered from the editor's text; the checking fetch was unavailable) | As above |
-| ESV benedictions: Num 6:24–26; Rom 15:13; 2 Thess 3:16; 2 Cor 13:14; Phil 4:7; Heb 13:20–21; Jude 24–25; plus Ps 1:3, Col 3:16, Eph 6:4, Matt 18:20 (letter and footer) | ESV text | **Not yet collated** | As above. Total ESV verses on site ≈ 50, well under the 500-verse limit. |
-| Westminster Shorter Catechism Q. 4, 9, 28, 33, 42, 58, 98 | Traditional English text (1647) | Not yet collated against a 1648 printing | Public domain |
-| BCP 1662: versicles, Gloria Patri, Lord's Prayer, Apostles' Creed, 7 collects | Standard 1662 text | Not yet collated against a specific printing | Public domain outside UK; Crown letters patent within UK |
-| Scottish Psalter 1650: Pss 1, 23, 100 | Standard text | Not yet collated against a 1650 facsimile | Public domain |
-| Watts (1715, 1707/1709, 1719 + Wesley 1738); Ken (1695/1709) | Standard texts; spelling modernized where noted | Not yet collated | Public domain |
-| Waterside originals: 7 children's prayers, introductions, notes, draft letter | Waterside Press | — | © Waterside Press |
+| Text | Verification | Rights |
+|---|---|---|
+| ESV, Office: Lam 3:22–23; Ps 118:24; Ps 141:2; Luke 24:29; 1 John 1:9; 2 Cor 13:14; Num 6:24–26 | **Not yet collated against esv.org** | Crossway permission (≤500 verses; notice given) |
+| ESV, Catechesis: 1 Cor 10:31; Ps 73:25–26; 2 Tim 3:16–17; John 20:31; John 4:24; Deut 6:4; Matt 28:19; Gen 1:27; Heb 11:3; Acts 20:7a; Rev 1:10a | **Not yet collated** | As above |
+| ESV, Letter and footer: Deut 6:4–7; Col 3:16; Eph 6:4; Matt 18:20; Ps 1:3 | **Not yet collated** | As above. About 35 ESV verses are reproduced in total. Office psalms and lessons are links only. |
+| BCP 1662: versicles, General Confession, Creed, Lord's Prayer, suffrages, 6 collects, Benedictus, Te Deum, Magnificat, Nunc Dimittis | Not yet collated against a specific 1662 printing | Public domain outside UK; Crown letters patent within UK |
+| BCP 1662 psalter table (30 days) | Entered from the editor's knowledge of the table; **collate against a 1662 printing** | Public domain |
+| Westminster Shorter Catechism Q. 1–6, 9, 10, 59 | Not yet collated against a 1648 printing | Public domain |
+| Scottish Psalter 1650 (Pss 1, 23, 100); Watts; Ken | Not yet collated | Public domain |
+| Waterside originals: intercessions, prayer for children, catechesis explanations, questions, practices, closing prayers, Lord's Day page, draft letter | — | © Waterside Press |
+| Removed in this revision: Isaiah 53:4–6 (the one passage checked against esv.org) and the other weekday-liturgy readings | — | — |
 
 **Pre-launch action:** collate every "not yet collated" row against the named source (esv.org for Scripture; a 1662 BCP and 1650 Psalter facsimile; a 1648 WSC printing) and update this table.
 

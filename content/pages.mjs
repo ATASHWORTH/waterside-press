@@ -8,7 +8,7 @@ export const pages = [
   {
     path: '', nav: true, title: 'Waterside Press',
     description: 'Texts, prayers, psalms, music, and resources for Christian worship and learning in the household, drawn from the riches of historic Christianity.',
-    body: ({ href, esc, ornament, heroArt, lit, lib, bookCard }) => `
+    body: ({ href, esc, ornament, heroArt, lib, bookCard }) => `
 <div class="wrap">
   <section class="hero" aria-labelledby="hero-title">
     <div>
@@ -16,23 +16,30 @@ export const pages = [
       <h1 id="hero-title">The riches of historic Christianity, brought home.</h1>
       <p class="lede">Texts, prayers, psalms, music, and resources for Christian worship and learning in the household.</p>
       <div class="actions">
-        <a class="btn" href="${href('daily-liturgy/')}">Begin Today’s Liturgy</a>
-        <a class="btn secondary" href="${href('library/')}">Explore the Library</a>
+        <a class="btn" href="${href('daily-office/')}">Pray the Office</a>
+        <a class="btn secondary" href="${href('family-catechesis/')}">Learn the Faith Together</a>
       </div>
     </div>
     <div class="hero-art">${heroArt}</div>
   </section>
   ${ornament}
-  <section class="section grid two" aria-labelledby="h-liturgy">
-    <div>
-      <p class="kicker">Daily Liturgy</p>
-      <h2 id="h-liturgy" style="margin-top:0">A short order for every day of the week</h2>
-      <p>Each day follows the same pattern: gathering, a reading from Scripture, a psalm or hymn, one catechism question, prayer, and a blessing. It takes ten to fifteen minutes, and a simplified mode serves families with very young children.</p>
-      <p class="actions"><a class="btn" href="${href('daily-liturgy/')}">Open the Daily Liturgy</a></p>
+  <section class="section grid two" aria-label="The two daily practices">
+    <div class="card">
+      <p class="kicker">Daily Office</p>
+      <h2 style="margin-top:0">Pray the Office</h2>
+      <p>Morning and Evening Prayer from the Book of Common Prayer tradition: psalms appointed for each day of the month, a lesson from Scripture read in course, the canticles, the Creed, and the Church’s prayers. Pray it alone, on behalf of your household, or with everyone gathered. A shorter form suits young children.</p>
+      <p class="actions"><a class="btn" href="${href('daily-office/')}">Open the Daily Office</a></p>
     </div>
-    <ul class="card" style="list-style:none;margin:0">
-      ${lit.days.map((d) => `<li style="padding:.35rem 0;border-bottom:1px solid var(--linen)"><a href="${href('daily-liturgy/')}?day=${d.slug}"><strong>${d.name}</strong></a> — ${esc(d.theme)}</li>`).join('')}
-    </ul>
+    <div class="card">
+      <p class="kicker">Family Catechesis</p>
+      <h2 style="margin-top:0">Learn the Faith Together</h2>
+      <p>Short sessions for the whole household: recite a catechism answer, read the Scripture behind it, talk it over with questions for every age, and put it into practice during the week. Parents lead; everyone takes part.</p>
+      <p class="actions"><a class="btn" href="${href('family-catechesis/')}">Begin with the first session</a></p>
+    </div>
+  </section>
+  <section class="section prose-center feature" aria-labelledby="h-sunday">
+    <h2 id="h-sunday" style="margin-top:0">The Lord’s Day</h2>
+    <p>Sunday has its own place in both: the Office takes a Sunday form, and a catechesis session helps the household prepare for worship. <a href="${href('lords-day/')}">Why Christians keep the first day</a>.</p>
   </section>
   ${ornament}
   <section class="section" aria-labelledby="h-library">
@@ -43,12 +50,12 @@ export const pages = [
     <p class="actions"><a class="btn secondary" href="${href('library/')}">Browse and search the library</a></p>
   </section>
   ${ornament}
-  <section class="section grid three" aria-label="Household resources">
+  <section class="section grid three" aria-label="More from Waterside Press">
     <div class="card">
-      <p class="kicker">Family Worship</p>
-      <h3>A rhythm you can keep</h3>
-      <p>Practical guidance for parents beginning household prayer: what to do, how long to take, and what to do when it goes badly.</p>
-      <p><a href="${href('family-worship/')}">Family Worship</a></p>
+      <p class="kicker">Library</p>
+      <h3>Historic texts, honestly recorded</h3>
+      <p>Classic works with their exact editions, rights status, and checked links to full-text PDFs.</p>
+      <p><a href="${href('library/')}">Library</a></p>
     </div>
     <div class="card">
       <p class="kicker">Music</p>
@@ -72,46 +79,11 @@ export const pages = [
 </div>`,
   },
 
-  // ───────── FAMILY WORSHIP ─────────
-  {
-    path: 'family-worship/', nav: true, title: 'Family Worship',
-    description: 'A simple, sustainable pattern of household worship: gather, read Scripture, sing, learn the catechism, pray, and close with a blessing.',
-    body: ({ href, esc }) => `
-<div class="wrap page-head"><p class="kicker">Household formation</p><h1>Family Worship</h1>
-<p class="lede prose">Brief and steady is better than long and occasional. A household that reads, sings, and prays for ten minutes most days will learn more than one that attempts an hour and gives up in a week.</p></div>
-<div class="wrap grid two">
-  <div class="prose">
-    <h2 style="margin-top:0">A basic pattern</h2>
-    <ol>
-      <li><strong>Gather the family.</strong> The same time and place each day helps — after breakfast or after supper. Phones away.</li>
-      <li><strong>Read Scripture.</strong> A short passage, read clearly. Ask one question about it.</li>
-      <li><strong>Pray together.</strong> A written prayer gives words to the shy and order to the talkative; add your own petitions.</li>
-      <li><strong>Sing or recite a psalm.</strong> One stanza sung poorly is still praise. Sing the same psalm all week.</li>
-      <li><strong>Learn a catechism question.</strong> One question a week, repeated each day.</li>
-      <li><strong>Close with a blessing</strong> or the Lord’s Prayer.</li>
-    </ol>
-    <p>The <a href="${href('daily-liturgy/')}">Daily Liturgy</a> sets out this pattern in full for every day of the week, so that no preparation is needed.</p>
-    <h2>When it goes badly</h2>
-    <p>It will. Children fidget, evenings run late, someone cries during the psalm. Shorten rather than skip: a verse, the Lord’s Prayer, and a blessing still count. Consistency is built over months, not days.</p>
-    <h2>The household and the church</h2>
-    <p>Household worship belongs alongside, never in place of, the gathered worship of the local church: the preaching of the Word, the sacraments, the fellowship of the saints, and the care of pastors and elders. A family that prays at home should be found with God’s people on the Lord’s Day.</p>
-    <p>See also the <a href="${href('letter-to-the-head-of-the-household/')}">Letter to the Head of the Household</a> (draft for editorial review).</p>
-  </div>
-  <aside>
-    <div class="card">
-      <h2 style="margin-top:0;font-size:1.4rem">In preparation</h2>
-      <p class="meta">These resources are being written. Nothing below is available yet.</p>
-      ${soon(['A One-Week Family Worship Rule', 'A Household Catechism Companion', 'Morning and Evening Family Prayer', 'Household Psalms and Hymns', 'A guide to establishing household worship', 'Age-graded discussion prompts', 'Seasonal and Christian-calendar resources', 'Teaching children to pray and sing', 'Historic liturgy explained for parents'], esc)}
-    </div>
-  </aside>
-</div>`,
-  },
-
   // ───────── MUSIC ─────────
   {
     path: 'music/', nav: true, title: 'Music',
     description: 'Metrical psalmody, historic hymns, and chant for singing at home, with notes on meter, tunes, and copyright.',
-    body: ({ href, esc, lit }) => `
+    body: ({ href, esc, hymns }) => `
 <div class="wrap page-head"><p class="kicker">Singing at home</p><h1>Music</h1>
 <p class="lede prose">“Let the word of Christ dwell in you richly … singing psalms and hymns and spiritual songs, with thankfulness in your hearts to God.” — Colossians 3:16 (ESV)</p></div>
 <div class="wrap grid two">
@@ -121,8 +93,9 @@ export const pages = [
     <p>Most of these psalms are in <strong>Common Metre</strong> (8.6.8.6: lines of eight and six syllables). Any Common Metre tune fits any Common Metre text, so a family that learns two or three tunes can sing dozens of psalms. <strong>Long Metre</strong> (8.8.8.8) works the same way.</p>
     <h2>Hymnody, chant, and canticles</h2>
     <p>English hymnody grew alongside the metrical psalms; Isaac Watts (1674–1748) is its great early writer. Older still is the Western chant tradition, in which the psalms and biblical canticles (such as the Magnificat and Nunc Dimittis) were sung to simple recited tones. Waterside Press hopes to offer short introductions to each.</p>
-    <h2>Texts in the Daily Liturgy</h2>
-    <ul>${lit.days.map((d) => `<li><a href="${href('daily-liturgy/')}?day=${d.slug}">${d.name}</a>: ${esc(d.song.title)} — <span class="meta">${esc(d.song.tune)}</span></li>`).join('')}</ul>
+    <h2>Psalms and hymns for the household</h2>
+    <p>These texts are used in the <a href="${href('daily-office/')}">Daily Office</a> or suit household singing. Each is in Common or Long Metre, so it can be sung to any tune of that metre.</p>
+    ${hymns.hymns.map((h) => `<section class="hymn" aria-labelledby="hy-${h.id}"><h3 id="hy-${h.id}">${esc(h.title)}</h3><p class="source"><span class="kind">Historic text</span>${esc(h.source)}<br>Suggested tune: ${esc(h.tune)}</p>${h.stanzas.map((x) => `<p class="stanza">${esc(x)}</p>`).join('')}<details class="note"><summary>About this text</summary><p>${esc(h.note)}</p></details></section>`).join('')}
     <h2>A note on copyright</h2>
     <p>A hymn text being public domain does not make every musical arrangement, edition, or recording public domain. Waterside Press gives tune names for reference only and publishes no sheet music or audio until each item’s rights are checked. See <a href="${href('copyright/')}">Copyright and Permissions</a>.</p>
   </div>
@@ -249,22 +222,22 @@ export const pages = [
   {
     path: 'copyright/', title: 'Copyright and Permissions',
     description: 'Copyright, permissions, and attribution for texts, Scripture quotations, and linked files on Waterside Press.',
-    body: ({ lit }) => `
+    body: ({ off }) => `
 <div class="wrap page-head"><p class="kicker">Rights</p><h1>Copyright and Permissions</h1></div>
 <div class="wrap prose">
   <h2 style="margin-top:0">Scripture</h2>
-  <p>${lit.ESV_NOTICE}</p>
-  <p>Crossway permits quotation of the ESV without written permission within published limits (as stated by Crossway: up to 500 verses, provided the verses quoted amount to no more than one-half of any one book of the Bible and less than 25 percent of the total text of the work in which they are quoted). Waterside Press quotes well under that limit and gives the notice above. Readers can open every passage at esv.org.</p>
+  <p>${off.ESV_NOTICE}</p>
+  <p>Crossway permits quotation of the ESV without written permission within published limits (as stated by Crossway: up to 500 verses, provided the verses quoted amount to no more than one-half of any one book of the Bible and less than 25 percent of the total text of the work in which they are quoted). Waterside Press quotes well under that limit and gives the notice above. The psalms and lessons of the Daily Office are given as references with links to esv.org rather than reprinted.</p>
   <h2>Historic texts</h2>
   <ul>
-    <li><strong>Book of Common Prayer (1662):</strong> public domain in most of the world. In the United Kingdom, rights in the Book of Common Prayer are vested in the Crown and administered under letters patent; short liturgical texts are reproduced here for worship.</li>
+    <li><strong>Book of Common Prayer (1662)</strong>, including the canticles in their Prayer Book translation: public domain in most of the world. In the United Kingdom, rights in the Book of Common Prayer are vested in the Crown and administered under letters patent; short liturgical texts are reproduced here for worship.</li>
     <li><strong>Westminster Shorter Catechism (1647):</strong> public domain.</li>
     <li><strong>Scottish Metrical Psalter (1650), Isaac Watts, Thomas Ken:</strong> public domain texts. Musical arrangements and recordings of these texts may be under copyright and are not reproduced.</li>
   </ul>
   <h2>Linked files</h2>
   <p>PDFs in the library are hosted by the repositories named on each record. Those repositories set their own terms of use. Waterside Press links to the files and does not copy or re-host them.</p>
   <h2>Waterside Press content</h2>
-  <p>Introductions, notes, and original prayers are © Waterside Press. Families and churches may print the Daily Liturgy for use in worship and teaching.</p>
+  <p>Introductions, notes, and original prayers are © Waterside Press. Families and churches may print the Daily Office and catechesis sessions for use in worship and teaching.</p>
   <h2 id="corrections">Sources and corrections</h2>
   <p>Each library record names its source and edition. If you find an error — a wrong reading, a broken link, a misattributed text — it will be corrected once a contact address is published on this page. A correspondence address has not yet been set up.</p>
 </div>`,
@@ -279,7 +252,7 @@ export const pages = [
 <div class="wrap prose">
   <p>Waterside Press has no accounts, no mailing list, no analytics, no advertising, and no tracking pixels. It sets no cookies.</p>
   <h2>What your browser stores</h2>
-  <p>On the Daily Liturgy page, two preferences — simplified mode and text size — are kept in your own browser’s local storage so they are remembered next time. They never leave your device. Clearing your browser’s site data removes them.</p>
+  <p>On the Daily Office page, two preferences — the shorter form and text size — are kept in your own browser’s local storage so they are remembered next time. They never leave your device. Clearing your browser’s site data removes them.</p>
   <h2>Third-party requests</h2>
   <ul>
     <li><strong>Fonts:</strong> pages load the EB Garamond and Source Sans 3 typefaces from Google Fonts. Your browser therefore contacts Google’s servers, which receive your IP address and browser details as part of that request. See Google’s privacy policy for how that data is handled.</li>
@@ -303,7 +276,7 @@ export const pages = [
     <li>Semantic headings, landmarks, and a “Skip to content” link.</li>
     <li>Full keyboard operation, with visible focus outlines.</li>
     <li>Text colours chosen for at least 4.5:1 contrast against their backgrounds, in light and dark modes.</li>
-    <li>Adjustable text size on the Daily Liturgy, and layouts that reflow on small screens and at 200% zoom.</li>
+    <li>Adjustable text size on the Daily Office, and layouts that reflow on small screens and at 200% zoom.</li>
     <li>No autoplaying media, no pop-ups, and no motion beyond optional smooth scrolling (turned off if you prefer reduced motion).</li>
   </ul>
   <h2>Known limitations</h2>
@@ -331,7 +304,7 @@ export const pages = [
   <p>Family worship, then, is nothing exotic. It is reading the Scriptures together, praying together, singing together, and teaching the faith — a few minutes, most days, for years. You do not need training or a fine voice. You need a Bible, a little time, and the willingness to begin again when you miss a day.</p>
   <p>Take courage from the Lord’s promise: “For where two or three are gathered in my name, there am I among them” (Matthew 18:20, ESV). Christ spoke those words of his church, and a household at prayer is not the whole church. But it is a place where his people gather in his name, and he does not despise small things.</p>
   <p>Keep this work in its place. Your household is not a substitute for the congregation, nor are you a substitute for its ministers. The preaching of the Word, the sacraments, and the care of faithful pastors are gifts your family needs. Household worship prepares hearts for the Lord’s Day and carries its fruit through the week.</p>
-  <p>Begin small. Begin tonight, if you can. The <a href="${href('daily-liturgy/')}">Daily Liturgy</a> is set out so that you can simply open it and read.</p>
+  <p>Begin small. Begin tonight, if you can. The <a href="${href('daily-office/')}">Daily Office</a> is set out so that you can simply open it and pray, and <a href="${href('family-catechesis/')}">Family Catechesis</a> gives you a place to start teaching.</p>
   <p>With hope in Christ,<br><em>Waterside Press</em></p>
   <p class="meta">Scripture quotations are from the ESV® Bible, © 2001 by Crossway. Used by permission. All rights reserved.</p>
 </div>`,

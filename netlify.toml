@@ -12,3 +12,14 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Pages renamed in the October 2026 restructure
+[[redirects]]
+  from = "/daily-liturgy/*"
+  to = "/daily-office/"
+  status = 301
+
+[[redirects]]
+  from = "/family-worship/*"
+  to = "/family-catechesis/"
+  status = 301

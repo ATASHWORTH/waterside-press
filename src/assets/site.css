@@ -137,7 +137,7 @@ label { font-family: var(--sans); font-size: .9rem; color: var(--ink-soft); }
 .soon-list li { padding: .55rem 0; border-bottom: 1px dashed var(--rule); display: flex; justify-content: space-between; gap: 1rem; }
 .soon-list .tag { white-space: nowrap; }
 .feature { border-left: 3px solid var(--brass); padding-left: 1.1rem; }
-.page-head { padding: 2.6rem 0 1rem; border-bottom: 1px solid var(--rule); margin-bottom: 1.5rem; }
+.page-head { padding-block: 2.6rem 1rem; border-bottom: 1px solid var(--rule); margin-bottom: 1.5rem; }
 .notice { font-family: var(--sans); font-size: .95rem; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 6px; padding: .9rem 1rem; }
 .notice.draft { border-left: 4px solid var(--brown); }
 
@@ -218,3 +218,51 @@ details.note[open] { padding-bottom: .7rem; }
 .filters select, .filters input[type="search"] { width: 100%; max-width: 100%; }
 .office { padding-top: 1.5rem; }
 @media (max-width: 859px) { .hero-art { max-width: 14rem; } }
+
+/* Daily Office */
+.office-bar { position: sticky; top: 0; z-index: 4; background: var(--paper); border-bottom: 1px solid var(--rule); padding: .5rem 0; font-family: var(--sans); }
+.office-bar .wrap { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; justify-content: space-between; }
+.date-nav, .office-controls, .size-group { display: flex; flex-wrap: wrap; gap: .35rem; align-items: center; }
+#office-date { min-width: 0; }
+#size-label { min-width: 2.8rem; text-align: center; }
+.office-tabs { display: flex; gap: .4rem; margin: 1.5rem 0 .5rem; font-family: var(--sans); }
+.office-tabs [role="tab"] { font: inherit; font-size: 1rem; min-height: 44px; padding: .4rem 1rem; border: 1px solid var(--rule); background: var(--card); color: var(--ink); border-radius: 4px; cursor: pointer; }
+.office-tabs [role="tab"][aria-selected="true"] { background: var(--forest); color: var(--paper); border-color: var(--forest); }
+.office-name { font-size: 1.8rem; margin: 1rem 0 0; }
+.office .part h4 { font-size: 1.12rem; margin: 1.1rem 0 .1rem; }
+.rubric { font-family: var(--sans); font-size: .95rem; font-style: italic; color: var(--brown); }
+.appointed { font-size: 1.15em; }
+.when { font-family: var(--sans); font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--olive); margin: .6rem 0 .2rem; }
+.canticle p { margin: 0 0 .45rem; padding-left: 1.2rem; text-indent: -1.2rem; }
+.canticle .colon { color: var(--brass); }
+.canticle .gloria { margin-top: .8rem; }
+.intercessions li { margin: .35rem 0; }
+#office-root.is-sunday .weekday-only, #office-root.is-weekday .sunday-only { display: none; }
+#office-root.short .full-only { display: none !important; }
+#office-root:not(.short) .short-only { display: none; }
+.table-scroll { overflow-x: auto; }
+table.psalter { border-collapse: collapse; font-family: var(--sans); font-size: .92rem; width: 100%; font-variant-numeric: tabular-nums; }
+table.psalter caption { text-align: left; color: var(--ink-soft); padding-bottom: .5rem; }
+table.psalter th, table.psalter td { border-bottom: 1px solid var(--linen); padding: .35rem .5rem; text-align: left; vertical-align: top; }
+
+/* Catechesis */
+.unit + .unit { margin-top: 1.25rem; }
+.session-list { padding-left: 1.3rem; }
+.session-list li { margin: .4rem 0; }
+.session .part-head h2 { margin: 0; font-size: 1.45rem; }
+dl.ages { display: grid; grid-template-columns: 1fr; gap: .15rem 1rem; }
+@media (min-width: 560px) { dl.ages { grid-template-columns: 9rem 1fr; } }
+dl.ages dt { font-family: var(--sans); font-size: .9rem; font-weight: 600; color: var(--brown); padding-top: .2rem; }
+dl.ages dd { margin: 0 0 .5rem; }
+.remember { font-size: 1.3em; font-style: italic; color: var(--forest); border-left: 3px solid var(--brass); padding-left: .9rem; }
+.session-nav { display: flex; justify-content: space-between; gap: .75rem; flex-wrap: wrap; margin: 2rem 0 1rem; }
+.hymn + .hymn { border-top: 1px solid var(--linen); padding-top: .5rem; }
+@media print { .office-bar, .office-tabs, .session-nav { display: none !important; } }
+[hidden] { display: none !important; }
+.date-nav { flex-wrap: nowrap; flex: 1 1 18rem; }
+.date-nav #office-date { flex: 1; text-align: center; font-size: .95rem; }
+@media (max-width: 559px) {
+  .office-controls { width: 100%; justify-content: space-between; }
+  .office-controls .btn.small { padding: .3rem .55rem; font-size: .88rem; }
+  #print-btn { display: none; }
+}

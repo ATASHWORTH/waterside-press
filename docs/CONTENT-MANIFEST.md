@@ -1,30 +1,39 @@
 # Content Manifest
 
-## Library (published records)
+## Daily Office (`/daily-office/`)
 
-| ID / URL | Work | Type | Actions offered |
+Morning and Evening Prayer, adapted from the Book of Common Prayer (1662). One page with Morning/Evening tabs, date navigation, a shorter form, text size, copy, and print.
+
+| Element | Morning | Evening | Source |
 |---|---|---|---|
-| `/library/pilgrims-progress/` | John Bunyan, *The Pilgrim's Progress* (1678/1684) | Full-text PDF, external (CCEL) | Read introduction · Open PDF · View source page |
-| `/library/serious-call/` | William Law, *A Serious Call to a Devout and Holy Life* (1729) | Full-text PDF, external (CCEL) | Read introduction · Open PDF · View source page |
-| `/library/westminster-shorter-catechism/` | Westminster Shorter Catechism — Q. 4, 9, 28, 33, 42, 58, 98 | Excerpt, Waterside transcription | Read introduction · Read online |
-| `/library/apostles-creed/` | The Apostles' Creed (BCP 1662 form) | Complete short text, Waterside transcription | Read introduction · Read online |
+| Opening sentence (weekday / Sunday) | Lam 3:22–23 / Ps 118:24 | Ps 141:2 / Luke 24:29 | ESV |
+| Confession + declaration (full form) | General Confession; 1 John 1:9 | same | BCP 1662; ESV |
+| Versicles and Gloria | ✓ | ✓ | BCP 1662 |
+| Psalms | by day of month | by day of month | BCP 1662 psalter (references + esv.org links) |
+| Lesson | Old Testament in course | New Testament in course | Waterside plan from 1 Jan 2026 (references + links) |
+| Canticle (weekday / Sunday) | Benedictus / Te Deum | Magnificat; Nunc Dimittis (full form) | BCP 1662 translations |
+| Apostles' Creed (full form) | ✓ | ✓ | BCP 1662 |
+| Lord's Prayer, suffrages, collects | Collect for Peace, for Grace; Sunday: Easter Day collect | Collect for Peace, Aid against all Perils | BCP 1662 |
+| Intercessions; prayer for children | ✓ | ✓ | Waterside originals |
+| Hymn | Ken, morning hymn st. 1 + doxology | Ken, evening hymn + doxology | Public domain |
+| Grace / blessing | 2 Cor 13:14 | Num 6:24–26 | ESV |
 
-Each record carries title, author, original date, tradition, exact edition, publisher, language, type, repository, PDF URL and check date, rights statement, audience, categories, and tags.
+## Family Catechesis (`/family-catechesis/`)
 
-## Daily Liturgy (7 complete days)
+Nine-step sessions (Gather, Recite, Today's question, Read, Explain, Discuss by age, Remember, Practice, Pray).
 
-| Day | Theme | Reading (ESV) | Song | WSC | Collect (BCP 1662) | Blessing (ESV) |
-|---|---|---|---|---|---|---|
-| Sun | Resurrection, Lord's Day | Luke 24:1–6a | Ps 100 (Scottish Psalter 1650) | Q. 28 | Easter Day | Num 6:24–26 |
-| Mon | Creation, vocation | Gen 1:1–5 | Watts, *Praise for Creation* (1715) | Q. 9 | Third collect, for Grace | Rom 15:13 |
-| Tue | Commandments | Deut 6:4–7 | Ps 1 (1650) | Q. 42 | Collect for Purity | 2 Thess 3:16 |
-| Wed | The Creed | John 1:1–5, 14 + Apostles' Creed | Watts, Ps 90 (1719) | Q. 4 | Trinity Sunday | 2 Cor 13:14 |
-| Thu | Prayer, mercy | Luke 11:1–4 | Ps 23 (1650) | Q. 98 | Prayer of St. Chrysostom | Phil 4:7 |
-| Fri | Passion, repentance | Isa 53:4–6 | Watts, *When I Survey* (1707/09) | Q. 33 | Good Friday (first) | Heb 13:20–21 |
-| Sat | Rest, preparation | Matt 11:28–30 | Ken, Evening Hymn + Doxology | Q. 58 | Aid against all Perils | Jude 24–25 |
+| Unit | Session | WSC | Reading (ESV) |
+|---|---|---|---|
+| First Questions | What we were made for | 1 | 1 Cor 10:31; Ps 73:25–26 |
+| | How God speaks to us | 2 | 2 Tim 3:16–17 |
+| | What the Bible teaches | 3 | John 20:31 |
+| | Who God is | 4 | John 4:24 |
+| | One God in three persons | 5–6 | Deut 6:4; Matt 28:19 |
+| | God the Creator, and us | 9–10 | Gen 1:27; Heb 11:3 |
+| The Lord's Day | The first day of the week | 59 | Acts 20:7a; Rev 1:10a |
 
-Every day also includes the BCP opening versicles, Gloria Patri, the Lord's Prayer, a labelled Waterside original prayer for children, a parents' note, and a children's discussion question.
+Gather prayer: BCP 1662 Collect for Advent 2. Closing prayers: Waterside originals (session 5 uses the Gloria Patri).
 
-## Pages
+## Other pages
 
-Home · Daily Liturgy · Library (+4 detail pages) · Family Worship · Music · Learning · About · Editorial Principles · Copyright and Permissions · Privacy · Accessibility · Letter to the Head of the Household (**draft**) · 404. Plus `robots.txt`, and `sitemap.xml` when built with `SITE_URL`.
+Home · Library (+4 records: Pilgrim's Progress, A Serious Call — external PDFs; WSC selected questions, Apostles' Creed — transcriptions) · The Lord's Day · Music (8 psalm and hymn texts) · Learning · About · Editorial Principles · Copyright · Privacy · Accessibility · Letter to the Head of the Household (**draft**) · 404. `/daily-liturgy/` and `/family-worship/` redirect (301) to the new pages on Netlify.
