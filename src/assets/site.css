@@ -18,6 +18,7 @@
   --olive-ink: #4d625e;       /* decoration colour for text */
   --brass: #9aaeae;           /* ornament, rules, markers — never small text */
   --brass-ink: #3f5f66;       /* ornament colour for text */
+  --logo: #9a7b2e;            /* Waterside gold: the mark only */
   --stone: #cdd6d1;           /* rules and borders */
   --rubric: #a3271c;          /* prayer-book red: instructions only */
   --link: #1f5560;
@@ -46,7 +47,7 @@
 /* Light is the default for every visitor. Dark applies only when chosen with the header switch. */
 :root[data-theme="dark"] {
   --forest: #7fb8c0; --forest-2: #9dcbd2; --parchment: #111816; --vellum: #18211f; --linen: #1b2523;
-  --ink: #e3e8e4; --ink-soft: #9aa8a3; --olive: #6f8a86; --olive-ink: #bfd0cc; --brass: #5d7a7d; --brass-ink: #a9c4c6;
+  --ink: #e3e8e4; --ink-soft: #9aa8a3; --olive: #6f8a86; --olive-ink: #bfd0cc; --brass: #5d7a7d; --brass-ink: #a9c4c6; --logo: #c9a85a;
   --stone: #2c3936; --rubric: #e07a6c; --link: #8cc3ca; --focus: #f0b04a; --on-forest: #111816;
   color-scheme: dark;
 }
@@ -90,7 +91,7 @@ main { display: block; padding-bottom: var(--s8); }
 .site-header { border-bottom: 1px solid var(--stone); background: var(--parchment); position: relative; z-index: 5; }
 .header-inner { display: flex; align-items: center; gap: var(--s4); min-height: 4.5rem; }
 .brand { display: inline-flex; align-items: center; gap: .65rem; color: var(--ink); text-decoration: none; margin-right: auto; }
-.brand svg { width: 2.4rem; height: 2.4rem; color: var(--forest); flex: none; }
+.brand .mark { width: 3rem; height: 3rem; flex: none; }
 .brand-name { font-family: var(--display); font-size: 1.45rem; font-weight: 400; font-synthesis: none; font-variant: small-caps; letter-spacing: .06em; line-height: 1; }
 .nav-toggle { font-family: var(--sans); font-size: var(--fs-ui); background: none; border: 1px solid var(--stone); color: var(--ink); min-height: 44px; padding: 0 var(--s4); border-radius: 3px; cursor: pointer; }
 .site-nav { font-family: var(--sans); }
@@ -147,9 +148,12 @@ label { font-family: var(--sans); font-size: .9rem; color: var(--ink-soft); }
 .lede { font-size: var(--fs-lead); line-height: 1.5; color: var(--ink-soft); }
 .meta { font-family: var(--sans); font-size: var(--fs-meta); color: var(--ink-soft); line-height: 1.5; }
 .rule { border: 0; border-top: 1px solid var(--stone); margin: var(--s7) 0; }
+.mark { display: inline-block; vertical-align: middle; background-color: var(--logo);
+  -webkit-mask: url(logo.svg) center / contain no-repeat; mask: url(logo.svg) center / contain no-repeat; }
+@media (forced-colors: active) { .mark { background-color: CanvasText; forced-color-adjust: none; } }
 .rule-orn { display: flex; align-items: center; gap: var(--s3); color: var(--brass); margin: var(--s7) 0; }
 .rule-orn::before, .rule-orn::after { content: ""; flex: 1; height: 1px; background: var(--stone); }
-.rule-orn svg { width: 1.5rem; height: 1.5rem; }
+.rule-orn .mark { width: 2.25rem; height: 2.25rem; }
 .fleuron { text-align: center; color: var(--brass); font-size: 1.1rem; letter-spacing: .6em; margin: var(--s6) 0; }
 .page-head { padding-block: var(--s7) var(--s5); border-bottom: 1px solid var(--stone); margin-bottom: var(--s6); }
 .page-head h1 { margin-bottom: var(--s3); }
@@ -180,8 +184,10 @@ label { font-family: var(--sans); font-size: .9rem; color: var(--ink-soft); }
 .hero h1 { font-size: clamp(2.6rem, 6.4vw, 4.4rem); font-weight: 500; }
 .hero h1 em { color: var(--forest); }
 .hero .lede { max-width: 30rem; }
-.hero-art { color: var(--forest); width: 100%; max-width: 21rem; justify-self: center; }
-.hero-art svg { width: 100%; height: auto; display: block; }
+.hero-art { width: 100%; max-width: 21rem; justify-self: center; }
+.bookplate { margin: 0; padding: var(--s5) var(--s5) var(--s4); border: 1.5px solid var(--logo); outline: 1px solid var(--logo); outline-offset: -8px; text-align: center; }
+.bookplate .mark { width: 100%; height: auto; aspect-ratio: 1; }
+.bookplate figcaption { margin-top: var(--s2); font-family: var(--display); font-variant: small-caps; letter-spacing: .25em; font-size: .95rem; color: var(--brass-ink); }
 @media (max-width: 859px) { .hero-art { max-width: 11rem; } }
 .offerings { display: grid; gap: var(--s6); border-top: 1px solid var(--stone); padding-top: var(--s6); }
 @media (min-width: 760px) { .offerings { grid-template-columns: 1fr 1fr; gap: 0; } .offerings > * + * { border-left: 1px solid var(--stone); padding-left: var(--s6); } .offerings > :first-child { padding-right: var(--s6); } }
@@ -363,7 +369,8 @@ dl.ages dd { margin: 0; padding: var(--s1) 0 var(--s3); border-bottom: 1px solid
 .site-footer li { margin: 0 0 var(--s2); }
 .site-footer a { color: var(--ink); text-decoration: none; }
 .site-footer a:hover { text-decoration: underline; text-decoration-color: var(--brass); }
-.footer-motif { color: var(--forest); width: 3rem; height: 3rem; display: block; margin-bottom: var(--s3); }
+.footer-motif { display: block; margin-bottom: var(--s3); }
+.footer-motif .mark { width: 4rem; height: 4rem; }
 .site-footer .verse { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--ink); max-width: 22rem; }
 .footer-base { margin-top: var(--s6); padding-top: var(--s4); border-top: 1px solid var(--stone); display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s3); color: var(--ink-soft); font-size: .85rem; }
 

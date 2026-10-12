@@ -52,6 +52,6 @@ Direction (October 2026): the Family Rule look. Cool paper, river-blue imprint, 
 - **Liturgical text** has five treatments: words to pray (serif), rubrics (red italic), Leader/All responses (red small-caps labels, bold responses), notes (collapsed, quiet), and reading directions (brass-ruled "Read today" block).
 - **Contrast:** every text colour pair is at least 4.5:1 in both themes; form-control borders at least 3:1.
 - **Breakpoints:** full navigation from 1080px; menu button below. Layouts tested at 375, 768, and 1280px.
-- **Emblem:** a tree beside streams of water (Psalm 1:3), inline SVG, one colour, legible at favicon size. The home page uses a larger bookplate-style engraving of the same motif.
+- **Emblem:** the Waterside mark — a crowned fruit tree planted by streams of water (Psalm 1:3), traced from the original artwork into one-colour vector at `src/assets/logo.svg`. Pages draw it through a CSS mask (`.mark`), so it takes the `--logo` gold in light mode and a lighter gold in dark mode, and every page shares one cached file. The same file is the favicon; `apple-touch-icon.png` is the home-screen icon. The home page sets the mark in a double-ruled bookplate.
 
 Date policy: the Daily Office uses the visitor's device-local date. Psalms follow the 1662 day-of-month psalter (the 30th day repeats on the 31st). Lessons follow a continuous-reading plan counted from 1 January 2026. Without JavaScript the page shows both weekday and Sunday forms and the full psalter table.

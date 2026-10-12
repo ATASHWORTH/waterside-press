@@ -19,41 +19,13 @@ const SITE = 'Waterside Press';
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const attr = esc;
 
-// ── Emblem: a tree planted by streams of water (Psalm 1:3). Monochrome, legible at 16px. ──
-export const emblem = (title = '') => `<svg viewBox="0 0 64 64" role="${title ? 'img' : 'presentation'}" ${title ? `aria-label="${attr(title)}"` : 'aria-hidden="true"'} fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-<circle cx="32" cy="32" r="30" stroke-width="1.5"/><circle cx="32" cy="32" r="27" stroke-width=".8"/>
-<path d="M32 9.5c-8.6 0-14 5.8-14 12.4 0 5.6 4.3 9.4 9.4 9.9h9.2c5.1-.5 9.4-4.3 9.4-9.9 0-6.6-5.4-12.4-14-12.4z" stroke-width="1.8"/>
-<path d="M32 44V25M32 34l-5.5-5.5M32 30l5-5" stroke-width="2"/>
-<path d="M32 44c-3 0-6 1-8.5 2.6M32 44c3 0 6 1 8.5 2.6M32 44v3" stroke-width="1.6"/>
-<path d="M13 50.5c3.2-1.8 6.3-1.8 9.5 0s6.3 1.8 9.5 0 6.3-1.8 9.5 0 6.3 1.8 9.5 0" stroke-width="1.6"/>
-<path d="M18 55.5c2.3-1.3 4.7-1.3 7 0s4.7 1.3 7 0 4.7-1.3 7 0 4.7 1.3 7 0" stroke-width="1.3"/>
-</svg>`;
+// ── Emblem: the Waterside mark — a crowned fruit tree planted by streams of water (Psalm 1:3).
+// Drawn from src/assets/logo.svg through a CSS mask, so it takes the theme colour (--logo)
+// and every page shares one cached file.
+export const emblem = (title = '') => `<span class="mark" ${title ? `role="img" aria-label="${attr(title)}"` : 'aria-hidden="true"'}></span>`;
 
-// Bookplate engraving for the home page: tree, roots reaching to the stream, river banks.
-const heroArt = `<svg viewBox="0 0 300 380" role="img" aria-label="Engraving-style drawing of a tree planted beside a stream of water, after Psalm 1:3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-<rect x="6" y="6" width="288" height="368" rx="2" stroke-width="1.4"/>
-<rect x="13" y="13" width="274" height="354" rx="1" stroke-width=".7"/>
-<g stroke-width="1.5">
-  <path d="M150 62c-24 0-41 13-46 30-17 2-28 15-28 31 0 13 8 24 21 28-3 15 9 29 26 29 6 0 11-2 15-5 4 3 8 4 12 4s8-1 12-4c4 3 9 5 15 5 17 0 29-14 26-29 13-4 21-15 21-28 0-16-11-29-28-31-5-17-22-30-46-30z"/>
-  <path d="M150 260V150M150 203l-27-24M150 186l24-25M150 226l21-15M139 172l-14 4M163 148l10-9"/>
-  <path d="M146 260c-12 1-24 6-33 13M154 260c12 1 24 6 33 13M150 260v18M141 262c-5 7-8 14-9 21M159 262c5 7 8 14 9 21"/>
-</g>
-<g stroke-width=".7" opacity=".85">
-  <path d="M108 98c8-9 18-15 30-18M122 110c6-6 14-10 22-12M192 98c-8-9-18-15-30-18M178 110c-6-6-14-10-22-12"/>
-  <path d="M88 130c3 8 9 14 17 17M212 130c-3 8-9 14-17 17M110 160c4 5 10 8 16 9M190 160c-4 5-10 8-16 9"/>
-  <path d="M146 214v40M154 214v40M147 170v30M153 168v30"/>
-</g>
-<g stroke-width="1.2"><circle cx="118" cy="120" r="3.4"/><circle cx="186" cy="114" r="3.4"/><circle cx="168" cy="152" r="3.4"/><circle cx="134" cy="92" r="3.4"/><circle cx="104" cy="146" r="3.4"/><circle cx="198" cy="146" r="3.4"/></g>
-<g stroke-width="1.2">
-  <path d="M24 290c18-6 40-8 62-4M214 286c22-4 44-2 62 4"/>
-  <path d="M24 302c22-8 44-8 66 0s44 8 66 0 44-8 66 0 32 6 54 2"/>
-  <path d="M30 318c20-7 40-7 60 0s40 7 60 0 40-7 60 0 40 7 60 0"/>
-  <path d="M48 333c17-6 34-6 51 0s34 6 51 0 34-6 51 0 34 6 51 0"/>
-  <path d="M78 347c12-4 24-4 36 0s24 4 36 0 24-4 36 0 24 4 36 0"/>
-</g>
-<path d="M44 286l-6-22M52 285l2-24M60 286l8-20M240 286l6-22M248 286l-2-24" stroke-width=".9"/>
-<text x="150" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="11" letter-spacing="3" fill="currentColor" stroke="none">PSALM I · 3</text>
-</svg>`;
+// Bookplate for the home page: the mark inside a double-ruled frame.
+const heroArt = `<figure class="bookplate">${emblem('The Waterside Press mark: a crowned fruit tree planted beside streams of water, after Psalm 1:3')}<figcaption>Psalm I · 3</figcaption></figure>`;
 
 // A plain five-line staff, used as the Music page's rule. Decorative; it notates no tune.
 const staffRule = `<svg class="staff" viewBox="0 0 600 30" preserveAspectRatio="none" aria-hidden="true" stroke="currentColor" stroke-width="1"><path d="M0 3h600M0 9h600M0 15h600M0 21h600M0 27h600"/></svg>`;
@@ -86,7 +58,8 @@ ${canonical ? `<link rel="canonical" href="${attr(canonical)}">\n<meta property=
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#eef1ee">
 <script>try{if(localStorage.getItem("wp-theme")==="dark"){document.documentElement.setAttribute("data-theme","dark");document.querySelector('meta[name="theme-color"]').content="#111816"}}catch(e){}</script>
-<link rel="icon" href="${p}assets/emblem.svg" type="image/svg+xml">
+<link rel="icon" href="${p}assets/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="${p}assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Spectral:ital,wght@0,400;0,600;1,400&family=Alegreya+Sans:wght@400;500;700&family=Alegreya+Sans+SC:wght@500;700&display=swap">
@@ -617,7 +590,6 @@ function buildPages() {
 rmSync(OUT, { recursive: true, force: true });
 mkdirSync(join(OUT, 'assets'), { recursive: true });
 for (const f of readdirSync(join(ROOT, 'src/assets'))) copyFileSync(join(ROOT, 'src/assets', f), join(OUT, 'assets', f));
-writeFileSync(join(OUT, 'assets/emblem.svg'), emblem().replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" ').replace(/currentColor/g, '#233d32'));
 buildPages();
 buildOffice();
 buildCatechesis();
