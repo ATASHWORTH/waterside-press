@@ -5,8 +5,8 @@ Not published on the site as available. Listed on the Library page only under "B
 | Work | Why withheld | What is needed |
 |---|---|---|
 | ~~Thomas à Kempis, *The Imitation of Christ* (CCEL PDF)~~ Resolved 2026-10-11: listed via Benham translation (Gutenberg #1653). | The CCEL file is the Croft & Bolton translation, Bruce Publishing, **1940**. US copyright status of a 1940 publication depends on renewal records; not checked. | Search the Copyright Office renewal records, or choose a pre-1931 translation (e.g. Benham or Whyford) and verify a file. |
-| Augustine, *Confessions* | CCEL PDF could not be fetched (rate limited, HTTP 429). Edition/translator unconfirmed. | Fetch and confirm translator (prefer Pusey, 1838) and completeness. |
-| Athanasius, *On the Incarnation* | CCEL PDF could not be fetched (rate limited). | As above; confirm translation (e.g. Robertson, NPNF 2nd ser. vol. 4, 1892). |
+| ~~Augustine, *Confessions*~~ Resolved 2026-10-12: listed via New Advent (Pilkington, NPNF1 vol. 1) and the 1886 NPNF scan. | CCEL PDF could not be fetched (rate limited, HTTP 429). Edition/translator unconfirmed. | Fetch and confirm translator (prefer Pusey, 1838) and completeness. |
+| ~~Athanasius, *On the Incarnation*~~ Resolved 2026-10-12: listed in Robertson's NPNF translation (CCEL PDF, scan, New Advent). | CCEL PDF could not be fetched (rate limited). | As above; confirm translation (e.g. Robertson, NPNF 2nd ser. vol. 4, 1892). |
 | Schaff, *Creeds of Christendom* vol. 3 (Heidelberg, Luther's Small Catechism, WSC) | Fetch failed. | Confirm file and edition (1877/1882 printings). |
 | Book of Common Prayer (1662) | Now listed with a link to the Baskerville 1762 printing (justus.anglican.org); a downloadable complete facsimile is still not checked. | Identify a scan (e.g. Baskerville 1762 printing or a Cambridge standard edition) and verify. |
 | Scottish Metrical Psalter (1650), Bay Psalm Book (1640), Tate & Brady | Now listed with read-online and scan links (see SOURCES-AND-RIGHTS.md); direct PDF files still not checked. | Locate facsimiles with direct PDF links. |
@@ -15,3 +15,5 @@ Not published on the site as available. Listed on the Library page only under "B
 | "Letter to the Head of the Household" — approved text | No approved version supplied. A clearly marked **draft** is published for review. | Editor to approve or supply the final text. |
 | Audio, part tracks, sheet music | None exist yet. | Record or license; check composition/arrangement/recording rights separately. |
 | Contact address | None configured. | Set up an address and add it to the Copyright page. |
+| Sayings of the Desert Fathers (Budge, *The Paradise of the Holy Fathers*, 1907) | Archive.org rate-limited before an item could be confirmed. | Find and confirm a scan; consider a record. |
+| Remaining ANF/NPNF PDFs and scans | See SOURCES-AND-RIGHTS.md, 2026-10-12 section. | Open each and add to the record. |

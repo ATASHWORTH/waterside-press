@@ -160,6 +160,8 @@ label { font-family: var(--sans); font-size: .9rem; color: var(--ink-soft); }
 .page-head .lede { max-width: var(--measure); margin-bottom: 0; }
 .notice { font-family: var(--sans); font-size: .95rem; background: var(--linen); border-left: 3px solid var(--brass); padding: var(--s3) var(--s4); }
 .notice.draft { border-left-color: var(--rubric); }
+.frame-note { max-width: 46rem; margin-top: var(--s5); }
+.frame-note p { margin: 0; }
 .tag { display: inline; font-family: var(--sans); font-size: .82rem; font-variant: all-small-caps; letter-spacing: .05em; color: var(--ink-soft); }
 .tag + .tag::before { content: "· "; }
 .tag.soon { color: var(--olive-ink); font-style: italic; font-variant: normal; letter-spacing: 0; }

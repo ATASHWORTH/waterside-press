@@ -483,7 +483,8 @@ function buildLibrary() {
 <div class="wrap page-head">
   <p class="kicker">The Library</p>
   <h1>Library</h1>
-  <p class="lede">Scripture, the catechisms, the Prayer Book, the psalters, and the Puritan divines, each linked to a place you can read it free online. Every record states the edition linked, what we have checked, and its rights status. <a href="${href('editorial-principles/')}">How we check sources</a>.</p>
+  <p class="lede">Scripture, the catechisms, the Prayer Book, the psalters, the Church Fathers, and the Puritan divines, each linked to a place you can read it free online. Every record states the edition linked, what we have checked, and its rights status. <a href="${href('editorial-principles/')}">How we check sources</a>.</p>
+  <aside class="notice frame-note" aria-label="A note on the authors in this library"><p><strong>A note on the authors in this library.</strong> Though we are committed to the Reformed tradition, this library includes works and authors that are not within the typical frame of Reformed Christendom: among them the Church Fathers, the desert monks, and medieval writers such as Thomas Aquinas and Thomas à Kempis. We believe there is value in knowing and referencing certain portions or aspects of their writings, sometimes for their outstanding veracity, sometimes for their specificity on a particular issue, and sometimes for their historical value. Including a work is not an endorsement of everything in it. Where an author departs from Reformed teaching on a point that matters, the introduction says so.</p></aside>
 </div>
 <div class="wrap grid main-aside">
   <div>
@@ -516,14 +517,17 @@ function buildLibrary() {
     ${FORMAT_LEGEND}
     <h2 style="font-size:1.5rem">Being prepared</h2>
     <p class="meta">Listed once an edition and its rights status have been checked.</p>
-    <ul class="soon-list">${['Augustine, Confessions', 'Athanasius, On the Incarnation', 'Thomas Boston, Human Nature in Its Fourfold State', 'The complete Westminster Shorter Catechism, transcribed here'].map((t) => `<li><span>${esc(t)}</span><span class="tag soon">Coming soon</span></li>`).join('')}</ul>
+    <ul class="soon-list">${['The Sayings of the Desert Fathers (Budge, 1907)', 'Page scans for City of God, Basil, Cyril, Cassian, and Gregory the Great', 'Aquinas, Summa Theologica: page scans of the 1920 edition', 'Thomas Boston, Human Nature in Its Fourfold State', 'The complete Westminster Shorter Catechism, transcribed here'].map((t) => `<li><span>${esc(t)}</span><span class="tag soon">Coming soon</span></li>`).join('')}</ul>
   </aside>
 </div>`,
   });
 
   for (const w of lib.works) {
     const rightsText = { 'pd-us': 'Public domain in the United States (published before 1931)', 'pd-historic': 'Public domain historic text; Waterside Press transcription', 'pd-text': 'Public domain work; online edition presented by its host', 'in-copyright': 'In copyright; free to read online from the rights holder' }[w.rights];
-    const related = lib.works.filter((x) => x !== w && x.categories.some((c) => w.categories.includes(c)));
+    // Up to eight: same author first, then same period, then most shared categories.
+    const score = (x) => (x.authorKey === w.authorKey ? 100 : 0) + (x.periodKey === w.periodKey ? 10 : 0) + x.categories.filter((c) => w.categories.includes(c)).length;
+    const related = lib.works.filter((x) => x !== w && (x.authorKey === w.authorKey || x.categories.some((c) => w.categories.includes(c))))
+      .map((x, i) => [score(x), i, x]).sort((a, b) => b[0] - a[0] || a[1] - b[1]).slice(0, 8).map(([, , x]) => x);
     const rowsFor = (href) => [
       ['Author', esc(w.author)],
       ['First published', esc(w.original)],
@@ -535,7 +539,7 @@ function buildLibrary() {
       ['Language', esc(w.language)],
       ['Resource type', esc(w.type)],
       w.repository && ['Source', `<a class="ext" href="${attr(w.sourcePage)}" rel="noopener">${esc(w.repository)}</a>`],
-      onlineOf(w).length && ['Read online', onlineOf(w).map((o) => `<a class="ext" href="${attr(o.url)}" rel="noopener">${esc(linkLabel(o, o.host))}</a>`).join('<br>') + '<br><span class="meta">Link opened and work confirmed 2026-10-11. Edition collation and page-by-page completeness not checked unless stated above.</span>'],
+      onlineOf(w).length && ['Read online', onlineOf(w).map((o) => `<a class="ext" href="${attr(o.url)}" rel="noopener">${esc(linkLabel(o, o.host))}</a>`).join('<br>') + `<br><span class="meta">Link opened and work confirmed ${esc(w.checked || '2026-10-11')}.` + ' Edition collation and page-by-page completeness not checked unless stated above.</span>'],
       modernOf(w).length && ['Modern English', modernOf(w).map((m) => `<a class="ext" href="${attr(m.url)}" rel="noopener">${esc(linkLabel(m, 'Updated Works'))}</a>`).join('<br>') + '<br><span class="meta">Free to read with a free Updated Works account.</span>'],
       hasPdf(w) && ['PDF', `<a class="ext" href="${attr(w.pdf.url)}" rel="noopener">${esc(w.pdf.url.replace(/^https:\/\//, ''))}</a><br><span class="meta">Link and title page checked ${esc(w.pdf.checked)}. Completeness of every page not yet checked. File size not recorded.</span>`],
       ['Rights', `${esc(rightsText)}<br><span class="meta">${esc(w.rightsNote)}</span>`],

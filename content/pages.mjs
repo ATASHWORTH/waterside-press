@@ -205,6 +205,7 @@ export const pages = [
     <li><a href="#verification">Source verification</a></li>
     <li><a href="#copyright">Copyright and permissions</a></li>
     <li><a href="#translations">Modern translations and editions</a></li>
+    <li><a href="#outside-the-reformed-tradition">Works from outside the Reformed tradition</a></li>
     <li><a href="#corrections">Corrections and uncertainty</a></li>
     <li><a href="#labels">Labels used on this site</a></li>
   </ol></nav>
@@ -229,6 +230,8 @@ export const pages = [
   <p>Scripture is quoted from the ESV within Crossway’s published limits; longer readings are given as references with links. Historic texts are public domain, with the Book of Common Prayer’s Crown rights in the United Kingdom noted. Full details are on the <a href="${href('copyright/')}">Copyright and Permissions</a> page.</p>
   <h2 id="translations">Modern translations and editions</h2>
   <p>An ancient or historic work does not make every modern edition free to reuse. Modern translations, introductions, notes, typesetting, scans, arrangements, and recordings may each carry their own copyright. We record the translator and edition of every work, and we withhold an edition whose rights we cannot establish, as with a 1940 translation of <em>The Imitation of Christ</em>.</p>
+  <h2 id="outside-the-reformed-tradition">Works from outside the Reformed tradition</h2>
+  <p>Though we are committed to the Reformed tradition, this library includes works and authors that are not within the typical frame of Reformed Christendom: among them the Church Fathers, the desert monks, and medieval writers such as Thomas Aquinas and Thomas à Kempis. We believe there is value in knowing and referencing certain portions or aspects of their writings, sometimes for their outstanding veracity, sometimes for their specificity on a particular issue, and sometimes for their historical value. Including a work is not an endorsement of everything in it. Where an author departs from Reformed teaching on a point that matters, the introduction says so.</p>
   <h2 id="corrections">Corrections and uncertainty</h2>
   <p>Where a fact is uncertain we say so rather than choose a likely answer. Broken links and errors are corrected when found. Texts that have not yet been compared word for word against their printed sources are recorded as such in the project’s source manifest. A correspondence address for reporting errors has not yet been set up.</p>
   <h2 id="labels">Labels used on this site</h2>

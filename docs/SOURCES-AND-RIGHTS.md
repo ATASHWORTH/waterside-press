@@ -47,3 +47,19 @@ Checked 2026-10-11. "Link checked" means the URL was fetched, returned a PDF, an
 | updatedworks.com | Modern-English editions (36 links) | Updated Works' own editions; free to read with a free account; recommended outside resource, link only |
 
 **Imitation of Christ** is now listed via Benham's pre-1931 translation, which resolves the WITHHELD.md concern about the 1940 Croft & Bolton CCEL file.
+
+## Church Fathers, desert writers, and Aquinas (added 2026-10-12)
+
+37 records. Every URL below was opened on 2026-10-12.
+
+| Source | What was checked | Used for |
+|---|---|---|
+| newadvent.org/fathers/NNNN.htm | Each URL taken from New Advent's own index (newadvent.org/fathers/) and matched to work and author. Source edition read on the page for *Confessions* (Pilkington, NPNF1 vol. 1, 1887) and *City of God* (Dods, NPNF1 vol. 2, 1887). | Transcriptions of every patristic record |
+| newadvent.org/summa/ | Page states the 1920 second revised edition, English Dominican translation, all five parts | Aquinas |
+| gutenberg.org/ebooks/17611 | Summa Part I, "Complete American Edition", PD in USA per Gutenberg | Aquinas (Part I) |
+| ccel.org PDFs: anf01, anf02, anf03, npnf102, npnf204 | File opened, title page read (series, volume, editors). Each is the whole printed volume. | PDF link on records drawn from those volumes |
+| archive.org scans: antenicenefather01robe (ANF 1, Scribner 1913), antenicenefather02/03/04/05/07robeuoft (ANF, Buffalo 1885–86), selectlibraryofn01/03/09/10/13auguuoft (NPNF1, New York 1886–90), selectlibraryofn04schauoft (NPNF2 vol. 4, 1892) | Item metadata: title, volume, publisher, date | Page-scan links |
+
+Not yet checked (rate-limited on 2026-10-12), so no link is given: CCEL PDFs for ANF 4, 5, 7 and the other NPNF volumes; page scans for NPNF1 vols. 2, 7, 8 and NPNF2 vols. 1, 7, 8, 11, 12; a scan of the English Dominican *Summa*; Budge's *Paradise of the Holy Fathers* (1907), for the Sayings of the Desert Fathers.
+
+Translations: all ANF/NPNF translations were published 1885–1900 (pd-us). Athanasius, *On the Incarnation* is linked in Robertson's 1892 translation; the 1944 C.S.M.V. translation is in copyright and is not linked.
