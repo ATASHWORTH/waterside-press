@@ -94,6 +94,7 @@ ${body(href, p)}
         <p class="meta">Psalm 1:3 (ESV)</p>
       </div>
       <nav aria-labelledby="f-pray"><h2 id="f-pray">Pray and learn</h2><ul>
+        <li><a href="${href('letter-to-the-head-of-the-household/')}">Letter to the Head of the Household</a></li>
         <li><a href="${href('family-rule/')}">Family Rule <span class="tag">Beta</span></a></li>
         <li><a href="${href('daily-office/')}">Daily Office</a></li>
         <li><a href="${href('family-catechesis/')}">Family Catechesis</a></li>

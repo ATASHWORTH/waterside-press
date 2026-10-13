@@ -23,6 +23,13 @@ export const pages = [
     <div class="hero-art">${heroArt}</div>
   </section>
 
+  <section class="letter-band" aria-labelledby="h-letter">
+    <p class="kicker">An open letter</p>
+    <h2 id="h-letter">To the head of the household</h2>
+    <p>From the Shema to the apostles, God charges husbands and fathers to lead their homes before his throne. Waterside exists to equip you for it.</p>
+    <p><a class="arrow" href="${href('letter-to-the-head-of-the-household/')}">Read the letter</a></p>
+  </section>
+
   <div class="offerings">
     <section class="offering" aria-labelledby="h-office">
       <p class="kicker">Daily Office · for prayer</p>
@@ -177,7 +184,9 @@ export const pages = [
 <div class="wrap page-head"><p class="kicker">About</p><h1>About Waterside Press</h1>
 <p class="lede">Waterside Press equips Christian households to worship, learn, sing, and grow in the faith through the riches of historic Christian texts, liturgy, catechesis, music, and devotional practice.</p></div>
 <div class="wrap prose-center">
-  <h2 style="margin-top:0">Why “Waterside”</h2>
+  <h2 style="margin-top:0">Why we exist</h2>
+  <p>God has charged husbands and fathers to lead their households in his worship: to wash their wives in the Word and to raise their children in the nurture and admonition of the Lord. It is a high calling and a commanded one. Waterside Press exists to stand beside men and equip them to fulfil it. Read <a href="${href('letter-to-the-head-of-the-household/')}">A Letter to the Head of the Household</a>.</p>
+  <h2>Why “Waterside”</h2>
   <p>The name comes from Psalm 1: the one who delights in the law of the Lord “is like a tree planted by streams of water that yields its fruit in its season” (Psalm 1:3, ESV). The image is of rootedness and slow, steady growth, the kind of formation that happens in a household over years.</p>
   <h2>Theological orientation</h2>
   <p>Waterside Press draws from the historic Western Christian tradition. Its theological instincts are Reformed: it holds to the authority and sufficiency of Scripture, salvation by grace alone through faith in Christ, the covenant faithfulness of God across generations, and the ordinary means by which faith is nourished: the Word, the sacraments, and prayer.</p>
@@ -320,26 +329,43 @@ export const pages = [
 </div>`,
   },
 
-  // ───────── LETTER (DRAFT) ─────────
+  // ───────── LETTER TO THE HEAD OF THE HOUSEHOLD ─────────
   {
-    path: 'letter-to-the-head-of-the-household/', title: 'Letter to the Head of the Household (Draft)',
-    description: 'A draft letter on household worship as ordinary Christian discipleship, grounded in Deuteronomy 6:4–7. Under editorial review.',
+    path: 'letter-to-the-head-of-the-household/', title: 'A Letter to the Head of the Household',
+    description: 'An open letter to husbands and fathers on the charge God gives them, from the Shema to the New Testament, and why Waterside Press exists to equip them for it.',
     body: ({ href }) => `
-<div class="wrap page-head"><p class="kicker">Draft for editorial review</p><h1>A Letter to the Head of the Household</h1>
-<p class="notice draft prose">This is a <strong>working draft</strong> prepared for the editors. No approved version of this letter has been supplied yet. When the approved text is available it will replace this draft.</p></div>
+<div class="wrap page-head"><p class="kicker">An open letter</p><h1>A Letter to the Head of the Household</h1>
+<p class="lede">On the charge God has laid on every husband and father, and why Waterside Press exists to stand beside you in it.</p></div>
 <div class="wrap prose-center">
-  <p>Dear friend,</p>
-  <p>You have been given charge of a household, and with it a quiet and serious work. Long before there were Sunday schools or Christian publishers, God told his people where the faith would be handed on:</p>
+  <p>Dear brother,</p>
+  <p>You did not become the head of your household on the day you decided to take up the title. You are its head by the nature of your manhood, because God has ordered it so: “the head of every man is Christ, the head of a wife is her husband, and the head of Christ is God” (1 Corinthians 11:3, ESV). Headship is not a prize you claim or a role your family votes you into. It is given with your manhood, and it comes with a charge. The question before you is not whether you are the head, but whether you will be a faithful one.</p>
+
+  <h2>The charge given to Israel</h2>
+  <p>Long before there were Sunday schools or Christian publishers, God told his people where the faith would be handed on:</p>
   <blockquote><p>“Hear, O Israel: The <span class="sc">Lord</span> our God, the <span class="sc">Lord</span> is one. You shall love the <span class="sc">Lord</span> your God with all your heart and with all your soul and with all your might. And these words that I command you today shall be on your heart. You shall teach them diligently to your children, and shall talk of them when you sit in your house, and when you walk by the way, and when you lie down, and when you rise.”<br><span class="meta">Deuteronomy 6:4–7 (ESV)</span></p></blockquote>
-  <p>Notice the order. The words are first to be on <em>your</em> heart. Only then are they to be taught. A household learns to love God less from what it is told than from what it sees loved.</p>
-  <p>Notice also the places: sitting in the house, walking by the way, lying down, rising up. This is not a programme for special occasions. It is the ordinary rhythm of a home, gently shaped around the Word of God.</p>
-  <p>The apostle Paul describes the same life in the language of the church: “Let the word of Christ dwell in you richly, teaching and admonishing one another in all wisdom, singing psalms and hymns and spiritual songs, with thankfulness in your hearts to God” (Colossians 3:16, ESV). And to fathers he gives a charge and a caution together: “Fathers, do not provoke your children to anger, but bring them up in the discipline and instruction of the Lord” (Ephesians 6:4, ESV). The instruction is to be the Lord’s, and it is to be given without harshness.</p>
-  <p>Family worship, then, is nothing exotic. It is reading the Scriptures together, praying together, singing together, and teaching the faith — a few minutes, most days, for years. You do not need training or a fine voice. You need a Bible, a little time, and the willingness to begin again when you miss a day.</p>
-  <p>Take courage from the Lord’s promise: “For where two or three are gathered in my name, there am I among them” (Matthew 18:20, ESV). Christ spoke those words of his church, and a household at prayer is not the whole church. But it is a place where his people gather in his name, and he does not despise small things.</p>
-  <p>Keep this work in its place. Household worship does not replace the church. By the church we mean what the New Testament calls the <em>ecclesia</em>, the assembly of believers gathered under the authority of Christ and his Word, devoted to the apostles’ teaching, the breaking of bread, and prayer, and sent under his commission to make disciples (Acts 2:42; Matthew 28:18–20). In our day that means a local congregation. Your household is not a substitute for it, nor are you a substitute for its ministers. The preaching of the Word, the sacraments, and the care of faithful pastors are gifts your family needs. Household worship prepares hearts for the Lord’s Day and carries its fruit through the week.</p>
-  <p>Begin small. Begin tonight, if you can. The <a href="${href('daily-office/')}">Daily Office</a> is set out so that you can simply open it and pray, and <a href="${href('family-catechesis/')}">Family Catechesis</a> gives you a place to start teaching.</p>
+  <p>Notice the order. The words are first to be on <em>your</em> heart. Only then are they to be taught. A household learns to love God less from what it is told than from what it sees loved. Notice also the places: sitting in the house, walking by the way, lying down, rising up. This is not a programme for special occasions. It is the ordinary rhythm of a home, shaped around the Word of God.</p>
+  <p>The charge did not begin at Sinai. Of Abraham the Lord said, “I have chosen him, that he may command his children and his household after him to keep the way of the <span class="sc">Lord</span> by doing righteousness and justice” (Genesis 18:19, ESV). And Joshua answered for his whole house: “as for me and my house, we will serve the <span class="sc">Lord</span>” (Joshua 24:15, ESV).</p>
+
+  <h2>The charge given to fathers in Christ</h2>
+  <p>The New Testament does not set this charge aside. It deepens it, and it names the man.</p>
+  <p><strong>To husbands:</strong> “Husbands, love your wives, as Christ loved the church and gave himself up for her, that he might sanctify her, having cleansed her by the washing of water with the word” (Ephesians 5:25–26, ESV). You are to wash your wife in the Word, as Christ cleanses his bride. Your headship is measured by his: it gives itself away for her holiness. So Peter writes, “Husbands, live with your wives in an understanding way, showing honor to the woman as the weaker vessel, since they are heirs with you of the grace of life, so that your prayers may not be hindered” (1 Peter 3:7, ESV).</p>
+  <p><strong>To fathers:</strong> “Fathers, do not provoke your children to anger, but bring them up in the discipline and instruction of the Lord” (Ephesians 6:4, ESV), or as the older translators put it, in “the nurture and admonition of the Lord.” The instruction is to be the Lord’s, and it is to be given without harshness. The same standard is set for every elder of the church: “He must manage his own household well” (1 Timothy 3:4, ESV). God expects a man to lead his house, and he will ask him how he led it.</p>
+
+  <h2>Three realms under one King</h2>
+  <p>God has ordained three arenas of authority: the household, the church, and the civil government. Each is a real authority, given by God. None is ultimate. Christ is “head over all things to the church” (Ephesians 1:22, ESV), and every lesser authority answers to him.</p>
+  <p>In his own house a man is set as ruler of his realm. But he rules as a viceregent, not a sovereign: a steward governing in the name of another. That is why his rule must be benevolent. “Husbands, love your wives, and do not be harsh with them” (Colossians 3:19, ESV). A man who rules his home harshly misrepresents the King he serves. A man who will not rule it at all leaves his post. The faithful head exercises his authority under the authority of Christ, for the good of those in his care, and leads them before the throne of God.</p>
+
+  <h2>What that looks like at home</h2>
+  <p>Family worship is nothing exotic. It is reading the Scriptures together, praying together, singing together, and teaching the faith: a few minutes, most days, for years. You do not need training or a fine voice. You need a Bible, a little time, and the resolve to begin again when you miss a day.</p>
+
+  <h2>Keep this work in its place</h2>
+  <p>Household worship does not replace the church. By the church we mean what the New Testament calls the <em>ecclesia</em>, the assembly of believers gathered under the authority of Christ and his Word, devoted to the apostles’ teaching, the breaking of bread, and prayer, and sent under his commission to make disciples (Acts 2:42; Matthew 28:18–20). In our day that means a local congregation. Your household is not a substitute for it, nor are you a substitute for its ministers. Your authority is over your own house. The preaching of the Word, the sacraments, and the care of faithful pastors are gifts your family needs. Household worship prepares hearts for the Lord’s Day and carries its fruit through the week.</p>
+
+  <h2>Why Waterside Press exists</h2>
+  <p>This is a high calling, and it is a commanded one. Waterside Press exists to stand beside you and equip you to fulfil it: the <a href="${href('daily-office/')}">Daily Office</a> so you can simply open it and pray, <a href="${href('family-catechesis/')}">Family Catechesis</a> so you have a place to start teaching, a <a href="${href('library/')}">library</a> of the old writers who walked this road before you, and <a href="${href('family-rule/')}">Family Rule</a> to bring it together into a daily pattern for your home.</p>
+  <p>Begin small. Begin tonight, if you can. “He who calls you is faithful; he will surely do it” (1 Thessalonians 5:24, ESV).</p>
   <p>With hope in Christ,<br><em>Waterside Press</em></p>
-  <p class="meta">Scripture quotations are from the ESV® Bible, © 2001 by Crossway. Used by permission. All rights reserved.</p>
+  <p class="meta">Scripture quotations are from the ESV® Bible, © 2001 by Crossway. Used by permission. All rights reserved. “Nurture and admonition” is from the King James Version (1611).</p>
 </div>`,
   },
 
@@ -362,6 +388,7 @@ export const pages = [
       <li><strong>Rooted in historic texts</strong> the church has prayed and read for centuries.</li>
       <li><strong>Built for real homes</strong>, with real children and real interruptions.</li>
     </ul>
+    <p>New to leading your household in worship? Start with <a href="${href('letter-to-the-head-of-the-household/')}">A Letter to the Head of the Household</a>.</p>
     <p>Family Rule is in beta. Sign up with your email to start using it free. Over the next few weeks we’ll write to ask how it’s going: what helps, what doesn’t, and what your household needs next.</p>
   </div>
   <section class="card fr-signup" aria-labelledby="h-signup">
@@ -410,6 +437,7 @@ export const pages = [
     <li><strong>Miss a day? Begin again.</strong> A rule is kept by returning to it.</li>
   </ol>
   <p>Save this site to your phone’s home screen so it’s one tap away at the table.</p>
+  <p>Before you begin, read <a href="${href('letter-to-the-head-of-the-household/')}">A Letter to the Head of the Household</a>. It sets out why this matters.</p>
   <h2>Help us shape it</h2>
   <p>In a couple of weeks we’ll email you a few short questions. Honest answers, including “we didn’t use it,” are the most useful thing you can give us.</p>
 </div>`,

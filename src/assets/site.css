@@ -432,3 +432,8 @@ h3 { font-weight: 400; }
 .fr-signup label.check { display: inline-flex; gap: var(--s2); align-items: center; color: var(--ink); font-weight: 400; }
 .fr-submit { width: 100%; margin-bottom: var(--s3); }
 @media (max-width: 859px) { .fr-signup { order: -1; } }
+
+/* ---------- Home: open-letter band ---------- */
+.letter-band { max-width: var(--measure); margin: var(--s6) auto; padding: var(--s5) 0; border-block: 1px solid var(--stone); text-align: center; }
+.letter-band h2 { margin-top: 0; }
+.letter-band p:last-child { margin-bottom: 0; }
