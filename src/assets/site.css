@@ -437,3 +437,9 @@ h3 { font-weight: 400; }
 .letter-band { max-width: var(--measure); margin: var(--s6) auto; padding: var(--s5) 0; border-block: 1px solid var(--stone); text-align: center; }
 .letter-band h2 { margin-top: 0; }
 .letter-band p:last-child { margin-bottom: 0; }
+
+/* ---------- Family Rule soft gate ---------- */
+.gate { display: none; padding-block: var(--s7); }
+html.gated .gate { display: block; }
+html.gated main > :not(.gate) { display: none !important; }
+.gate .fr-signup { order: 0; }

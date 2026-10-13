@@ -32,6 +32,41 @@ const staffRule = `<svg class="staff" viewBox="0 0 600 30" preserveAspectRatio="
 
 const ornament = `<div class="rule-orn" aria-hidden="true">${emblem()}</div>`;
 
+// Family Rule beta signup form (Netlify Forms). Shared by the Family Rule page and the gate.
+export const signupForm = (href, id = 'fr') => `<form name="family-rule-beta" method="POST" action="/family-rule/welcome/" data-netlify="true" netlify-honeypot="company">
+      <input type="hidden" name="form-name" value="family-rule-beta">
+      <p class="visually-hidden"><label>Leave this empty: <input name="company" tabindex="-1" autocomplete="off"></label></p>
+      <p class="field"><label for="${id}-name">First name</label><input id="${id}-name" name="first_name" type="text" autocomplete="given-name" required></p>
+      <p class="field"><label for="${id}-email">Email</label><input id="${id}-email" name="email" type="email" autocomplete="email" required></p>
+      <p class="field"><label for="${id}-house">Who’s at home? <span class="meta">(optional)</span></label>
+        <select id="${id}-house" name="household">
+          <option value="">Choose one</option>
+          <option>Married, no children yet</option>
+          <option>Young children (under 6)</option>
+          <option>School-age children</option>
+          <option>Teenagers</option>
+          <option>A mix of ages</option>
+          <option>Single / other</option>
+        </select></p>
+      <p class="field"><label class="check"><input type="checkbox" name="feedback_ok" value="yes" checked> You may email me to ask for feedback</label></p>
+      <button class="btn fr-submit" type="submit">Start using Family Rule</button>
+      <p class="meta">Free. No spam. Unsubscribe anytime. See our <a href="${href('privacy/')}">privacy page</a>.</p>
+    </form>`;
+
+// Soft gate: the Office and Catechesis ask for a Family Rule signup on first visit.
+// The welcome page sets a flag in local storage; without JavaScript or storage, pages stay open.
+const GATED = /^(daily-office|family-catechesis)\//;
+const gateBlock = (href) => `<section class="gate" aria-labelledby="h-gate"><div class="wrap fr-grid">
+  <div class="prose">
+    <p class="kicker">Family Rule · Free beta</p>
+    <h2 id="h-gate">Sign up free to open Family Rule</h2>
+    <p>The Daily Office and Family Catechesis are part of <strong>Family Rule</strong>, a simple daily pattern of Scripture, prayer, and song for your household. It’s free while in beta. Enter your email and you’ll go straight in.</p>
+    <p>This browser will remember you, so you only do this once per device.</p>
+    <p><a href="${href('letter-to-the-head-of-the-household/')}">Read the Letter to the Head of the Household</a></p>
+  </div>
+  <div class="card fr-signup">${signupForm(href, 'gate')}</div>
+</div></section>`;
+
 const NAV = [
   ['', 'Home'], ['daily-office/', 'Daily Office'], ['family-catechesis/', 'Family Catechesis'], ['library/', 'Library'],
   ['music/', 'Music'], ['learning/', 'Learning'], ['about/', 'About'],
@@ -57,7 +92,7 @@ ${canonical ? `<link rel="canonical" href="${attr(canonical)}">\n<meta property=
 <meta property="og:description" content="${attr(description)}">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#eef1ee">
-<script>try{if(localStorage.getItem("wp-theme")==="dark"){document.documentElement.setAttribute("data-theme","dark");document.querySelector('meta[name="theme-color"]').content="#111816"}}catch(e){}</script>
+${GATED.test(path) ? '<script>try{if(!localStorage.getItem("fr-member"))document.documentElement.classList.add("gated")}catch(e){}</script>\n' : ''}<script>try{if(localStorage.getItem("wp-theme")==="dark"){document.documentElement.setAttribute("data-theme","dark");document.querySelector('meta[name="theme-color"]').content="#111816"}}catch(e){}</script>
 <link rel="icon" href="${p}assets/logo.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="${p}assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,7 +118,7 @@ ${canonical ? `<link rel="canonical" href="${attr(canonical)}">\n<meta property=
   </div>
 </header>
 <main id="main" tabindex="-1">
-${body(href, p)}
+${GATED.test(path) ? gateBlock(href) : ''}${body(href, p)}
 </main>
 <footer class="site-footer">
   <div class="wrap">
@@ -587,7 +622,7 @@ function buildPages() {
   for (const pg of pages) {
     layout({
       path: pg.path, current: pg.nav ? pg.path : undefined, title: pg.title, description: pg.description,
-      body: (href) => pg.body({ href, esc, ornament, heroArt, staffRule, emblem, off, cat, hymns, lib, hasPdf, catalogRow: (w) => catalogRow(w, href) }),
+      body: (href) => pg.body({ href, signupForm: (id) => signupForm(href, id), esc, ornament, heroArt, staffRule, emblem, off, cat, hymns, lib, hasPdf, catalogRow: (w) => catalogRow(w, href) }),
     });
   }
 }

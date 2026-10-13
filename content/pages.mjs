@@ -373,7 +373,7 @@ export const pages = [
   {
     path: 'family-rule/', title: 'Family Rule',
     description: 'Family Rule, from Waterside Press: a free, simple daily pattern of Scripture, prayer, and song for Christian households. Join the beta.',
-    body: ({ href, emblem }) => `
+    body: ({ href, signupForm }) => `
 <div class="wrap page-head">
   <p class="kicker">From Waterside Press · Free beta</p>
   <h1>Family Rule</h1>
@@ -393,25 +393,7 @@ export const pages = [
   </div>
   <section class="card fr-signup" aria-labelledby="h-signup">
     <h2 id="h-signup">Join the beta</h2>
-    <form name="family-rule-beta" method="POST" action="/family-rule/welcome/" data-netlify="true" netlify-honeypot="company">
-      <input type="hidden" name="form-name" value="family-rule-beta">
-      <p class="visually-hidden"><label>Leave this empty: <input name="company" tabindex="-1" autocomplete="off"></label></p>
-      <p class="field"><label for="fr-name">First name</label><input id="fr-name" name="first_name" type="text" autocomplete="given-name" required></p>
-      <p class="field"><label for="fr-email">Email</label><input id="fr-email" name="email" type="email" autocomplete="email" required></p>
-      <p class="field"><label for="fr-house">Who’s at home? <span class="meta">(optional)</span></label>
-        <select id="fr-house" name="household">
-          <option value="">Choose one</option>
-          <option>Married, no children yet</option>
-          <option>Young children (under 6)</option>
-          <option>School-age children</option>
-          <option>Teenagers</option>
-          <option>A mix of ages</option>
-          <option>Single / other</option>
-        </select></p>
-      <p class="field"><label class="check"><input type="checkbox" name="feedback_ok" value="yes" checked> You may email me to ask for feedback</label></p>
-      <button class="btn fr-submit" type="submit">Start using Family Rule</button>
-      <p class="meta">Free. No spam. Unsubscribe anytime. See our <a href="${href('privacy/')}">privacy page</a>.</p>
-    </form>
+    ${signupForm('fr')}
   </section>
 </div>`,
   },
@@ -420,6 +402,7 @@ export const pages = [
     description: 'You are signed up for the Family Rule beta from Waterside Press. Here is where to begin tonight.',
     body: ({ href }) => `
 <div class="wrap page-head">
+  <script>try{localStorage.setItem("fr-member","1")}catch(e){}</script>
   <p class="kicker">Family Rule · Beta</p>
   <h1>Welcome. Let’s begin tonight.</h1>
   <p class="lede">You’re on the list. Here is the whole of it: gather the household, open the Office, and pray it together. Ten minutes is enough.</p>
