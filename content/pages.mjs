@@ -277,10 +277,12 @@ export const pages = [
   {
     path: 'privacy/', title: 'Privacy',
     description: 'What Waterside Press does and does not collect.',
-    body: () => `
+    body: ({ href }) => `
 <div class="wrap page-head"><p class="kicker">Privacy</p><h1>Privacy</h1></div>
 <div class="wrap prose-center">
-  <p>Waterside Press has no accounts, no mailing list, no analytics, no advertising, and no tracking pixels. It sets no cookies.</p>
+  <p>Waterside Press has no accounts, no analytics, no advertising, and no tracking pixels. It sets no cookies.</p>
+  <h2>The Family Rule beta list</h2>
+  <p>If you sign up for the <a href="${href('family-rule/')}">Family Rule</a> beta, we keep the first name, email address, and optional household description you give us. We use them only to send Family Rule updates and to ask for your feedback. We do not sell or share them. The form is processed by our web host, Netlify. To be removed, reply to any of our emails and ask.</p>
   <h2>What your browser stores</h2>
   <p>On the Daily Office page, two preferences — the shorter form and text size — are kept in your own browser’s local storage so they are remembered next time. They never leave your device. Clearing your browser’s site data removes them.</p>
   <p>If you choose the dark theme with the switch at the top of every page, that choice is kept in your browser’s local storage in the same way.</p>
@@ -290,7 +292,7 @@ export const pages = [
     <li><strong>Linked sites:</strong> library links open files at other sites (such as ccel.org and esv.org). Those sites have their own privacy policies.</li>
   </ul>
   <h2>Hosting</h2>
-  <p>The web host that serves these pages may keep standard server logs (such as IP addresses and requested pages). Details depend on the host chosen at deployment and should be added here when it is.</p>
+  <p>These pages are served by Netlify, which keeps standard server logs (such as IP addresses and requested pages). See Netlify’s privacy policy for details.</p>
 </div>`,
   },
 
@@ -338,6 +340,78 @@ export const pages = [
   <p>Begin small. Begin tonight, if you can. The <a href="${href('daily-office/')}">Daily Office</a> is set out so that you can simply open it and pray, and <a href="${href('family-catechesis/')}">Family Catechesis</a> gives you a place to start teaching.</p>
   <p>With hope in Christ,<br><em>Waterside Press</em></p>
   <p class="meta">Scripture quotations are from the ESV® Bible, © 2001 by Crossway. Used by permission. All rights reserved.</p>
+</div>`,
+  },
+
+  // ───────── FAMILY RULE (BETA SIGNUP) ─────────
+  {
+    path: 'family-rule/', title: 'Family Rule',
+    description: 'Family Rule, from Waterside Press: a free, simple daily pattern of Scripture, prayer, and song for Christian households. Join the beta.',
+    body: ({ href, emblem }) => `
+<div class="wrap page-head">
+  <p class="kicker">From Waterside Press · Free beta</p>
+  <h1>Family Rule</h1>
+  <p class="lede">A simple, steady pattern of Scripture, prayer, and song for the whole household. Open it at the table and begin.</p>
+</div>
+<div class="wrap fr-grid">
+  <div class="prose">
+    <p>For centuries, Christian households kept a <em>rule</em>: a fixed, humble order of worship that shaped the home day after day. Family Rule brings that inheritance back for ordinary families.</p>
+    <ul>
+      <li><strong>A short daily liturgy</strong> for morning and evening: the psalms for the day, a reading in course, the Creed, and the Church’s prayers.</li>
+      <li><strong>Family Catechesis</strong> sessions to teach the faith a question at a time.</li>
+      <li><strong>Rooted in historic texts</strong> the church has prayed and read for centuries.</li>
+      <li><strong>Built for real homes</strong>, with real children and real interruptions.</li>
+    </ul>
+    <p>Family Rule is in beta. Sign up with your email to start using it free. Over the next few weeks we’ll write to ask how it’s going: what helps, what doesn’t, and what your household needs next.</p>
+  </div>
+  <section class="card fr-signup" aria-labelledby="h-signup">
+    <h2 id="h-signup">Join the beta</h2>
+    <form name="family-rule-beta" method="POST" action="/family-rule/welcome/" data-netlify="true" netlify-honeypot="company">
+      <input type="hidden" name="form-name" value="family-rule-beta">
+      <p class="visually-hidden"><label>Leave this empty: <input name="company" tabindex="-1" autocomplete="off"></label></p>
+      <p class="field"><label for="fr-name">First name</label><input id="fr-name" name="first_name" type="text" autocomplete="given-name" required></p>
+      <p class="field"><label for="fr-email">Email</label><input id="fr-email" name="email" type="email" autocomplete="email" required></p>
+      <p class="field"><label for="fr-house">Who’s at home? <span class="meta">(optional)</span></label>
+        <select id="fr-house" name="household">
+          <option value="">Choose one</option>
+          <option>Married, no children yet</option>
+          <option>Young children (under 6)</option>
+          <option>School-age children</option>
+          <option>Teenagers</option>
+          <option>A mix of ages</option>
+          <option>Single / other</option>
+        </select></p>
+      <p class="field"><label class="check"><input type="checkbox" name="feedback_ok" value="yes" checked> You may email me to ask for feedback</label></p>
+      <button class="btn fr-submit" type="submit">Start using Family Rule</button>
+      <p class="meta">Free. No spam. Unsubscribe anytime. See our <a href="${href('privacy/')}">privacy page</a>.</p>
+    </form>
+  </section>
+</div>`,
+  },
+  {
+    path: 'family-rule/welcome/', title: 'Welcome to Family Rule',
+    description: 'You are signed up for the Family Rule beta from Waterside Press. Here is where to begin tonight.',
+    body: ({ href }) => `
+<div class="wrap page-head">
+  <p class="kicker">Family Rule · Beta</p>
+  <h1>Welcome. Let’s begin tonight.</h1>
+  <p class="lede">You’re on the list. Here is the whole of it: gather the household, open the Office, and pray it together. Ten minutes is enough.</p>
+</div>
+<div class="wrap prose-center">
+  <div class="actions">
+    <a class="btn" href="${href('daily-office/')}">Open Today’s Office</a>
+    <a class="btn secondary" href="${href('family-catechesis/')}">Family Catechesis</a>
+  </div>
+  <h2>How to start</h2>
+  <ol>
+    <li><strong>Pick a time you already share.</strong> After supper or before bed works for most families.</li>
+    <li><strong>Use the shorter form at first.</strong> The Daily Office has a switch for it at the top of the page.</li>
+    <li><strong>Add a catechism question once a week.</strong> Family Catechesis sets them out in order.</li>
+    <li><strong>Miss a day? Begin again.</strong> A rule is kept by returning to it.</li>
+  </ol>
+  <p>Save this site to your phone’s home screen so it’s one tap away at the table.</p>
+  <h2>Help us shape it</h2>
+  <p>In a couple of weeks we’ll email you a few short questions. Honest answers, including “we didn’t use it,” are the most useful thing you can give us.</p>
 </div>`,
   },
 ];
