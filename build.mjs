@@ -401,7 +401,7 @@ function buildLordsDay() {
   <h2>Keeping the day at home</h2>
   <ul>
     <li><strong>Prepare on Saturday.</strong> Settle what work you can, lay out clothes, and go to bed in time. The <a href="${href('family-catechesis/the-lords-day/first-day/')}">Lord’s Day catechesis session</a> fits Saturday evening well.</li>
-    <li><strong>Gather with the church.</strong> Household prayer prepares for public worship; it does not replace it. The sacraments are received in the congregation, under its ministers.</li>
+    <li><strong>Gather with the church.</strong> Household prayer prepares for the gathered church, the <em>ecclesia</em> assembled under Christ and his Word; it does not replace it. The sacraments are received in the congregation, under its ministers.</li>
     <li><strong>Pray the Office in its Sunday form.</strong> The <a href="${href('daily-office/')}">Daily Office</a> uses a resurrection sentence, the Te Deum, and a collect for the Lord’s Day.</li>
     <li><strong>Remember the sermon.</strong> At the evening meal, ask each person for one thing they heard.</li>
     <li><strong>Rest and do good.</strong> Visits, hospitality, walks, and works of mercy suit the day.</li>
