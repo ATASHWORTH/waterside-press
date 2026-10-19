@@ -83,4 +83,6 @@ Internet Archive item metadata checked (title, series, volume, publisher, date) 
 
 Also: gutenberg.org/ebooks/275, *The Augsburg Confession*, complete (preface, Arts. 1–28, conclusion); translator not named by Gutenberg.
 
-Still not checked: CCEL PDFs for ANF 4, 5, 7 and NPNF volumes other than npnf102 and npnf204 (ccel.org requests needed approval that was not given in time); *Summa* scans (University of Toronto items exist, but their records do not say which part each volume holds); CCEL's Schaff, *Creeds of Christendom* vol. 3.
+Still not checked: CCEL PDFs for ANF 4, 5, 7 and NPNF volumes other than npnf102 and npnf204 (ccel.org requests needed approval that was not given in time); *Summa* scans (University of Toronto items exist, but their records do not say which part each volume holds); the CCEL PDF of Schaff vol. 3 (fetch error).
+
+Later on 2026-10-18 (CCEL approved): ccel.org/ccel/schaff/creeds3 (volume page and contents) checked; creeds3.iii.ii.html is the Augsburg Confession, Latin with Krauth's English in parallel, read from the preface through Part II Art. 3 (the rest was beyond what the check could read and is not confirmed). Linked on the Augsburg record and as a Schaff vol. 3 record. The PDF (ccel.org/ccel/s/schaff/creeds3/cache/creeds3.pdf) returned an error.

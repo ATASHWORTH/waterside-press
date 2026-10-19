@@ -554,7 +554,7 @@ function buildLibrary() {
     ${FORMAT_LEGEND}
     <h2 style="font-size:1.5rem">Being prepared</h2>
     <p class="meta">Listed once an edition and its rights status have been checked.</p>
-    <ul class="soon-list">${['Full-volume PDFs for the remaining Church Fathers volumes', 'Aquinas, Summa Theologica: page scans matched to each part', 'Schaff, The Creeds of Christendom', 'Thomas Boston, Human Nature in Its Fourfold State', 'The complete Westminster Shorter Catechism, transcribed here'].map((t) => `<li><span>${esc(t)}</span><span class="tag soon">Coming soon</span></li>`).join('')}</ul>
+    <ul class="soon-list">${['Full-volume PDFs for the remaining Church Fathers volumes', 'Aquinas, Summa Theologica: page scans matched to each part', 'The Augsburg Confession: a checked full-text PDF', 'Thomas Boston, Human Nature in Its Fourfold State', 'The complete Westminster Shorter Catechism, transcribed here'].map((t) => `<li><span>${esc(t)}</span><span class="tag soon">Coming soon</span></li>`).join('')}</ul>
   </aside>
 </div>`,
   });
