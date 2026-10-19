@@ -63,3 +63,24 @@ Checked 2026-10-11. "Link checked" means the URL was fetched, returned a PDF, an
 Not yet checked (rate-limited on 2026-10-12), so no link is given: CCEL PDFs for ANF 4, 5, 7 and the other NPNF volumes; page scans for NPNF1 vols. 2, 7, 8 and NPNF2 vols. 1, 7, 8, 11, 12; a scan of the English Dominican *Summa*; Budge's *Paradise of the Holy Fathers* (1907), for the Sayings of the Desert Fathers.
 
 Translations: all ANF/NPNF translations were published 1885–1900 (pd-us). Athanasius, *On the Incarnation* is linked in Robertson's 1892 translation; the 1944 C.S.M.V. translation is in copyright and is not linked.
+
+## Follow-up checks (2026-10-18)
+
+Internet Archive item metadata checked (title, series, volume, publisher, date) and added as page-scan links:
+
+| Item | Volume |
+|---|---|
+| aselectlibrary02unknuoft | NPNF 1st series vol. 2 (Buffalo, 1886–90): City of God, Christian Doctrine |
+| selectlibraryofn07auguuoft | NPNF 1st series vol. 7 (New York, 1886–90): Homilies on John |
+| aselectlibrary08unknuoft | NPNF 1st series vol. 8 (Buffalo, 1886–90): Expositions on the Psalms |
+| nicenepostnicene01unknuoft | NPNF 2nd series vol. 1 (Oxford: Parker, 1891–): Eusebius |
+| niceneandpostnic07unknuoft | NPNF 2nd series vol. 7 (Oxford: Parker, 1891): Cyril of Jerusalem, Gregory of Nazianzus |
+| niceneandpostnic08unknuoft | NPNF 2nd series vol. 8 (Oxford: Parker, 1891): Basil |
+| nicenepostnicene11unknuoft | NPNF 2nd series vol. 11 (Oxford: Parker): Sulpitius Severus, Vincent, Cassian |
+| nicenepostnicene12ambruoft | NPNF 2nd series vol. 12 (Oxford: Parker): Leo, Gregory the Great |
+| theparadiseorgar01unkwuoft, paradiseorgarden02ann | Budge, *The Paradise or Garden of the Holy Fathers*, vols. 1–2 (London: Chatto & Windus, 1907) |
+| concordiatriglot00unse | *Concordia Triglotta* (St. Louis: Concordia, 1921), German/Latin ed. Bente, English tr. Dau & Bente |
+
+Also: gutenberg.org/ebooks/275, *The Augsburg Confession*, complete (preface, Arts. 1–28, conclusion); translator not named by Gutenberg.
+
+Still not checked: CCEL PDFs for ANF 4, 5, 7 and NPNF volumes other than npnf102 and npnf204 (ccel.org requests needed approval that was not given in time); *Summa* scans (University of Toronto items exist, but their records do not say which part each volume holds); CCEL's Schaff, *Creeds of Christendom* vol. 3.

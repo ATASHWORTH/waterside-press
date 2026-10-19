@@ -15,5 +15,5 @@ Not published on the site as available. Listed on the Library page only under "B
 | "Letter to the Head of the Household" — approved text | No approved version supplied. A clearly marked **draft** is published for review. | Editor to approve or supply the final text. |
 | Audio, part tracks, sheet music | None exist yet. | Record or license; check composition/arrangement/recording rights separately. |
 | Contact address | None configured. | Set up an address and add it to the Copyright page. |
-| Sayings of the Desert Fathers (Budge, *The Paradise of the Holy Fathers*, 1907) | Archive.org rate-limited before an item could be confirmed. | Find and confirm a scan; consider a record. |
+| ~~Sayings of the Desert Fathers (Budge, 1907)~~ Resolved 2026-10-18: listed with scans of both volumes. | Archive.org rate-limited before an item could be confirmed. | Find and confirm a scan; consider a record. |
 | Remaining ANF/NPNF PDFs and scans | See SOURCES-AND-RIGHTS.md, 2026-10-12 section. | Open each and add to the record. |

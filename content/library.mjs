@@ -413,21 +413,21 @@ export const works = [
       anf05: { name: 'Ante-Nicene Fathers, vol. 5 (Hippolytus, Cyprian, Caius, Novatian)', ed: 'ed. Roberts, Donaldson, and Coxe', scan: IA('antenicenefather05robeuoft', 'ANF vol. 5, Buffalo printing') },
       anf07: { name: 'Ante-Nicene Fathers, vol. 7 (Fathers of the Third and Fourth Centuries)', ed: 'ed. Roberts, Donaldson, and Coxe', scan: IA('antenicenefather07robeuoft', 'ANF vol. 7, Buffalo 1886') },
       n101: { name: 'Nicene and Post-Nicene Fathers, First Series, vol. 1 (Augustine: Confessions and Letters)', ed: 'ed. Philip Schaff', scan: IA('selectlibraryofn01auguuoft', 'NPNF 1st series vol. 1, New York printing') },
-      n102: { name: 'Nicene and Post-Nicene Fathers, First Series, vol. 2 (Augustine: City of God, Christian Doctrine)', ed: 'ed. Philip Schaff', pdf: PDF('npnf102') },
+      n102: { name: 'Nicene and Post-Nicene Fathers, First Series, vol. 2 (Augustine: City of God, Christian Doctrine)', ed: 'ed. Philip Schaff', scan: IA('aselectlibrary02unknuoft', 'NPNF 1st series vol. 2, Buffalo printing'), pdf: PDF('npnf102') },
       n103: { name: 'Nicene and Post-Nicene Fathers, First Series, vol. 3 (Augustine: On the Holy Trinity; Doctrinal and Moral Treatises)', ed: 'ed. Philip Schaff', scan: IA('selectlibraryofn03auguuoft', 'NPNF 1st series vol. 3, New York printing') },
-      n107: { name: 'Nicene and Post-Nicene Fathers, First Series, vol. 7 (Augustine: Homilies on John and First John; Soliloquies)', ed: 'ed. Philip Schaff' },
-      n108: { name: 'Nicene and Post-Nicene Fathers, First Series, vol. 8 (Augustine: Expositions on the Psalms)', ed: 'ed. Philip Schaff' },
+      n107: { name: 'Nicene and Post-Nicene Fathers, First Series, vol. 7 (Augustine: Homilies on John and First John; Soliloquies)', ed: 'ed. Philip Schaff', scan: IA('selectlibraryofn07auguuoft', 'NPNF 1st series vol. 7, New York printing') },
+      n108: { name: 'Nicene and Post-Nicene Fathers, First Series, vol. 8 (Augustine: Expositions on the Psalms)', ed: 'ed. Philip Schaff', scan: IA('aselectlibrary08unknuoft', 'NPNF 1st series vol. 8, Buffalo printing') },
       n109: { name: 'Nicene and Post-Nicene Fathers, First Series, vol. 9 (Chrysostom: On the Priesthood; Ascetic Treatises; Homilies on the Statues)', ed: 'ed. Philip Schaff', scan: IA('selectlibraryofn09auguuoft', 'NPNF 1st series vol. 9, New York printing') },
       n110: { name: 'Nicene and Post-Nicene Fathers, First Series, vol. 10 (Chrysostom: Homilies on Matthew)', ed: 'ed. Philip Schaff', scan: IA('selectlibraryofn10auguuoft', 'NPNF 1st series vol. 10, New York printing') },
       n113: { name: 'Nicene and Post-Nicene Fathers, First Series, vol. 13 (Chrysostom: Homilies on Galatians through Philemon)', ed: 'ed. Philip Schaff', scan: IA('selectlibraryofn13auguuoft', 'NPNF 1st series vol. 13, New York printing') },
-      n201: { name: 'Nicene and Post-Nicene Fathers, Second Series, vol. 1 (Eusebius)', ed: 'ed. Philip Schaff and Henry Wace' },
+      n201: { name: 'Nicene and Post-Nicene Fathers, Second Series, vol. 1 (Eusebius)', ed: 'ed. Philip Schaff and Henry Wace', scan: IA('nicenepostnicene01unknuoft', 'NPNF 2nd series vol. 1, Oxford printing') },
       n204: { name: 'Nicene and Post-Nicene Fathers, Second Series, vol. 4 (Athanasius: Select Works and Letters)', ed: 'ed. Philip Schaff and Henry Wace; Athanasius volume ed. Archibald Robertson', scan: IA('selectlibraryofn04schauoft', 'NPNF 2nd series vol. 4, New York 1892'), pdf: PDF('npnf204') },
-      n207: { name: 'Nicene and Post-Nicene Fathers, Second Series, vol. 7 (Cyril of Jerusalem; Gregory of Nazianzus)', ed: 'ed. Philip Schaff and Henry Wace' },
-      n208: { name: 'Nicene and Post-Nicene Fathers, Second Series, vol. 8 (Basil: Letters and Select Works)', ed: 'ed. Philip Schaff and Henry Wace' },
-      n211: { name: 'Nicene and Post-Nicene Fathers, Second Series, vol. 11 (Sulpitius Severus, Vincent of Lérins, John Cassian)', ed: 'ed. Philip Schaff and Henry Wace' },
-      n212: { name: 'Nicene and Post-Nicene Fathers, Second Series, vol. 12 (Leo the Great; Gregory the Great)', ed: 'ed. Philip Schaff and Henry Wace' },
+      n207: { name: 'Nicene and Post-Nicene Fathers, Second Series, vol. 7 (Cyril of Jerusalem; Gregory of Nazianzus)', ed: 'ed. Philip Schaff and Henry Wace', scan: IA('niceneandpostnic07unknuoft', 'NPNF 2nd series vol. 7, Oxford 1891') },
+      n208: { name: 'Nicene and Post-Nicene Fathers, Second Series, vol. 8 (Basil: Letters and Select Works)', ed: 'ed. Philip Schaff and Henry Wace', scan: IA('niceneandpostnic08unknuoft', 'NPNF 2nd series vol. 8, Oxford 1891') },
+      n211: { name: 'Nicene and Post-Nicene Fathers, Second Series, vol. 11 (Sulpitius Severus, Vincent of Lérins, John Cassian)', ed: 'ed. Philip Schaff and Henry Wace', scan: IA('nicenepostnicene11unknuoft', 'NPNF 2nd series vol. 11, Oxford printing') },
+      n212: { name: 'Nicene and Post-Nicene Fathers, Second Series, vol. 12 (Leo the Great; Gregory the Great)', ed: 'ed. Philip Schaff and Henry Wace', scan: IA('nicenepostnicene12ambruoft', 'NPNF 2nd series vol. 12, Oxford printing') },
     };
-    const PUB = { anf: 'Christian Literature Publishing Co., Buffalo, 1885–1886 (American edition); reprinted by Scribner, New York', n1: 'Christian Literature Co., New York and Buffalo, 1886–1890', n2: 'Christian Literature Co., New York, 1890–1900' };
+    const PUB = { anf: 'Christian Literature Publishing Co., Buffalo, 1885–1886 (American edition); reprinted by Scribner, New York', n1: 'Christian Literature Co., New York and Buffalo, 1886–1890', n2: 'Christian Literature Co., New York, and Parker, Oxford, 1890–1900' };
     const F = (id, a, vk, title, y, cats, tags, summary, { na = [], extra = [], context = [], family = null, audience = 'Adults', translator = null, subtitle = null, period } = {}) => {
       const [author, authorKey, tradition] = A[a];
       const v = V[vk];
@@ -603,6 +603,20 @@ export const works = [
       F('gregory-pastoral-rule', 'gregory', 'n212', 'The Book of Pastoral Rule', '590', ['theology'], ['pastoral care', 'ministry'],
         'Gregory’s handbook for bishops on how a pastor should live and how to counsel each kind of person differently. King Alfred translated it into English for the clergy of his kingdom.',
         { na: [NA('3601')], translator: 'James Barmby', period: 'Early medieval' }),
+      // The desert fathers in their own words (added 2026-10-18)
+      { id: 'budge-paradise-holy-fathers', title: 'The Paradise, or Garden of the Holy Fathers', subtitle: 'Histories of the anchorites, recluses, monks, coenobites, and ascetic fathers of the deserts of Egypt, c. A.D. 250–400',
+        author: 'Compiled by ʿAnan-Ishoʿ (7th century) from Athanasius, Palladius, Jerome, and the Sayings of the Fathers; translated by E. A. Wallis Budge', authorKey: 'Desert Fathers', period: 'Early Church', periodKey: 'Early Church', original: '4th–5th centuries; Syriac compilation 7th century; English 1907', tradition: 'Early monasticism (Egyptian desert)', language: 'English (translation from Syriac)',
+        categories: ['devotional', 'history'], tags: ['desert fathers', 'sayings', 'monasticism', 'humility', 'prayer'], audience: 'Adults',
+        type: 'Page scans (external)',
+        summary: 'The stories and sayings of the monks of the Egyptian desert, gathered in Syriac in the seventh century and translated by Budge in two volumes: “a brother asked Abba Poemen…”.',
+        context: ['Volume 1 holds the Life of Antony and the histories of Palladius and Jerome. Volume 2 holds the sayings themselves: short questions put to the old men of the desert and their answers, on humility, anger, silence, prayer, and judging no one.', 'The desert fathers sought God by leaving the world, and some of their practices are extreme. The Reformers rejected the monastic life as a higher calling. Read the sayings for their hard-won wisdom about the heart, and as a primary source for early monasticism; this is one of the works our note on the Library page has in mind.'],
+        family: 'Read one saying at the table and ask what it would look like to live it this week. Many are only a few lines long.',
+        edition: 'E. A. Wallis Budge, The Paradise or Garden of the Holy Fathers, 2 vols. (London: Chatto & Windus, 1907), a revised translation of his privately printed Book of Paradise (1904). Page scans of the University of Toronto copy of volume 1 and another library copy of volume 2 at the Internet Archive.',
+        publisher: 'Chatto & Windus, London, 1907', translator: 'E. A. Wallis Budge', editor: null,
+        repository: 'Internet Archive', sourcePage: 'https://archive.org/details/theparadiseorgar01unkwuoft',
+        rights: 'pd-us', rightsNote: 'Published in 1907; public domain in the United States. Scans are hosted by the Internet Archive; Waterside links to them.',
+        pdf: null, transcription: null,
+        online: [IA('theparadiseorgar01unkwuoft', 'Vol. 1: Antony, Palladius, Jerome'), IA('paradiseorgarden02ann', 'Vol. 2: the Sayings')], modern: [], checked: '2026-10-18' },
     ].concat([
       // Thomas Aquinas
       { id: 'aquinas-summa', title: 'Summa Theologica', subtitle: null, author: A.aquinas[0], authorKey: A.aquinas[1], period: 'Medieval (13th century)', periodKey: '13th century', original: '1265–1274', tradition: A.aquinas[2], language: 'English (translation)',
@@ -618,6 +632,21 @@ export const works = [
         pdf: null, transcription: null,
         online: [{ url: 'https://www.newadvent.org/summa/', host: 'newadvent.org', kind: 'text', label: 'Complete' }, { url: 'https://www.gutenberg.org/ebooks/17611', host: 'gutenberg.org', kind: 'text', label: 'Part I only' }],
         modern: [], checked: '2026-10-12' },
+      // The Augsburg Confession (added 2026-10-18)
+      { id: 'augsburg-confession', title: 'The Augsburg Confession', subtitle: 'The confession of faith presented to the Emperor Charles V at the Diet of Augsburg, 1530',
+        author: 'Philip Melanchthon (1497–1560), for the Lutheran princes and cities', authorKey: 'Philip Melanchthon', period: 'Reformation (16th century)', periodKey: '16th century', original: '1530', tradition: 'Lutheran', language: 'English (translation from German and Latin)',
+        categories: ['catechisms', 'theology', 'history'], tags: ['confession', 'Lutheran', 'Reformation', 'justification'], audience: 'Adults, older teenagers',
+        type: 'Read free online (external)',
+        summary: 'The first great Protestant confession: twenty-one articles of doctrine, beginning with God, original sin, and justification by faith, and seven on the abuses the Reformation corrected.',
+        context: ['Melanchthon drafted the confession, with Luther’s approval from a distance, and it was read aloud to the Emperor on 25 June 1530. It remains the defining confession of the Lutheran churches.', 'Reformed churches agree with most of it. Article 4 on justification by faith is common Protestant ground, and Calvin signed Melanchthon’s revised version of 1540 (the “Variata”). The plainest difference is Article 10, on the Lord’s Supper, where Lutherans teach that Christ’s body and blood are truly present in the bread and wine and Reformed churches teach a spiritual feeding on Christ by faith. Article 28 on the Lord’s Day is quoted on our Lord’s Day page.'],
+        family: 'Read Articles 1–4 alongside the Shorter Catechism’s questions on God, sin, and justification, and notice how much the two agree.',
+        edition: 'Project Gutenberg e-text #275 (complete: preface, Articles 1–28, conclusion); Project Gutenberg does not name the translator. Page scans: Concordia Triglotta (St. Louis: Concordia Publishing House, 1921), German and Latin texts ed. F. Bente, English translation by W. H. T. Dau and F. Bente.',
+        publisher: 'Concordia Publishing House, St. Louis, 1921 (Triglotta)', translator: 'W. H. T. Dau and F. Bente (Triglotta scan); not named for the Gutenberg text', editor: 'F. Bente (Triglotta)',
+        repository: 'Project Gutenberg', sourcePage: 'https://www.gutenberg.org/ebooks/275',
+        rights: 'pd-text', rightsNote: 'The confession is public domain, and the 1921 Triglotta is public domain in the United States. Project Gutenberg treats its e-text as public domain in the US; its translation has not been identified. Linked, not re-hosted.',
+        pdf: null, transcription: null,
+        online: [{ url: 'https://www.gutenberg.org/ebooks/275', host: 'gutenberg.org', kind: 'text' }, { url: 'https://archive.org/details/concordiatriglot00unse', host: 'archive.org', kind: 'scan', label: 'Concordia Triglotta, 1921 (German, Latin, English)' }],
+        modern: [], checked: '2026-10-18' },
     ]);
   })(),
 ];
