@@ -58,7 +58,7 @@ export const pages = [
 
   <section class="home-section" aria-labelledby="h-library">
     <div class="section-head"><div><p class="kicker">The Library</p><h2 id="h-library" style="margin-top:0">From the collection</h2></div><a class="arrow" href="${href('library/')}">The full catalogue</a></div>
-    <p class="prose">${lib.works.length} works, from the catechisms and the 1662 Prayer Book to Watson, Gouge, Owen, and Edwards. Each links to a place you can read it free online, with modern-English editions where the old English is hard going.</p>
+    <p class="prose">${lib.works.length} works, from the catechisms and the 1662 Prayer Book to Watson, Gouge, Owen, and Edwards, and on to Chesterton, Lewis, and Tolkien. Public-domain works link to a free copy, with modern-English editions where the old English is hard going.</p>
     <ol class="catalog">${['pilgrims-progress', 'heidelberg-catechism', 'gouge-domestical-duties', 'watson-body-of-divinity'].map((id) => lib.works.find((w) => w.id === id)).map(catalogRow).join('')}</ol>
   </section>
 

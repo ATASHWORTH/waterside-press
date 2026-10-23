@@ -86,3 +86,21 @@ Also: gutenberg.org/ebooks/275, *The Augsburg Confession*, complete (preface, Ar
 Still not checked: CCEL PDFs for ANF 4, 5, 7 and NPNF volumes other than npnf102 and npnf204 (ccel.org requests needed approval that was not given in time); *Summa* scans (University of Toronto items exist, but their records do not say which part each volume holds); the CCEL PDF of Schaff vol. 3 (fetch error).
 
 Later on 2026-10-18 (CCEL approved): ccel.org/ccel/schaff/creeds3 (volume page and contents) checked; creeds3.iii.ii.html is the Augsburg Confession, Latin with Krauth's English in parallel, read from the preface through Part II Art. 3 (the rest was beyond what the check could read and is not confirmed). Linked on the Augsburg record and as a Schaff vol. 3 record. The PDF (ccel.org/ccel/s/schaff/creeds3/cache/creeds3.pdf) returned an error.
+
+## Literature and the Christian imagination (added 2026-10-22)
+
+**Policy for works still in copyright (Tolkien; Lewis after 1926).** These are listed with a Waterside introduction, a WorldCat "find in a library" search link, and the date they are expected to enter the US public domain (`pdDate`). No full-text link is given: no authorized free copy exists, and uploads of these books on file-sharing and archive sites are not licensed. When each date arrives, add a checked free edition and change `rights` from `in-copyright-pd`.
+
+| Work | First published | Expected US public domain | Basis |
+|---|---|---|---|
+| Tolkien, *The Hobbit* | 1937 (rev. 1951) | 1 Jan 2033 (1951 text: 2047) | Standard Ebooks catalogue page, checked 2026-10-22 |
+| Tolkien, *The Lord of the Rings* | 1954–55 (rev. 1965–66) | 1 Jan 2050 (I–II), 2051 (III) | Standard Ebooks catalogue pages, checked 2026-10-22 |
+| Tolkien, *The Silmarillion* | 1977 | 1 Jan 2073 | Publication + 95 years |
+| Tolkien, *Leaf by Niggle* | 1945 | 1 Jan 2041 | Publication + 95 years (renewal assumed) |
+| Tolkien, *On Fairy-Stories* | 1947 | 1 Jan 2043 | Publication + 95 years (renewal assumed) |
+| Lewis, *The Chronicles of Narnia* | 1950–56 | 1 Jan 2046–2052 | Standard Ebooks page (LWW: 2046) |
+| Lewis, *Mere Christianity* | 1952 | 1 Jan 2048 | Publication + 95 years |
+| Lewis, *The Abolition of Man* | 1943 | 1 Jan 2039 | Publication + 95 years |
+| Lewis, *The Screwtape Letters* | 1942 | 1 Jan 2038 | Publication + 95 years |
+
+Public-domain texts linked (pre-1931, US): Lewis, *Spirits in Bondage* (Gutenberg #2003) and *Dymer* (Standard Ebooks "Poetry"); Chesterton, *Orthodoxy* (#130), *Heretics* (#470), *The Everlasting Man* (#65688), *What's Wrong with the World* (#1717), *The Man Who Was Thursday* (#1695), *The Ballad of the White Horse* (#1719), Father Brown (#204, #223, #70175; *Incredulity* via Standard Ebooks). Gutenberg numbers taken from its Chesterton author listing and the #2003 page on 2026-10-22; Standard Ebooks author pages checked the same day.

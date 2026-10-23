@@ -463,6 +463,7 @@ function formatsLine(w) {
   if (hasText(w)) f.push('<b>Read free online</b> (external)');
   if (hasScan(w)) f.push('<b>Page scans</b> (external)');
   if (modernOf(w).length) f.push('<b>Modern English</b> (Updated Works)');
+  if (w.pdDate) f.push(`<b>In copyright</b> · public domain ${esc(w.pdDate)}`);
   f.push('Modern introduction');
   return `<p class="formats">${f.join(' · ')}</p>`;
 }
@@ -473,6 +474,7 @@ function textActions(w, href, detail = false) {
   if (hasPdf(w)) a.push(`<li><a class="ext" href="${attr(w.pdf.url)}" rel="noopener">Download PDF<span class="visually-hidden">: ${esc(w.title)}, hosted at ${esc(w.pdf.host)}</span></a></li>`);
   for (const o of onlineOf(w)) a.push(`<li><a class="ext" href="${attr(o.url)}" rel="noopener">${esc(linkLabel(o, o.kind === 'scan' ? 'Page scans' : 'Read free online'))}<span class="meta">&nbsp;· ${esc(o.host)}</span><span class="visually-hidden">: ${esc(w.title)}</span></a></li>`);
   for (const m of modernOf(w)) a.push(`<li><a class="ext modern" href="${attr(m.url)}" rel="noopener">${esc(linkLabel(m, 'Modern English'))}<span class="meta">&nbsp;· updatedworks.com</span><span class="visually-hidden">: ${esc(w.title)}</span></a></li>`);
+  if (w.find) a.push(`<li><a class="ext" href="${attr(w.find)}" rel="noopener">Find in a library<span class="meta">&nbsp;· worldcat.org</span><span class="visually-hidden">: ${esc(w.title)}</span></a></li>`);
   if (w.sourcePage && !onlineOf(w).some((o) => o.url === w.sourcePage)) a.push(`<li><a class="ext" href="${attr(w.sourcePage)}" rel="noopener">View source<span class="visually-hidden">: ${esc(w.repository)}</span></a></li>`);
   return `<ul class="text-actions">${a.join('')}</ul>`;
 }
@@ -505,6 +507,7 @@ const FORMAT_LEGEND = `<dl class="format-legend">
   <dt>Read free online</dt><dd>The text on another free library's site, such as CCEL, Project Gutenberg, or the OPC. We checked that each link opens the stated work; the record names the edition the host presents.</dd>
   <dt>Page scans</dt><dd>Page images of a historical printing, hosted by the Internet Archive, the Library of Congress, or another library. The record notes any missing pages we know of.</dd>
   <dt>Modern English</dt><dd>An updated-language edition from <a class="ext" href="https://updatedworks.com/" rel="noopener">Updated Works</a>, a recommended outside resource. Free to read with a free account. Their editions are their own work.</dd>
+  <dt>In copyright</dt><dd>Some essential works, such as Tolkien’s and most of Lewis’s, are still in copyright. They have an introduction, a link to borrow them from a library, and the date they are expected to enter the US public domain, when we will link a free edition.</dd>
   <dt>Modern introduction</dt><dd>Every record has one, written by Waterside Press. It is commentary, not the historical text.</dd>
 </dl>`;
 
@@ -520,7 +523,7 @@ function buildLibrary() {
 <div class="wrap page-head">
   <p class="kicker">The Library</p>
   <h1>Library</h1>
-  <p class="lede">Scripture, the catechisms, the Prayer Book, the psalters, the Church Fathers, and the Puritan divines, each linked to a place you can read it free online. Every record states the edition linked, what we have checked, and its rights status. <a href="${href('editorial-principles/')}">How we check sources</a>.</p>
+  <p class="lede">Scripture, the catechisms, the Prayer Book, the psalters, the Church Fathers, the Puritan divines, and the Christian imagination of Chesterton, Lewis, and Tolkien. Public-domain works link to a place you can read them free online; works still in copyright carry an introduction and the date they become free. Every record states the edition linked, what we have checked, and its rights status. <a href="${href('editorial-principles/')}">How we check sources</a>.</p>
   <aside class="notice frame-note" aria-label="A note on the authors in this library"><p><strong>A note on the authors in this library.</strong> Though we are committed to the Reformed tradition, this library includes works and authors that are not within the typical frame of Reformed Christendom: among them the Church Fathers, the desert monks, and medieval writers such as Thomas Aquinas and Thomas à Kempis. We believe there is value in knowing and referencing certain portions or aspects of their writings, sometimes for their outstanding veracity, sometimes for their specificity on a particular issue, and sometimes for their historical value. Including a work is not an endorsement of everything in it. Where an author departs from Reformed teaching on a point that matters, the introduction says so.</p></aside>
 </div>
 <div class="wrap grid main-aside">
@@ -560,7 +563,7 @@ function buildLibrary() {
   });
 
   for (const w of lib.works) {
-    const rightsText = { 'pd-us': 'Public domain in the United States (published before 1931)', 'pd-historic': 'Public domain historic text; Waterside Press transcription', 'pd-text': 'Public domain work; online edition presented by its host', 'in-copyright': 'In copyright; free to read online from the rights holder' }[w.rights];
+    const rightsText = { 'pd-us': 'Public domain in the United States (published before 1931)', 'pd-historic': 'Public domain historic text; Waterside Press transcription', 'pd-text': 'Public domain work; online edition presented by its host', 'in-copyright': 'In copyright; free to read online from the rights holder', 'in-copyright-pd': `In copyright in the United States; expected to enter the public domain on ${w.pdDate}` }[w.rights];
     // Up to eight: same author first, then same period, then most shared categories.
     const score = (x) => (x.authorKey === w.authorKey ? 100 : 0) + (x.periodKey === w.periodKey ? 10 : 0) + x.categories.filter((c) => w.categories.includes(c)).length;
     const related = lib.works.filter((x) => x !== w && (x.authorKey === w.authorKey || x.categories.some((c) => w.categories.includes(c))))
@@ -578,6 +581,8 @@ function buildLibrary() {
       w.repository && ['Source', `<a class="ext" href="${attr(w.sourcePage)}" rel="noopener">${esc(w.repository)}</a>`],
       onlineOf(w).length && ['Read online', onlineOf(w).map((o) => `<a class="ext" href="${attr(o.url)}" rel="noopener">${esc(linkLabel(o, o.host))}</a>`).join('<br>') + `<br><span class="meta">Link opened and work confirmed ${esc(w.checked || '2026-10-11')}.` + ' Edition collation and page-by-page completeness not checked unless stated above.</span>'],
       modernOf(w).length && ['Modern English', modernOf(w).map((m) => `<a class="ext" href="${attr(m.url)}" rel="noopener">${esc(linkLabel(m, 'Updated Works'))}</a>`).join('<br>') + '<br><span class="meta">Free to read with a free Updated Works account.</span>'],
+      w.pdDate && ['Free edition', `Expected ${esc(w.pdDate)}. A free edition will be linked here then.` + ((w.future || []).length ? '<br>' + w.future.map((f) => `<a class="ext" href="${attr(f.url)}" rel="noopener">${esc(f.label || 'Standard Ebooks')}</a>`).join('<br>') + '<br><span class="meta">Standard Ebooks has already announced its free edition for that date.</span>' : '')],
+      w.find && ['Borrow', `<a class="ext" href="${attr(w.find)}" rel="noopener">Find a copy in a library near you (WorldCat)</a>`],
       hasPdf(w) && ['PDF', `<a class="ext" href="${attr(w.pdf.url)}" rel="noopener">${esc(w.pdf.url.replace(/^https:\/\//, ''))}</a><br><span class="meta">Link and title page checked ${esc(w.pdf.checked)}. Completeness of every page not yet checked. File size not recorded.</span>`],
       ['Rights', `${esc(rightsText)}<br><span class="meta">${esc(w.rightsNote)}</span>`],
       ['Audience', esc(w.audience)],

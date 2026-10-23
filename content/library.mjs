@@ -29,6 +29,7 @@ export const categories = [
   ['household', 'Christian education and household formation'],
   ['history', 'Church history and primary sources'],
   ['music-theory', 'Music theory and singing at home'],
+  ['literature', 'Literature and the Christian imagination'],
 ];
 
 export const works = [
@@ -663,5 +664,177 @@ export const works = [
         online: [{ url: 'https://www.gutenberg.org/ebooks/275', host: 'gutenberg.org', kind: 'text' }, { url: 'https://ccel.org/ccel/schaff/creeds3/creeds3.iii.ii.html', host: 'ccel.org', kind: 'text', label: 'Latin and English (Schaff, Krauth translation)' }, { url: 'https://archive.org/details/concordiatriglot00unse', host: 'archive.org', kind: 'scan', label: 'Concordia Triglotta, 1921 (German, Latin, English)' }],
         modern: [], checked: '2026-10-18' },
     ]);
+  })(),
+
+  // Literature and the Christian imagination: Tolkien, Lewis, Chesterton (added 2026-10-22)
+  // Works still in US copyright carry an introduction, no text link, and `pdDate`: the date they are
+  // expected to enter the US public domain, when a free edition will be linked here.
+  // `future`: Standard Ebooks catalogue pages that already announce a free edition on that date.
+  // `find`: a WorldCat search to borrow the book from a local library.
+  ...(() => {
+    const A = {
+      tolkien: ['J. R. R. Tolkien (1892–1973)', 'J. R. R. Tolkien', 'Roman Catholic'],
+      lewis: ['C. S. Lewis (1898–1963)', 'C. S. Lewis', 'Church of England'],
+      chesterton: ['G. K. Chesterton (1874–1936)', 'G. K. Chesterton', 'Church of England; Roman Catholic from 1922'],
+    };
+    const wc = (t, a) => 'https://search.worldcat.org/search?q=' + encodeURIComponent(`ti:${t} au:${a}`);
+    const SE = (path, label) => ({ url: 'https://standardebooks.org/ebooks/' + path, ...(label ? { label } : {}) });
+    const GUT = (n, label) => ({ url: 'https://www.gutenberg.org/ebooks/' + n, host: 'gutenberg.org', kind: 'text', ...(label ? { label } : {}) });
+    const SEtext = (path, label) => ({ url: 'https://standardebooks.org/ebooks/' + path, host: 'standardebooks.org', kind: 'text', ...(label ? { label } : {}) });
+    const rec = (id, a, title, original, fields) => {
+      const [author, authorKey, tradition] = A[a];
+      const year = parseInt(original, 10);
+      const base = {
+        id, title, subtitle: null, author, authorKey, period: 'Twentieth century', periodKey: year < 1901 ? '19th century' : '20th century', original, tradition,
+        language: 'English', categories: ['literature'], tags: [], audience: 'All ages', context: [], family: null,
+        publisher: null, translator: null, editor: null, repository: null, sourcePage: null, pdf: null, transcription: null,
+        online: [], modern: [], future: [], find: null, pdDate: null, checked: '2026-10-22',
+      };
+      const w = { ...base, ...fields };
+      if (w.pdDate) {
+        w.rights = 'in-copyright-pd';
+        w.type = 'Introduction only · in copyright';
+        w.rightsNote = w.rightsNote || `In copyright in the United States. Expected to enter the US public domain on ${w.pdDate}, when Waterside will link a free edition here. Until then, borrow it from a library or buy a copy; copies posted free online are not authorized.`;
+      } else {
+        w.rights = w.rights || 'pd-us';
+        w.type = 'Read free online (external)';
+        w.rightsNote = w.rightsNote || 'Published before 1931; public domain in the United States. Linked, not re-hosted.';
+      }
+      return w;
+    };
+    const TOLKIEN_NOTE = 'Tolkien was a devout Roman Catholic and said so of his work. Of The Lord of the Rings he wrote to a Jesuit friend that it was “a fundamentally religious and Catholic work; unconsciously so at first, but consciously in the revision” (Letters, no. 142). The faith in his stories is almost never stated. It is built into the moral world: providence working through small choices, mercy shown to the undeserving, power refused rather than seized, and joy arriving as grace.';
+    return [
+      // ── Tolkien ──
+      rec('tolkien-hobbit', 'tolkien', 'The Hobbit', '1937', {
+        subtitle: 'or There and Back Again', categories: ['literature', 'household'], tags: ['fantasy', 'reading aloud', 'courage', 'Tolkien'],
+        audience: 'Children from about 7 (read aloud), all ages',
+        summary: 'A comfortable hobbit is swept into a dragon-hunt, and finds courage, honesty, and generosity he did not know he had.',
+        context: [TOLKIEN_NOTE, 'The Hobbit is the gentlest door into that world. Bilbo’s growth is the old shape of moral formation: a small, ordinary person tested by hardship, tempted by treasure, and proved by a costly act of honesty that wins him nothing for himself. Tolkien first told it to his own sons, and it still reads best aloud.'],
+        family: 'Read a chapter an evening. Stop at Bilbo’s choice in the dark with Gollum (chapter 5) and at the Arkenstone (chapter 16) and ask the children what they would have done, and why.',
+        edition: 'First published by George Allen & Unwin, London, 1937. Tolkien revised chapter 5 in the second edition of 1951 to fit The Lord of the Rings; most printings follow the revised text.',
+        pdDate: '1 January 2033',
+        rightsNote: 'In copyright in the United States. The 1937 first-edition text is expected to enter the US public domain on 1 January 2033, when Waterside will link a free edition here. The revised 1951 text follows later (expected 2047). Until then, borrow it from a library or buy a copy; copies posted free online are not authorized.',
+        future: [SE('j-r-r-tolkien/the-hobbit', 'Standard Ebooks, from 2033')], find: wc('The Hobbit', 'Tolkien') }),
+      rec('tolkien-lord-of-the-rings', 'tolkien', 'The Lord of the Rings', '1954–1955', {
+        subtitle: 'The Fellowship of the Ring · The Two Towers · The Return of the King', categories: ['literature', 'household'], tags: ['fantasy', 'providence', 'mercy', 'reading aloud', 'Tolkien'],
+        audience: 'Older children (read aloud from about 10), teenagers, adults',
+        summary: 'The Ring of Power must be destroyed, and the task falls to the smallest. A long story of friendship, temptation, sacrifice, and a victory that comes by grace, not strength.',
+        context: [TOLKIEN_NOTE, 'Watch for pity. Gandalf tells Frodo that Bilbo’s pity for Gollum “may rule the fate of many,” and at the end the quest is saved not by Frodo’s strength, which fails, but by that mercy. Tolkien called the sudden turn to joy at the end of a story a “eucatastrophe” and saw in it a glimpse of the Gospel.', 'Reformed readers will notice Catholic colouring here and there, such as the devotion of the Elves to Elbereth, which some readers have linked to Marian devotion. The larger theology, of providence, a fallen world, and grace, is common Christian ground.'],
+        family: 'Read it aloud over a winter, a chapter or half-chapter a night. Gandalf’s conversation with Frodo in “The Shadow of the Past” is worth reading twice.',
+        edition: 'First published by George Allen & Unwin, London, in three volumes: The Fellowship of the Ring and The Two Towers (1954), The Return of the King (1955). Tolkien revised the text for the second edition of 1965–66.',
+        pdDate: '1 January 2050',
+        rightsNote: 'In copyright in the United States. The Fellowship of the Ring and The Two Towers are expected to enter the US public domain on 1 January 2050, and The Return of the King on 1 January 2051; the revised second-edition text follows later. Waterside will link free editions here as each volume becomes available. Until then, borrow from a library or buy a copy; copies posted free online are not authorized.',
+        future: [SE('j-r-r-tolkien/the-fellowship-of-the-ring', 'Fellowship, from 2050'), SE('j-r-r-tolkien/the-two-towers', 'Two Towers, from 2050'), SE('j-r-r-tolkien/the-return-of-the-king', 'Return of the King, from 2051')],
+        find: wc('The Lord of the Rings', 'Tolkien') }),
+      rec('tolkien-silmarillion', 'tolkien', 'The Silmarillion', '1977', {
+        categories: ['literature'], tags: ['creation', 'fall', 'myth', 'Tolkien'], audience: 'Teenagers, adults',
+        summary: 'The deep history behind The Lord of the Rings, opening with the creation of the world in music and the first rebellion against its Maker.',
+        context: [TOLKIEN_NOTE, 'The first chapter, the “Ainulindalë,” is Tolkien’s creation story: the One, Ilúvatar, makes the world through a great music, and the rebel Melkor’s discord is in the end woven into a greater harmony than he could imagine. It is a meditation on providence and evil that older children can follow.'],
+        family: 'Read the Ainulindalë aloud alongside Genesis 1–3 and Job 38, and talk about how God rules even over rebellion.',
+        edition: 'Edited from Tolkien’s papers by his son Christopher Tolkien and published by George Allen & Unwin, London, 1977.', editor: 'Christopher Tolkien',
+        pdDate: '1 January 2073', find: wc('The Silmarillion', 'Tolkien') }),
+      rec('tolkien-leaf-by-niggle', 'tolkien', 'Leaf by Niggle', '1945', {
+        categories: ['literature', 'devotional'], tags: ['allegory', 'work', 'vocation', 'Tolkien'], audience: 'Teenagers, adults',
+        summary: 'A short allegory about a painter who never finishes his great picture of a tree, and what becomes of his work, and his neighbour, after he is called away on a journey.',
+        context: [TOLKIEN_NOTE, 'It is a parable of vocation: of unfinished work, of the interruptions of neighbourly duty, and of the hope that what is true in our labour is not lost. Tolkien wrote it while worrying that he would never finish The Lord of the Rings. Its middle section is a kind of purgatory, which Protestant readers will read as story rather than doctrine.'],
+        family: 'Read it in one sitting with older children. It takes about forty minutes. Talk about Niggle’s neighbour Parish and whose work turned out to matter.',
+        edition: 'First published in The Dublin Review, January 1945; later collected in Tree and Leaf (1964).',
+        pdDate: '1 January 2041', find: wc('Leaf by Niggle', 'Tolkien') }),
+      rec('tolkien-on-fairy-stories', 'tolkien', 'On Fairy-Stories', '1947', {
+        categories: ['literature', 'household'], tags: ['imagination', 'eucatastrophe', 'essay', 'Tolkien'], audience: 'Parents, older teenagers',
+        summary: 'Tolkien’s essay on what fairy-stories are for: recovery, escape, and consolation, and the “eucatastrophe,” the sudden joyous turn, which he saw fulfilled in the Gospel.',
+        context: [TOLKIEN_NOTE, 'This is his defence of imaginative literature for Christians. He argues that making stories is a right use of the image of God (“we make still by the law in which we’re made”) and that the Resurrection is the eucatastrophe of the story of the Incarnation, the true story that all good fairy-stories echo.'],
+        family: 'For parents deciding what stories belong in the house. Read the epilogue first; it is three pages long.',
+        edition: 'Given as the Andrew Lang Lecture at St Andrews, 1939; first published in Essays Presented to Charles Williams (Oxford University Press, 1947); revised in Tree and Leaf (1964).',
+        pdDate: '1 January 2043', find: wc('Tree and Leaf', 'Tolkien') }),
+
+      // ── Lewis ──
+      rec('lewis-narnia', 'lewis', 'The Chronicles of Narnia', '1950–1956', {
+        subtitle: 'Seven books, beginning with The Lion, the Witch and the Wardrobe', categories: ['literature', 'household'], tags: ['fantasy', 'reading aloud', 'Aslan', 'Lewis'],
+        audience: 'Children from about 6 (read aloud), all ages',
+        summary: 'Children pass into a world where a great Lion, Aslan, is its true King. The first book retells the Passion in a child’s terms: a traitor, a sacrifice, and a resurrection that breaks the Witch’s power.',
+        context: ['Lewis, a lay member of the Church of England, wrote the Chronicles not as allegory but as a “supposal”: suppose there were a world like Narnia, and Christ chose to become incarnate there. The books form a child’s whole theology in story: creation (The Magician’s Nephew), atonement (The Lion, the Witch and the Wardrobe), conversion (Eustace in The Voyage of the Dawn Treader), and the last judgment (The Last Battle).', 'Some readers question one scene in The Last Battle, in which a sincere worshipper of a false god is received by Aslan. Lewis meant it as a picture of God’s mercy; families who hold that salvation is by faith in Christ alone will want to talk it through.'],
+        family: 'Read them in publication order, beginning with The Lion, the Witch and the Wardrobe. Edmund’s treachery and Aslan’s death in chapters 13–15 are the heart of the series.',
+        edition: 'First published by Geoffrey Bles and The Bodley Head, London, 1950–1956.',
+        pdDate: '1 January 2046',
+        rightsNote: 'In copyright in the United States. The Lion, the Witch and the Wardrobe is expected to enter the US public domain on 1 January 2046, and the later books one year at a time through The Last Battle on 1 January 2052. Waterside will link free editions as each becomes available. Until then, borrow from a library or buy a copy; copies posted free online are not authorized.',
+        future: [SE('c-s-lewis/the-lion-the-witch-and-the-wardrobe', 'The Lion, the Witch and the Wardrobe, from 2046')], find: wc('The Lion, the Witch and the Wardrobe', 'Lewis') }),
+      rec('lewis-mere-christianity', 'lewis', 'Mere Christianity', '1952', {
+        categories: ['literature', 'theology'], tags: ['apologetics', 'moral law', 'Lewis'], audience: 'Teenagers, adults',
+        summary: 'Lewis’s wartime radio talks on the faith held in common by Christians: the moral law, what Christians believe, Christian behaviour, and the doctrine of the Trinity.',
+        context: ['Given on BBC radio from 1941 to 1944 and gathered into one book in 1952. Lewis deliberately set aside the questions that divide denominations, describing “mere” Christianity as a hall from which the rooms of the churches open.', 'Reformed readers will find his account of justification and the atonement less precise than the confessions; its strength is the argument from the moral law and its plain, vivid prose.'],
+        family: 'A good first theology book for a teenager. Read Book I together and argue about it.',
+        edition: 'Geoffrey Bles, London, 1952, collecting Broadcast Talks (1942), Christian Behaviour (1943), and Beyond Personality (1944).',
+        pdDate: '1 January 2048', find: wc('Mere Christianity', 'Lewis') }),
+      rec('lewis-abolition-of-man', 'lewis', 'The Abolition of Man', '1943', {
+        categories: ['literature', 'household'], tags: ['education', 'moral formation', 'natural law', 'Lewis'], audience: 'Parents, older teenagers',
+        summary: 'Three lectures on education, arguing that children must be trained to love what is truly lovely and hate what is truly hateful, and warning against an education that produces “men without chests.”',
+        context: ['Lewis defends objective value, which he calls the Tao, the moral law recognized across civilizations, against a fashionable schooling that treats all value as feeling. It is the clearest short case in English for why moral formation belongs at the centre of education.'],
+        family: 'For parents first. Lecture 1, “Men without Chests,” is the part to read if you read nothing else.',
+        edition: 'Riddell Memorial Lectures, University of Durham, 1943; published by Oxford University Press, 1943.',
+        pdDate: '1 January 2039', find: wc('The Abolition of Man', 'Lewis') }),
+      rec('lewis-screwtape', 'lewis', 'The Screwtape Letters', '1942', {
+        categories: ['literature', 'devotional'], tags: ['temptation', 'satire', 'Lewis'], audience: 'Teenagers, adults',
+        summary: 'Letters from a senior devil to his nephew on how to win a young man’s soul. A comic and searching study of everyday temptation.',
+        context: ['Everything is upside down: “the Enemy” is God and “Our Father Below” is Satan. Lewis’s point is that the road to hell is usually gradual, “the gentle slope, soft underfoot,” made of small distractions, petty resentments, and comfortable half-belief. Compare Brooks’s Precious Remedies Against Satan’s Devices, which covers the same ground in Puritan prose.'],
+        family: 'Read one letter at a time with older teenagers, and turn each piece of devilish advice the right way up together.',
+        edition: 'Serialized in The Guardian (an Anglican weekly), 1941; published by Geoffrey Bles, London, 1942.',
+        pdDate: '1 January 2038', find: wc('The Screwtape Letters', 'Lewis') }),
+      rec('lewis-poetry', 'lewis', 'Spirits in Bondage and Dymer', '1919, 1926', {
+        subtitle: 'Lewis’s early poetry', categories: ['literature'], tags: ['poetry', 'conversion', 'Lewis'], audience: 'Adults',
+        summary: 'Lewis’s first two books, published under the name Clive Hamilton before his conversion: a cycle of lyrics written partly in the trenches of the First World War, and a long narrative poem.',
+        context: ['These are the poems of a young atheist. Spirits in Bondage sees nature as cruel and God as absent or hostile. They belong here as the “before” of Lewis’s conversion, described in Surprised by Joy, and as a reminder that the apologist was once on the other side.'],
+        edition: 'Spirits in Bondage: William Heinemann, London, 1919 (Project Gutenberg #2003). Dymer: J. M. Dent, London, 1926. Standard Ebooks publishes both together as “Poetry.”',
+        rights: 'pd-us', rightsNote: 'Both were published before 1931 and are public domain in the United States. Lewis’s later works remain in copyright.',
+        online: [GUT(2003, 'Spirits in Bondage'), SEtext('c-s-lewis/poetry', 'Spirits in Bondage and Dymer')] }),
+
+      // ── Chesterton ──
+      rec('chesterton-orthodoxy', 'chesterton', 'Orthodoxy', '1908', {
+        categories: ['literature', 'theology'], tags: ['apologetics', 'joy', 'creed', 'Chesterton'], audience: 'Older teenagers, adults',
+        summary: 'Chesterton’s account of how he came to believe the Apostles’ Creed: not by argument first, but by finding that it alone made sense of wonder, sanity, and the strange joy of the world.',
+        context: ['Written while Chesterton was still an Anglican, fourteen years before he became a Roman Catholic. The chapter “The Ethics of Elfland” argues that fairy tales teach the truest philosophy: that the world is a gift, given on conditions, and that wonder is the right response to it. It is the closest thing in Chesterton to Tolkien’s On Fairy-Stories, and Lewis read Chesterton closely.'],
+        family: 'Read “The Ethics of Elfland” (chapter 4) aloud to older teenagers. It is the best defence of reading fairy tales to children.',
+        edition: 'John Lane, London and New York, 1908.',
+        online: [GUT(130), SEtext('g-k-chesterton/orthodoxy')] }),
+      rec('chesterton-everlasting-man', 'chesterton', 'The Everlasting Man', '1925', {
+        categories: ['literature', 'theology', 'history'], tags: ['apologetics', 'history', 'Incarnation', 'Chesterton'], audience: 'Adults',
+        summary: 'A history of mankind and of Christ, arguing that both are stranger and more unique than the modern view of history allows.',
+        context: ['C. S. Lewis credited this book with showing him, while still an unbeliever, how the Christian view of history made sense. Its second half, on Christ and the Church, is Chesterton at his most moving. It was written after his reception into the Roman Catholic Church.'],
+        edition: 'Hodder & Stoughton, London, 1925.',
+        online: [GUT(65688), SEtext('g-k-chesterton/the-everlasting-man')] }),
+      rec('chesterton-heretics', 'chesterton', 'Heretics', '1905', {
+        categories: ['literature', 'theology'], tags: ['essays', 'culture', 'Chesterton'], audience: 'Adults',
+        summary: 'Essays on the leading writers of his day, from Shaw to Kipling, arguing that a man’s view of the cosmos is the most practical thing about him.',
+        context: ['The book that provoked Orthodoxy: a critic complained that Chesterton had attacked everyone else’s philosophy without stating his own, and Orthodoxy was the answer.'],
+        edition: 'John Lane, London and New York, 1905.',
+        online: [GUT(470), SEtext('g-k-chesterton/heretics')] }),
+      rec('chesterton-whats-wrong', 'chesterton', 'What’s Wrong with the World', '1910', {
+        categories: ['literature', 'household'], tags: ['family', 'home', 'society', 'Chesterton'], audience: 'Parents, adults',
+        summary: 'Chesterton’s defence of the family and the home against both the businessman and the reformer, with the famous line that the Christian ideal “has not been tried and found wanting. It has been found difficult; and left untried.”',
+        context: ['He argues that the household, not the state or the market, is the free and sovereign centre of human life, and that most modern reforms quietly weaken it. Some chapters reflect the politics of 1910, and his remarks on women and work will divide readers today.'],
+        family: 'For parents. Part I and the section “The Home of Man” are the core of the argument.',
+        edition: 'Cassell, London, 1910.',
+        online: [GUT(1717), SEtext('g-k-chesterton/whats-wrong-with-the-world')] }),
+      rec('chesterton-thursday', 'chesterton', 'The Man Who Was Thursday', '1908', {
+        subtitle: 'A Nightmare', categories: ['literature'], tags: ['novel', 'providence', 'Chesterton'], audience: 'Teenagers, adults',
+        summary: 'A poet-detective infiltrates a council of anarchists named for the days of the week, and the chase becomes a dream about suffering, providence, and the face of God.',
+        context: ['A comic thriller that turns, in its last chapters, into something like the Book of Job. The question at its centre, “Can ye drink of the cup that I drink of?”, is put to men who suffered without knowing why.'],
+        edition: 'J. W. Arrowsmith, Bristol, 1908.',
+        online: [GUT(1695), SEtext('g-k-chesterton/the-man-who-was-thursday')] }),
+      rec('chesterton-father-brown', 'chesterton', 'The Father Brown Stories', '1911–1927', {
+        subtitle: 'The Innocence, Wisdom, Incredulity, and Secret of Father Brown', categories: ['literature', 'household'], tags: ['detective stories', 'reading aloud', 'Chesterton'], audience: 'Older children, teenagers, adults',
+        summary: 'A small, unremarkable Catholic priest solves crimes by understanding sin from the inside: he knows what a murderer is like because he knows his own heart.',
+        context: ['Each story is a short puzzle with a moral turn. Father Brown’s method is humility and an exact knowledge of human evil, which he learned from hearing confessions. The first story, “The Blue Cross,” is a good place to begin.'],
+        family: 'One story an evening; each takes twenty to thirty minutes aloud.',
+        edition: 'Cassell, London: The Innocence of Father Brown (1911), The Wisdom of Father Brown (1914), The Incredulity of Father Brown (1926), The Secret of Father Brown (1927).',
+        online: [GUT(204, 'The Innocence'), GUT(223, 'The Wisdom'), SEtext('g-k-chesterton/the-incredulity-of-father-brown', 'The Incredulity'), GUT(70175, 'The Secret')] }),
+      rec('chesterton-white-horse', 'chesterton', 'The Ballad of the White Horse', '1911', {
+        categories: ['literature', 'household'], tags: ['poetry', 'King Alfred', 'reading aloud', 'Chesterton'], audience: 'Older children, all ages',
+        summary: 'A long ballad of King Alfred’s stand against the Danes, and of a hope that holds when there is no reason left to hope.',
+        context: ['In Alfred’s vision the Virgin promises him no victory, only that “the sky grows darker yet / And the sea rises higher,” and he fights on. It is the same courage without hope of reward that runs through The Lord of the Rings.'],
+        family: 'Read it aloud; it was written to be heard. Book I is a good evening’s reading.',
+        edition: 'Methuen, London, 1911.',
+        online: [GUT(1719)] }),
+    ];
   })(),
 ];
