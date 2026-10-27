@@ -210,9 +210,9 @@ function renderOffice(key) {
   <nav class="office-index" aria-label="${o.name}: sections"><ol>${sections.map(([s, label, cls]) => `<li${cls ? ` class="${cls}"` : ''}><a href="#${id(s)}">${label}</a></li>`).join('')}</ol></nav>
   ${part(id('sentence'), 'Opening sentence', both(sentence, o.sentence))}
   ${part(id('confession'), 'Confession of sin', `
-    <p class="rubric">All kneel or bow, and say together:</p>
+    <p class="rubric">All kneel (or bow heads) and say together:</p>
     ${src('historic', t.confession.source)}<p>${esc(t.confession.text)}</p>
-    <p class="rubric">The leader then reads:</p>
+    <p class="rubric">The leader reads this promise of pardon from Scripture:</p>
     ${src('scripture', t.assurance.ref)}${verse(t.assurance)}
     ${note('About the confession', esc(t.confession.note))}`, 'full-only')}
   ${part(id('versicles'), 'Invitation to praise', `${src('historic', t.versicles.source)}${lines(t.versicles.lines)}`)}
@@ -220,17 +220,22 @@ function renderOffice(key) {
     <p class="source">${kind('historic')}Book of Common Prayer (1662) psalter, read through each month · <span id="${key}-psalter-day">See the table at the foot of this page</span></p>
     <div class="appointed js-only" hidden><strong>Read today</strong><span id="${key}-psalms"></span></div>
     <p class="nojs-only">Find the psalms for today’s date in the psalter table at the foot of this page.</p>
-    <p class="rubric">The psalms are read aloud, leader and household taking alternate verses, each ending with the Gloria Patri. <span class="short-only">In the shorter form, read the first psalm appointed, or sing a metrical psalm from the <a href="../music/index.html">Music</a> page.</span></p>
+    <p class="rubric">Then are said the Psalms appointed, leader and household taking alternate verses; and at the end of every Psalm, Glory be to the Father. <span class="short-only">In the shorter form, read the first psalm appointed, or sing a metrical psalm from the <a href="../music/index.html">Music</a> page.</span></p>
     <p class="meta">Each link opens the psalm in the ESV at esv.org. Waterside does not reprint whole psalms, to stay within the ESV’s quotation limits.</p>`)}
   ${part(id('lesson'), o.lessonLabel, `
     <p class="source">${kind('arrangement')}Waterside continuous-reading plan · <a href="#about-plan">how the plan works</a></p>
     <div class="appointed js-only" hidden><strong>Read today</strong><span id="${key}-lesson"></span></div>
+    <p class="rubric js-only" hidden>The reader announces the lesson:</p>
+    <p class="versicle js-only" hidden><b>Reader</b><span id="${key}-announce"></span></p>
     <p class="nojs-only">The lesson is calculated from the date and needs JavaScript. You may instead continue reading where you left off.</p>
-    <p class="rubric short-only">In the shorter form, a few verses are enough.</p>`)}
-  ${part(id('canticle'), 'Canticle', sameCanticle ? cant(o.canticle.weekday) : both(cant, o.canticle))}
+    <p class="rubric short-only">In the shorter form, a few verses are enough.</p>
+    <p class="rubric">At the end of the lesson:</p>
+    <p class="versicle"><b>Reader</b><span>Here endeth the ${key === 'morning' ? 'First' : 'Second'} Lesson.</span></p>`)}
+  ${part(id('canticle'), 'Canticle', '<p class="rubric">After the lesson, all say or sing together:</p>' + (sameCanticle ? cant(o.canticle.weekday) : both(cant, o.canticle)))}
   ${o.canticle2 ? part(id('canticle2'), 'Second canticle', cant(o.canticle2), 'full-only') : ''}
-  ${part(id('creed'), "The Apostles' Creed", `<p class="rubric">All say together:</p>${src('historic', t.creed.source)}${t.creed.text.map((x) => `<p>${esc(x)}</p>`).join('')}${note('Notes on the words', esc(t.creed.note))}`, 'full-only')}
+  ${part(id('creed'), "The Apostles' Creed", `<p class="rubric">All stand, and say together:</p>${src('historic', t.creed.source)}${t.creed.text.map((x) => `<p>${esc(x)}</p>`).join('')}${note('Notes on the words', esc(t.creed.note))}`, 'full-only')}
   ${part(id('prayers'), 'The Prayers', `
+    <p class="rubric">All kneel (or bow heads) for the prayers.</p>
     <h4>The Lord’s Prayer</h4>${src('historic', t.lordsPrayer.source)}<p>${esc(t.lordsPrayer.text)}</p>
     <div class="full-only"><h4>Suffrages</h4>${src('historic', t.suffrages.source)}${lines(t.suffrages.lines)}</div>
     ${both((cs) => cs.map((c, i) => `<div class="${i ? 'full-only' : ''}">${collectBlock(c)}</div>`).join(''), o.collects)}

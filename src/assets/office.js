@@ -27,6 +27,44 @@
       n -= books[i][1];
     }
   }
+  // The 1662 rubric: "before every Lesson … Here beginneth such a Chapter … of such a Book".
+  var ORD = ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth', 'Seventh', 'Eighth', 'Ninth', 'Tenth', 'Eleventh', 'Twelfth', 'Thirteenth', 'Fourteenth', 'Fifteenth', 'Sixteenth', 'Seventeenth', 'Eighteenth', 'Nineteenth'];
+  var TENS = { 20: 'Twentieth', 30: 'Thirtieth', 40: 'Fortieth', 50: 'Fiftieth', 60: 'Sixtieth' };
+  var TENS_C = { 20: 'Twenty', 30: 'Thirty', 40: 'Forty', 50: 'Fifty', 60: 'Sixty' };
+  function ordinal(n) {
+    if (n < 20) return ORD[n - 1];
+    var t = Math.floor(n / 10) * 10, u = n % 10;
+    return u ? TENS_C[t] + '-' + ORD[u - 1].toLowerCase() : TENS[t];
+  }
+  function bookTitle(b) {
+    var names = { 1: 'First', 2: 'Second', 3: 'Third' };
+    var n = /^(\d) (.*)$/.exec(b);
+    if (n) {
+      if (/^(Samuel|Kings|Chronicles)$/.test(n[2])) return 'the ' + names[n[1]] + ' Book of ' + n[2];
+      if (/^(Corinthians|Thessalonians)$/.test(n[2])) return 'the ' + names[n[1]] + ' Epistle of Saint Paul to the ' + n[2];
+      if (n[2] === 'Timothy') return 'the ' + names[n[1]] + ' Epistle of Saint Paul to Timothy';
+      if (n[2] === 'Peter') return 'the ' + names[n[1]] + ' Epistle General of Saint Peter';
+      if (n[2] === 'John') return 'the ' + names[n[1]] + ' Epistle ' + (n[1] === '1' ? 'General ' : '') + 'of Saint John';
+    }
+    var special = {
+      Matthew: 'the Gospel according to Saint Matthew', Mark: 'the Gospel according to Saint Mark', Luke: 'the Gospel according to Saint Luke', John: 'the Gospel according to Saint John',
+      Acts: 'the Acts of the Apostles', Romans: 'the Epistle of Saint Paul to the Romans', Galatians: 'the Epistle of Saint Paul to the Galatians',
+      Ephesians: 'the Epistle of Saint Paul to the Ephesians', Philippians: 'the Epistle of Saint Paul to the Philippians', Colossians: 'the Epistle of Saint Paul to the Colossians',
+      Titus: 'the Epistle of Saint Paul to Titus', Philemon: 'the Epistle of Saint Paul to Philemon', Hebrews: 'the Epistle to the Hebrews',
+      James: 'the General Epistle of Saint James', Jude: 'the General Epistle of Saint Jude', Revelation: 'the Revelation of Saint John the Divine',
+      Proverbs: 'the Proverbs', 'Song of Solomon': 'the Song of Solomon', Lamentations: 'the Lamentations of Jeremiah',
+      Ruth: 'the Book of Ruth', Ezra: 'the Book of Ezra', Nehemiah: 'the Book of Nehemiah', Esther: 'the Book of Esther', Job: 'the Book of Job',
+      Joshua: 'the Book of Joshua', Judges: 'the Book of Judges'
+    };
+    if (special[b]) return special[b];
+    if (/^(Genesis|Exodus|Leviticus|Numbers|Deuteronomy|Ecclesiastes)$/.test(b)) return b;
+    return 'the Prophet ' + b;
+  }
+  function announce(ref, books) {
+    var i = ref.lastIndexOf(' '), book = ref.slice(0, i), ch = +ref.slice(i + 1);
+    var single = books.some(function (b) { return b[0] === book && b[1] === 1; });
+    return 'Here beginneth ' + (single ? '' : 'the ' + ordinal(ch) + ' Chapter of ') + bookTitle(book) + '.';
+  }
   function esv(ref) { return 'https://www.esv.org/' + ref.replace(/\s+/g, '+') + '/'; }
   function link(ref, label) {
     var a = document.createElement('a');
@@ -65,6 +103,7 @@
       var lbox = document.getElementById(o + '-lesson');
       lbox.textContent = '';
       lbox.appendChild(link(lesson, lesson));
+      document.getElementById(o + '-announce').textContent = announce(lesson, o === 'morning' ? PLAN.ot : PLAN.nt);
     });
     var q = '?date=' + current.getFullYear() + '-' + String(current.getMonth() + 1).padStart(2, '0') + '-' + String(current.getDate()).padStart(2, '0');
     if (!isToday) history.replaceState(null, '', location.pathname + q); else history.replaceState(null, '', location.pathname);
