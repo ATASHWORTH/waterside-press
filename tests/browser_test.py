@@ -55,6 +55,7 @@ with sync_playwright() as p:
         pg.goto(BASE + 'daily-office/index.html')
         if not pg.is_visible('.gate'): fail(f'{label}: Daily Office gate not shown to a new visitor')
         print(f'{label}: Daily Office gate shown')
+        pg.evaluate("localStorage.setItem('fr-member', '1')")
 
         # Family Catechesis: landing lists sessions; a session has all nine steps and next link
         pg.goto(BASE + 'family-catechesis/index.html')
