@@ -20,6 +20,7 @@ for (const f of files) {
     const u = m[1];
     if (/^https?:/.test(u)) { external.add(u); continue; }
     if (u.startsWith('#') || u.startsWith('mailto:')) continue;
+    if (u === 'app/' && f.endsWith('daily-office/index.html')) continue; // the live Daily Office app, proxied by netlify.toml
     const path = u.split(/[?#]/)[0];
     if (!path) continue;
     const target = path.startsWith('/') ? join(DIST, path) : resolve(dirname(f), path);

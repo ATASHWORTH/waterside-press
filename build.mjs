@@ -173,148 +173,23 @@ const kind = (k) => `<span class="kind">${kindLabel[k]}</span>`;
 const note = (summary, html) => html ? `<details class="note"><summary>${summary}</summary><p>${html}</p></details>` : '';
 const src = (k, text) => `<p class="source">${kind(k)}${esc(text)}</p>`;
 const verse = (r) => `<p class="scripture">${r.text}</p>`;
-const lines = (arr) => arr.map(([who, line]) => `<p class="versicle${who === 'All' ? ' all' : ''}"><b>${who}</b><span>${esc(line)}</span></p>`).join('');
 const esvLink = (ref) => `https://www.esv.org/${ref.replace(/[–]/g, '-').replace(/(\d)[a-z]\b/g, '$1').replace(/,\s*/g, ',').replace(/\s+/g, '+')}/`;
-const part = (id, title, inner, extra = '') => `<section class="part ${extra}" id="${id}" aria-labelledby="h-${id}"><div class="part-head"><h3 id="h-${id}">${title}</h3></div>${inner}</section>`;
-
-function canticle(c) {
-  const pointed = (s) => esc(s).replace(/ : /g, ' <span class="colon" aria-hidden="true">:</span> ');
-  return `${src('historic', c.source)}<p class="meta">${esc(c.subtitle)}</p>
-  <div class="canticle">${c.lines.map((l) => `<p>${pointed(l)}</p>`).join('')}<p class="gloria">${pointed(off.canticles.gloria)}</p></div>
-  ${c.note ? note('About this canticle', esc(c.note)) : ''}`;
-}
-function hymnBlock(h) {
-  return `${src('historic', h.source)}<p class="meta">Suggested tune: ${esc(h.tune)}</p>${h.stanzas.map((s) => `<p class="stanza">${esc(s)}</p>`).join('')}${note('About this hymn', esc(h.note))}`;
-}
-const collectBlock = (c) => `<h4>${esc(c.title)}</h4>${src('historic', c.source)}<p>${esc(c.text)}</p>${c.note ? note('A word in this prayer', esc(c.note)) : ''}`;
 
 // ── Daily Office ──
-function renderOffice(key) {
-  const o = off.offices[key];
-  const t = off.texts;
-  const id = (s) => `${key}-part-${s}`; // distinct from the ${key}-psalms / ${key}-lesson slots filled by office.js
-  const both = (render, field) => `<div class="weekday-only"><p class="when nojs-only">On weekdays</p>${render(field.weekday)}</div><div class="sunday-only"><p class="when nojs-only">On Sundays</p>${render(field.sunday)}</div>`;
-  const sentence = (s) => `${src('scripture', s.ref)}${verse(s)}`;
-  const cant = (k) => canticle(off.canticles[k]);
-  const sameCanticle = o.canticle.weekday === o.canticle.sunday;
-  const sections = [
-    ['sentence', 'Opening'], ['confession', 'Confession', 'full-only'], ['versicles', 'Praise'], ['psalms', 'Psalms'],
-    ['lesson', 'Scripture'], ['canticle', 'Canticle'], ...(o.canticle2 ? [['canticle2', 'Nunc Dimittis', 'full-only']] : []),
-    ['creed', 'Creed', 'full-only'], ['prayers', 'Prayers'], ['hymn', 'Hymn'], ['blessing', 'Grace'],
-  ];
-  return `<div class="office-panel" id="panel-${key}" role="tabpanel" aria-labelledby="tab-${key}">
-  <header class="office-title">
-    <h2>${o.name}</h2>
-    <p class="meta"><span class="weekday-only">The weekday form</span><span class="sunday-only">The Lord’s Day form</span></p>
-  </header>
-  <nav class="office-index" aria-label="${o.name}: sections"><ol>${sections.map(([s, label, cls]) => `<li${cls ? ` class="${cls}"` : ''}><a href="#${id(s)}">${label}</a></li>`).join('')}</ol></nav>
-  ${part(id('sentence'), 'Opening sentence', both(sentence, o.sentence))}
-  ${part(id('confession'), 'Confession of sin', `
-    <p class="rubric">All kneel (or bow heads) and say together:</p>
-    ${src('historic', t.confession.source)}<p>${esc(t.confession.text)}</p>
-    <p class="rubric">The leader reads this promise of pardon from Scripture:</p>
-    ${src('scripture', t.assurance.ref)}${verse(t.assurance)}
-    ${note('About the confession', esc(t.confession.note))}`, 'full-only')}
-  ${part(id('versicles'), 'Invitation to praise', `${src('historic', t.versicles.source)}${lines(t.versicles.lines)}`)}
-  ${part(id('psalms'), 'The Psalms appointed', `
-    <p class="source">${kind('historic')}Book of Common Prayer (1662) psalter, read through each month · <span id="${key}-psalter-day">See the table at the foot of this page</span></p>
-    <div class="appointed js-only" hidden><strong>Read today</strong><span id="${key}-psalms"></span></div>
-    <p class="nojs-only">Find the psalms for today’s date in the psalter table at the foot of this page.</p>
-    <p class="rubric">Then are said the Psalms appointed, leader and household taking alternate verses; and at the end of every Psalm, Glory be to the Father. <span class="short-only">In the shorter form, read the first psalm appointed, or sing a metrical psalm from the <a href="../music/index.html">Music</a> page.</span></p>
-    <p class="meta">Each link opens the psalm in the ESV at esv.org. Waterside does not reprint whole psalms, to stay within the ESV’s quotation limits.</p>`)}
-  ${part(id('lesson'), o.lessonLabel, `
-    <p class="source">${kind('arrangement')}Waterside continuous-reading plan · <a href="#about-plan">how the plan works</a></p>
-    <div class="appointed js-only" hidden><strong>Read today</strong><span id="${key}-lesson"></span></div>
-    <p class="rubric js-only" hidden>The reader announces the lesson:</p>
-    <p class="versicle js-only" hidden><b>Reader</b><span id="${key}-announce"></span></p>
-    <p class="nojs-only">The lesson is calculated from the date and needs JavaScript. You may instead continue reading where you left off.</p>
-    <p class="rubric short-only">In the shorter form, a few verses are enough.</p>
-    <p class="rubric">At the end of the lesson:</p>
-    <p class="versicle"><b>Reader</b><span>Here endeth the ${key === 'morning' ? 'First' : 'Second'} Lesson.</span></p>`)}
-  ${part(id('canticle'), 'Canticle', '<p class="rubric">After the lesson, all say or sing together:</p>' + (sameCanticle ? cant(o.canticle.weekday) : both(cant, o.canticle)))}
-  ${o.canticle2 ? part(id('canticle2'), 'Second canticle', cant(o.canticle2), 'full-only') : ''}
-  ${part(id('creed'), "The Apostles' Creed", `<p class="rubric">All stand, and say together:</p>${src('historic', t.creed.source)}${t.creed.text.map((x) => `<p>${esc(x)}</p>`).join('')}${note('Notes on the words', esc(t.creed.note))}`, 'full-only')}
-  ${part(id('prayers'), 'The Prayers', `
-    <p class="rubric">All kneel (or bow heads) for the prayers.</p>
-    <h4>The Lord’s Prayer</h4>${src('historic', t.lordsPrayer.source)}<p>${esc(t.lordsPrayer.text)}</p>
-    <div class="full-only"><h4>Suffrages</h4>${src('historic', t.suffrages.source)}${lines(t.suffrages.lines)}</div>
-    ${both((cs) => cs.map((c, i) => `<div class="${i ? 'full-only' : ''}">${collectBlock(c)}</div>`).join(''), o.collects)}
-    <div class="full-only">
-      <h4>Intercessions</h4>${src('original', t.intercessions.source)}
-      <ul class="intercessions">${t.intercessions.items.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
-    </div>
-    <details class="note"><summary>A prayer for our children</summary>${src('original', t.forChildren.source)}<p>${esc(t.forChildren.text)}</p></details>`)}
-  ${part(id('hymn'), 'Hymn', `<p class="rubric">A hymn may be sung here, or at the beginning.</p>${hymnBlock(hymns.byId[o.hymn])}`)}
-  ${part(id('blessing'), 'The Grace', `${src('scripture', o.blessing.ref)}${verse(o.blessing)}<p class="meta no-copy">Praying alone or as a household without a minister, many say “us” for “you”. The words of Scripture are otherwise unaltered.</p>`)}
-</div>`;
-}
-
-function psalterTable() {
-  return `<div class="table-scroll"><table class="psalter"><caption>The psalter by day of the month (Book of Common Prayer, 1662). On the 31st, the psalms of the 30th day are read again.</caption>
-  <thead><tr><th scope="col">Day</th><th scope="col">Morning</th><th scope="col">Evening</th></tr></thead>
-  <tbody>${off.psalter.map(([m, e], i) => `<tr><th scope="row">${i + 1}</th><td>${m.join(', ')}</td><td>${e.join(', ')}</td></tr>`).join('')}</tbody></table></div>`;
-}
-
+// The Office itself is the Daily Office app (repo waterside-office, built from this site's content).
+// netlify.toml serves its live deployment at /daily-office/app/, so the website and the app are the
+// same page. This page keeps the Family Rule signup in front of it, then sends members straight in.
 function buildOffice() {
-  const plan = { epoch: off.PLAN_EPOCH, psalter: off.psalter, ot: off.otBooks, nt: off.ntBooks };
   layout({
     path: 'daily-office/', current: 'daily-office/', title: 'Daily Office',
     description: 'Morning and Evening Prayer for the household, from the Book of Common Prayer tradition, with the psalms and lessons appointed for each day.',
-    scripts: ['office.js'],
-    body: (href) => `
+    body: () => `
+<script>try{if(localStorage.getItem("fr-member"))location.replace("app/"+location.search+location.hash)}catch(e){}</script>
 <div class="wrap page-head">
   <p class="kicker">Pray the Office</p>
   <h1>Daily Office</h1>
   <p class="lede">Morning and Evening Prayer, adapted for the household from the Book of Common Prayer. Pray it alone, on behalf of your household, or with everyone gathered.</p>
-  <details class="note prose"><summary>How to use the Office</summary>
-    <p>The order stays the same each day so that it can be learned; the psalms and lessons change according to a set plan. The full form takes about twenty minutes. The shorter form takes about eight and suits young children. Words in <span style="color:var(--rubric);font-style:italic">red italic</span> are instructions and are not read aloud. Lines marked <b>Leader</b> and <b>All</b> are said in turn.</p>
-  </details>
-</div>
-<div class="office-bar no-print js-only" hidden>
-  <div class="wrap">
-    <div class="date-nav" role="group" aria-label="Date">
-      <button class="btn small secondary" id="prev-day" type="button" aria-label="Previous day">‹</button>
-      <span id="office-date" aria-live="polite"></span>
-      <button class="btn small secondary" id="next-day" type="button" aria-label="Next day">›</button>
-      <button class="btn small secondary" id="back-today" type="button" hidden>Today</button>
-    </div>
-    <div class="office-controls">
-      <a class="btn small secondary" href="#office-top">Contents</a>
-      <button class="btn small secondary" id="short-toggle" type="button" aria-pressed="false">Shorter form</button>
-      <span role="group" aria-label="Text size" class="size-group">
-        <button class="btn small secondary" id="size-down" type="button" aria-label="Smaller text">A−</button>
-        <span id="size-label" class="meta">100%</span>
-        <button class="btn small secondary" id="size-up" type="button" aria-label="Larger text">A+</button>
-      </span>
-      <button class="btn small secondary" id="copy-btn" type="button">Copy</button>
-      <button class="btn small" id="print-btn" type="button">Print</button>
-      <span id="copy-status" class="visually-hidden" role="status"></span>
-    </div>
-  </div>
-</div>
-<div class="wrap" id="office-root">
-  <div class="prose-center office">
-    <div class="office-tabs" id="office-top" role="tablist" aria-label="Office">
-      <button type="button" role="tab" id="tab-morning" aria-controls="panel-morning" aria-selected="true">Morning Prayer</button>
-      <button type="button" role="tab" id="tab-evening" aria-controls="panel-evening" aria-selected="false" tabindex="-1">Evening Prayer</button>
-    </div>
-    <p class="notice sunday-note" data-sunday-note hidden>Today is the Lord’s Day. The Office takes its Sunday form, and households may also use the <a href="${href('family-catechesis/the-lords-day/first-day/')}">Lord’s Day catechesis session</a>. Read more about <a href="${href('lords-day/')}">the Lord’s Day</a>.</p>
-    ${renderOffice('morning')}
-    ${renderOffice('evening')}
-    <section class="part" id="about-plan" aria-labelledby="h-plan">
-      <div class="part-head"><h2 id="h-plan">How the readings are appointed</h2></div>
-      <p><strong>Psalms.</strong> The Book of Common Prayer (1662) divides the 150 psalms over thirty days, morning and evening, so that the whole psalter is read every month. Waterside follows that table exactly.</p>
-      <p><strong>Lessons.</strong> One chapter of the Old Testament at Morning Prayer and one of the New Testament at Evening Prayer, read in order from Genesis and Matthew, beginning 1 January 2026. The Old Testament (without the Psalms) takes about two years and two months; the New Testament about eight and a half months. This is a Waterside plan, modelled on the Reformed practice of reading Scripture continuously, book by book. It is <em>not</em> the 1662 calendar of lessons, which appoints readings by date and includes the Apocrypha. If you miss a day, read on from the day’s chapter; nothing is lost by skipping ahead or catching up.</p>
-      <p><strong>The Church year.</strong> Seasonal collects and readings for Advent, Christmas, Lent, and Easter are not yet included.</p>
-      ${psalterTable()}
-    </section>
-    <section class="part">
-      <p class="copyright-line" id="esv-notice">${esc(off.ESV_NOTICE)}</p>
-      <p class="copyright-line">Prayer Book texts (1662): public domain outside the United Kingdom; within the UK the Book of Common Prayer is subject to Crown rights under letters patent. Canticles are the Prayer Book translations. Hymn texts are pre-1800 and in the public domain. See <a href="${href('copyright/')}">Copyright and Permissions</a>.</p>
-      <p class="copyright-line">The Office complements, and does not replace, the worship, preaching, sacraments, fellowship, and pastoral care of the local church.</p>
-    </section>
-  </div>
-  <script type="application/json" id="office-plan">${JSON.stringify(plan)}</script>
+  <p><a class="btn" href="app/">Open the Daily Office</a></p>
 </div>`,
   });
 }

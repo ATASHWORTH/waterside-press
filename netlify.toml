@@ -23,3 +23,19 @@
   from = "/family-worship/*"
   to = "/family-catechesis/"
   status = 301
+
+# The Daily Office on this site is the live Daily Office app (waterside-office), so the two are
+# always the same version. Members reach it from /daily-office/, which holds the signup.
+[[redirects]]
+  from = "/daily-office/app/*"
+  to = "https://waterside-office.netlify.app/:splat"
+  status = 200
+  force = true
+
+# The app reaches the ESV API through this address on whichever site serves it, because the API
+# refuses requests from web pages on other sites. Each reader's own key travels with the request.
+[[redirects]]
+  from = "/esv-api/*"
+  to = "https://api.esv.org/:splat"
+  status = 200
+  force = true

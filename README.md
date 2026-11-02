@@ -33,7 +33,7 @@ content/catechesis.mjs Family Catechesis units and sessions (WSC questions, read
 content/hymns.mjs      Psalm and hymn texts used by the Office and the Music page
 content/library.mjs    Library records with edition, repository, rights, and PDF check status
 content/pages.mjs      Home, Music, Learning, About, Editorial, Copyright, Privacy, Accessibility, Letter
-src/assets/            site.css (design system, light/dark, print), site.js, office.js, library.js
+src/assets/            site.css (design system, light/dark, print), site.js, library.js
 tests/                 check.mjs (static), browser_test.py (Playwright)
 docs/                  Content manifest, sources & rights, withheld items, test report, next steps
 ```
